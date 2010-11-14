@@ -48,7 +48,7 @@ if(isset($_GET["page"])) {
 
 /* Load main page */
 } else {
-	include("../php/main.php");
+	include("../php/pages/main.php");
 }
 
 /* FOOTER */
