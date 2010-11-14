@@ -1,5 +1,5 @@
-/* This is the ugliest code ever and really needs
- * to be cleaned up, but it serves as a demo for now */
+<!-- This is the ugliest code ever and really needs
+	to be cleaned up, but it serves as a demo for now -->
 
 <?php
       include("checkLogin.php"); //Include the php function that will perform the user and password validation
