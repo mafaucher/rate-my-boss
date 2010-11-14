@@ -1,8 +1,18 @@
 <?php
+
+/* GLOBAL_VARS */
+// If we ever have any global variables:
+// include("../php/global.php");
+
+/* SESSION */
+include("../php/session.php");
 session_start();
 	
 /* HEADER */
 include("../php/header.php");
+
+/* LOGIN */
+include("../php/login.php");
 
 /* Load $pageArray */
 include("../php/pages.php");
@@ -28,13 +38,20 @@ if(isset($_GET["page"])) {
 	} else {
 		//$_GET["error"] = 404; // Not yet implemented
 	}
-	/* Check for "search=<keyword>" in query string */
+
+/* Check for "search=<keyword>" in query string */
 } elseif(isset($_GET["search"])) {
+
 	/* Load search page */
 	include("../php/pages/search.php");
 	// To get keyword: $_GET["search"]
+
+/* Load main page */
+} else {
+	include("../php/main.php");
 }
 
 /* FOOTER */
 include("../php/footer.php");
+
 ?>
