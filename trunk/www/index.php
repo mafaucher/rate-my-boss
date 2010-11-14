@@ -1,39 +1,41 @@
 <?php
 	@session_start();
+	
+	// Prepend page header 
 	include("../php/header.php");
-	include("../php/pages.php");
-	include("../php/GetHostingPackageID.php");
 
-	$flag = 0;
-	if(isset($_GET["page"])&&!isset($_GET["error"]))
+	// Load $pageArray
+	include("../php/pages.php");
+
+	// Check for "page=<type>" in query string
+	// and load content from <type>.php if exists
+	if(isset($_GET["page"]))
 	{
-		$flag = 1;
 		if(array_key_exists($_GET["page"], $pageArray))
 		{
-			include($pageArray[$_GET["page"]]);
-		} else {
-			$_GET['error'] = 404;
+			// If an "id=<id#>" exists, load corresponding <type>id.php
+			if(isset($_GET["id"]))
+			{
+				include($pageArray[$_GET["page"]."id"]);
+				// Get ID from: $_GET["id"]
+			}
+			// Else load main <type>.php
+			else
+			{
+				include($pageArray[$_GET["page"]]);
+			}
 		}
+		// Else 404 error
+		else { $_GET["error"] = 404; }
 	}
-	elseif(isset($_GET["host"]))
+	// Check for "search=<keyword>" in query string
+	elseif(isset($_GET["search"]))
 	{
-		$flag = 1;
-		$hostidArray = getHostingPackageID();
-		if(in_array($_GET['host'], $hostidArray))
-		{
-			include("../php/HostingPackages.php");
-		} else {
-			$_GET['error'] = 404;
-		}
+		// Load search page
+		include("../php/pages/search.php")
+		// Get keyword from $_GET["search"]
 	}
-        if(isset($_GET["error"]))
-	{
-		$flag = 1;
-		include("../php/statusCodes.php");
-	}
-	if($flag == 0)
-	{
-		include($pageArray['services']);
-	}
+
+	// Append page footer
 	include("../php/footer.php")
 ?>
