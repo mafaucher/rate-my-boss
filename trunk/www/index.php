@@ -1,8 +1,8 @@
 <?php
 
 /* GLOBAL_VARS */
-// If we ever have any global variables:
-// include("../php/global.php");
+// If we ever have any global variables put them in global.php
+include("../php/global.php");
 
 /* SESSION */
 include("../php/session.php");
@@ -13,6 +13,14 @@ include("../php/header.php");
 
 /* LOGIN */
 include("../php/login.php");
+
+/* SEARCHBOX */
+// Not yet implemented
+include("../php/searchbox.php");
+
+/* MENU */
+// Not yet implemented
+include("../php/menu.php");
 
 /* Load $pageArray */
 include("../php/pages.php");
