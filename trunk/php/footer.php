@@ -1,12 +1,11 @@
-      <div class="footer">
-         <p class="footnote">Copyright &copy; <?php echo date("Y") . " " . getOrgInfo("companyName");?> All rights reserved.</p>
-	<?php
-		include("../php/footerUrls.php");
-	 	echo "<p>";
-		insertFooterUrls();
-		echo "</p>";
-	?>
-      </div>
+	<!-- Footer and end of <body> -->
 
-   </body>
+	<div class="footer">
+
+		<p>Copyright &copy; <?php echo date("Y") . " " . "Group 6"?> All rights reserved.</p>
+
+	</div>
+
+</body>
+
 </html>
