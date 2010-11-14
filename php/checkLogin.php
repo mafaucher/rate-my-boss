@@ -1,7 +1,7 @@
 <?php
-        include_once("../php/checkUser.php"); //Include file that will call perl script.
-	@$username = $_POST['username']; //Set the username variable to value of $_POST Username
-	@$password = md5($_POST['password']); //Set the password to value of $_POST Password and encrypt it
+	// Set $username and $password to values retrieved from POST
+	$username = $_POST['username'];
+	$password = md5($_POST['password']);
 	$_SESSION['error'] = 0;
        
 	//Check is session is already set.

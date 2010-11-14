@@ -1,6 +1,6 @@
 <?php
 	$pageArray = array(
-		// No ID
+		// No ID given (main pages)
 		"company" => "../php/pages/company.php",
 		"evaluation" => "../php/pages/evaluation.php",
 		"document" => "../php/pages/document.php",
@@ -10,7 +10,7 @@
 		"siteadmin" => "../php/pages/siteadmin.php",
 		"financeadmin" => "../php/pages/financeadmin.php",
 		
-		// With ID
+		// With ID field
 		"companyid" => "../php/pages/companyid.php",
 		"evaluationid" => "../php/pages/evaluationid.php",
 		"documentid" => "../php/pages/documentid.php",
@@ -18,4 +18,3 @@
 		"advertisementid" => "../php/pages/advertisementid.php",
 	);
 ?>
-
