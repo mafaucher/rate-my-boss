@@ -17,6 +17,7 @@
 		"documentid" => "../php/pages/documentid.php",
 		"supervisorid" => "../php/pages/supervisorid.php",
 
+		// Privileged
 		"advertisementid" => "../php/pages/advertisementid.php"
 	);
 
@@ -25,6 +26,8 @@
 		"evaluation" => "Company Evaluations",
 		"document" => "Documents",
 		"supervisor" => "Supervisor Evaluations",
+
+		// Privileged
 		"advertisement" => "Advertisements",
 		"siteadmin" => "Site Administration",
 		"financeadmin" => "Financial Administration",

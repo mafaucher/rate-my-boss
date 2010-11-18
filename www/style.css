@@ -48,6 +48,10 @@ a:visited:hover { color: #000000; }
 	font-family: inherit;
 }
 
+.header a:visited       { color: #2E3192; }
+.header a:hover         { color: #2E3192; }
+.header a:visited:hover { color: #2E3192; }
+
 
 /* LOGIN */
 
@@ -72,7 +76,8 @@ a:visited:hover { color: #000000; }
 	position: relative;
 	top: 60px;
 	left: 197px;
-	overflow-x:hidden;
+	z-index:-1;
+	overflow-x:hidden; /* Disables horizontal scrollbar */
 }
 
 /* MENU */
@@ -102,7 +107,8 @@ a:visited:hover { color: #000000; }
 
 .center { text-align: center; }
 
-/* Column */
+
+/* Columns */
 
 .columns {
 	margin-bottom: 150px
@@ -117,13 +123,6 @@ a:visited:hover { color: #000000; }
 	float: left;
 	margin-top: 5px;
 	margin-left: 20px;
-}
-
-/* Footnote */
-
-.footnote, sup.footer {
-	font-size: 10px;
-	color: #048C38;
 }
 
 
