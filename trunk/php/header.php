@@ -18,7 +18,7 @@
 
 	<div class="header">
 		<img src="images/logo.png" alt="RMB Logo" height=225px/>
-		<h1>Rate-My-Boss</h1>
+		<h1><a href="index.php">Rate-My-Boss</a></h1>
 	</div>
 
 <!-- END OF HEADER -->

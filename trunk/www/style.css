@@ -81,19 +81,10 @@ a:visited:hover { color: #000000; }
 	position: absolute;
 	top: 220px;
 	left: 0px;
+	line-height: 200%;
 	font-size: 14px;
 	color: #2E3192;
 }
-
-ul.menu { /* Disable bullets for menu list items */
-	list-style-type: none;
-	padding-bottom: 5px;
-}
-
-li.menu { /* Menu bullet */
-	padding-bottom: 0px;
-}
-
 
 
 /* MAIN */
