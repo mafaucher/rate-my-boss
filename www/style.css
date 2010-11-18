@@ -80,18 +80,17 @@ a:visited:hover { color: #000000; }
 .menu { /* Menu position */
 	position: absolute;
 	top: 220px;
-	font-size: 16px;
+	left: 0px;
+	font-size: 14px;
 	color: #2E3192;
 }
 
 ul.menu { /* Disable bullets for menu list items */
 	list-style-type: none;
-	padding-left: 15px;
 	padding-bottom: 5px;
 }
 
 li.menu { /* Menu bullet */
-	padding-left: 15px;
 	padding-bottom: 0px;
 }
 
