@@ -3,10 +3,10 @@
 	<div class="menu">
 
 		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Clients</a></li>
-			<li><a href="#">Contact Us</a></li>
+<?php
+	foreach ($titleArray as $key => $title) {
+		print "			<li><a href=index.php?page=$key>$title</a></li>"
+?>
 		</ul>
 
 	</div>
