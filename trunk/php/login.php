@@ -1,5 +1,21 @@
+<!-- START OF LOGIN -->
+
+	<div class="login">
+
+		<form action="" method="post">
+        	<p>Username:<input class="loginbox" type="text" name="username" /></p>
+			<p>Password:&nbsp;<input class="loginbox" type="password" name="password" /></p>
+			<p>Remember me&nbsp;<input type="checkbox" name="remember" />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="submit" name="sublogin" value="Login" /></p>
+		</form>
+
+	</div>
+
+<!-- END OF LOGIN -->
+
 <!-- This is the ugliest code ever and really needs
-	to be cleaned up, but it serves as a demo for now -->
+	to be cleaned up, but it serves as a demo for now 
 
 <?php
       include("checkLogin.php"); //Include the php function that will perform the user and password validation
@@ -39,4 +55,4 @@
 	echo "<a href=\"logout.php\">Logout</a>\n"; 
       	echo("</div>\n");
       }
-?>
+?> -->

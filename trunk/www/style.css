@@ -129,6 +129,8 @@ li.menu { /* Menu bullet */
 	margin-left: 20px;
 }
 
+/* Footnote */
+
 .footnote, sup.footer {
 	font-size: 10px;
 	color: #048C38;
