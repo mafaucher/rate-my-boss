@@ -5,7 +5,8 @@
 		<ul>
 <?php
 	foreach ($titleArray as $key => $title) {
-		print "			<li><a href=index.php?page=$key>$title</a></li>"
+		print "			<li><a href=index.php?page=$key>$title</a></li>\n";
+	}
 ?>
 		</ul>
 
