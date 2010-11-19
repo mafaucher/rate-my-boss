@@ -25,7 +25,7 @@ $password = $_POST["password"];
 $_SESSION["logged"] = false;
 
 /* Initialize session error variable */
-if (!isset($_SESSION["error"]) {
+if (!isset($_SESSION["error"])) {
 	$_SESSION["error"] = 0;
 }
 
