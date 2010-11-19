@@ -67,7 +67,7 @@ else {
 			$_SESSION["logged"] = true;
 			
 			/* Set cookies if "Remember me" is selected */
-			if isset($_POST["remember"]) ) {
+			if (isset($_POST["remember"]) ) {
 				$_COOKIE["username"] = $username;
 				$_COOKIE["password"] = $password;
 			}
