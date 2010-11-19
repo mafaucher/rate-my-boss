@@ -4,10 +4,7 @@
  * the page is loaded and perform verifications on the user array.
  * Currently this is a global.php array, but it will be replaced with
  * an actual SQL query and verification.
- *
- * TODO:
- * 		- Consider removing $_SESSION["logged"] it doesn't seem to be used
- */
+ **/
 
 /**
  * Error codes:
@@ -15,14 +12,14 @@
  * 1 = no username
  * 2 = no password
  * 3 = username doesn't exist
- * 5 = username/password do not match
+ * 4 = username/password do not match
+ * 5 = new user
  **/
 
 /* Set variables using POST */
 $username = $_POST["username"];
 $password = $_POST["password"];
 //$password = md5($_POST["password"]); // For testing purposes I'm not encrypting the password
-$_SESSION["logged"] = false;
 
 /* Initialize session error variable */
 if (!isset($_SESSION["error"])) {
@@ -34,7 +31,6 @@ if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
 	$username = $_SESSION["username"];
 	$password = $_SESSION["password"];
 	$_SESSION["error"] = 0;
-	$_SESSION["logged"] = true;
 }
 
 /* Check is cookies were stored using "Remember me" */
@@ -74,7 +70,7 @@ else {
 		}
 		/* password does not match */
 		else {
-			$_SESSION["error"] = 5;
+			$_SESSION["error"] = 4;
 		}
 	}
 
