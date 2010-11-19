@@ -14,7 +14,7 @@
 		echo('		</form>');
 	}
 	else {
-		echo("<p>Welcome$_SESSION['username']!</p>");
+		echo("<p>Welcome {$_SESSION['username']}!</p>");
 	}
 ?>
 
