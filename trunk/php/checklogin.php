@@ -56,7 +56,7 @@ elseif( empty($_POST["password"]) ) {
 /* Ready for validation */
 else {
 	// This uses hardcoded user info, see global.php
-	if array_key_exists($username, $userpassword) {
+	if (array_key_exists($username, $userpassword)) {
 
 		/* User info validates*/
 		if ($userpassword[$username] == $password) {
