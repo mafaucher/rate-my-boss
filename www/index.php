@@ -1,12 +1,12 @@
 <?php
 
+session_start();
 /* GLOBAL_VARS */
 // If we ever have any global variables put them in global.php
 include("../php/global.php");
 
 /* SESSION */
 include("../php/session.php");
-session_start();
 	
 /* HEADER */
 include("../php/header.php");
