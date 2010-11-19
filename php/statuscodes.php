@@ -26,7 +26,7 @@ $codeTitles = array(
 505 => "HTTP Version Not Supported"
 );
 
-$codeMeans = array(
+$codeDescription = array(
 400 => "The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications.",
 401 => "The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource. The client MAY repeat the request with a suitable Authorization header field (section 14.8). If the request already included Authorization credentials, then the 401 response indicates that authorization has been refused for those credentials. If the 401 response contains the same challenge as the prior response, and the user agent has already attempted authentication at least once, then the user SHOULD be presented the entity that was given in the response, since that entity might include relevant diagnostic information.",
 402 => "This code is reserved for future use.",

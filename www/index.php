@@ -1,17 +1,17 @@
 <?php
 
 session_start();
-/* GLOBAL_VARS */
-// If we ever have any global variables put them in global.php
-include("../php/global.php");
-
 /* SESSION */
 include("../php/session.php");
 	
+/* GLOBAL_VARS */
+include("../php/global.php");
+
 /* HEADER */
 include("../php/header.php");
 
 /* LOGIN */
+include("../php/checklogin.php");
 include("../php/login.php");
 
 /* SEARCHBOX */
