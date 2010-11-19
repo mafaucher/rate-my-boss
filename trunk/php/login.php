@@ -3,7 +3,7 @@
 	<div class="login">
 
 		<form action="" method="post">
-        	<p>Username:<input class="loginbox" type="text" name="username" /></p>
+        	<p>Username:&nbsp;<input class="loginbox" type="text" name="username" /></p>
 			<p>Password:&nbsp;<input class="loginbox" type="password" name="password" /></p>
 			<p>Remember me&nbsp;<input type="checkbox" name="remember" />
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
