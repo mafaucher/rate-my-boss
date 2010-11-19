@@ -5,7 +5,7 @@
 <?php
 
 /* New user */
-if ($_SESSION["error"] != 5) {
+if ($_SESSION["error"] == 5) {
 	/**
 	 * Registering information - I havn't made this yet since
 	 * I don't know exactly what will be required
