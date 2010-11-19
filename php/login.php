@@ -40,7 +40,7 @@ else if ( !isset($_SESSION["username"]) ) {
 }
 /* User is logged in */
 else {
-	echo("	<p>Welcome <strong>{$_SESSION['username']}</strong>!<a href='logout.php'>Logout</a></p>");
+	echo("	<p>Welcome <strong>{$_SESSION['username']}</strong> (<a href='../php/logout.php'>Logout</a>)</p>");
 }
 
 
