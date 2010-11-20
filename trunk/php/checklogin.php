@@ -38,7 +38,12 @@ elseif(isset($_COOKIE["name"]) && isset($_COOKIE["pass"])){
 	$_SESSION["username"] = $_COOKIE["username"];
 	$_SESSION["password"] = $_COOKIE["password"];
 	$_SESSION["error"] = 0;
-} 
+}
+
+/* No info inserted */
+elseif( empty($_POST["username"]) && empty($_POST["password"]) ) {
+	$_SESSION["error"] = 0;
+}
 
 /* No username inserted */
 elseif( empty($_POST["username"]) && !empty($_POST["password"]) ) {
