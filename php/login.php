@@ -6,24 +6,28 @@
 
 /* New user */
 if ($_SESSION["error"] == 5) {
+	$_SESSION["error"] = 0;
+	echo("<p>This is just a test, reload to return.</p>");
 	/**
-	 * Registering information - I havn't made this yet since
-	 * I don't know exactly what will be required
+	 * Registering information - I haven't made this yet since
+	 * I don't know if we need to make a new page for this ...
 	 **/
 }
 /* User is not logged in */
 else if ( !isset($_SESSION["username"]) ) {
 	echo("		<form action='' method='post'>\n");
-	echo("			<p>Username:&nbsp;<input class='loginbox' type='text' name='username' /></p>\n");
-	echo("			<p>Password:&nbsp;<input class='loginbox' type='password' name='password' /></p>\n");
+	echo("			<p>Username:&nbsp;&nbsp;<input class='loginbox' type='text' name='username' /></p>\n");
+	echo("			<p>Password:&nbsp;&nbsp;<input class='loginbox' type='password' name='password' /></p>\n");
 	echo("			<p>Remember me&nbsp;<input type='checkbox' name='remember' />\n");
-	echo("			<input type='submit' name='register' value='Register'");
-	echo("			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
+	echo("			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 	echo("			<input type='submit' name='sublogin' value='Login' /></p>\n");
 	echo("		</form>\n");
 
 	/* Error messages */
 	switch ($_SESSION["error"]) {
+	case 0:
+		echo("	<p>Enter your username and password.</p>\n");
+		break;
 	case 1:
 		echo("	<p>Error: Please enter your username.</p>\n");
 		break;
@@ -34,17 +38,13 @@ else if ( !isset($_SESSION["username"]) ) {
 		echo("	<p>Error: This user does not exist.</p>\n");
 		break;
 	case 4:
-		echo("	<p>Error: Unable to find a matching username and password.</p>\n");
+		echo("	<p>Error: Incorrect password.</p>\n");
 		break;
 	}
 }
 /* User is logged in */
 else {
-	echo("	<p>Welcome <strong>{$_SESSION['username']}</strong> \n");
-	echo("		<form action='logout.php' method='post'>\n");
-	echo("			<input type='submit' name='sublogout' value='Logout' /></p>\n");
-	echo("		</form>\n");
-	echo("	</p>\n");
+	echo("	<p>Welcome <strong>{$_SESSION['username']}</strong> (<a href='logout.php'>logout</a>)</p>");
 }
 
 
