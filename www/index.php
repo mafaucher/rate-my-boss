@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 /* SESSION */
 include("../php/session.php");
 	

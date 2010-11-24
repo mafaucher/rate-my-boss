@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 /* Set login cookie */
 if($_SESSION['writeCookies']) {
 	setcookie("username", $_SESSION['username'], time()+60*60*24*100, "/");
