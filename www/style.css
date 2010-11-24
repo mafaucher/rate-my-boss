@@ -76,7 +76,7 @@ a:visited:hover { color: #000000; }
 
 .search { /* search box position */
 	position: relative;
-	top: 60px;
+	top: 70px;
 	left: 197px;
 	z-index:2;
 	overflow-x:hidden; /* Disables horizontal scrollbar */
