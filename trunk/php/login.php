@@ -19,7 +19,7 @@ else if ( !isset($_SESSION["username"]) ) {
 	echo("			<p>Username:&nbsp;&nbsp;<input class='loginbox' type='text' name='username' /></p>\n");
 	echo("			<p>Password:&nbsp;&nbsp;<input class='loginbox' type='password' name='password' /></p>\n");
 	echo("			<p>Remember me&nbsp;<input type='checkbox' name='remember' />\n");
-	echo("			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+	echo("			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 	echo("			<input type='submit' name='sublogin' value='Login' /></p>\n");
 	echo("		</form>\n");
 
