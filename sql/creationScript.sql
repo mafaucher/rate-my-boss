@@ -147,6 +147,58 @@ keyword VARCHAR(40) NOT NULL,
 PRIMARY KEY (tagId)
 );
 
+# USER
+
+drop table user;
+create table user
+(
+userId INT NOT NULL AUTO_INCREMENT,
+password VARCHAR(40) NOT NULL,
+type VARCHAR(40) NOT NULL,
+answer1 VARCHAR(40) NOT NULL,
+answer2 VARCHAR(40) NOT NULL,
+answer3 VARCHAR(40) NOT NULL,
+PRIMARY KEY (userId)
+);
+
+# AD
+
+drop table ad;
+create table ad
+(
+adId INT NOT NULL AUTO_INCREMENT,
+businessId INT NOT NULL,
+content VARCHAR(600) NOT NULL,
+counter INT NOT NULL,
+timestamp DATE,
+reported INT NOT NULL,
+PRIMARY KEY (adId)
+);
+
+# BUSINESS
+
+drop table business;
+create table business
+(
+businessId INT NOT NULL AUTO_INCREMENT,
+userId INT NOT NULL,
+name VARCHAR(40) NOT NULL,
+charter VARCHAR(600),
+address VARCHAR(40),
+city VARCHAR(40),
+state VARCHAR(40),
+country VARCHAR(40),
+postalCode VARCHAR(40),
+email VARCHAR(40),
+contactName VARCHAR(40) NOT NULL,
+contactNumberLand VARCHAR(40),
+contactNumberMobile VARCHAR(40),
+contactNumberFax VARCHAR(40),
+contactPosition VARCHAR(40),
+contactEmail VARCHAR(40),
+PRIMARY KEY (businessId)
+);
+
 # INSERT VALUES
 
 insert into organization (name, industryType, city, province, website, numberofEmployees, isPending) values ('Bell','telecommunications', 'Montreal', 'Quebec', 'www.bell.ca', 843, 1),
