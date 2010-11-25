@@ -14,14 +14,9 @@ include("../php/checklogin.php");
 include("../php/login.php");
 
 /* SEARCHBOX */
-// Not yet implemented
 include("../php/searchbox.php");
 
-/* MENU */
-// Not yet implemented
-include("../php/menu.php");
-
-/* Load $pageArray */
+/* PAGE INFORMATION (permissions and menu entries) */
 include("../php/pages.php");
 
 /* Check for "page=<type>" in query string
@@ -41,22 +36,31 @@ if(isset($_GET["page"])) {
 			include($pageArray[$_GET["page"]]);
 		}
 
-	/* <type> does not exist */
-	} else {
-		//$_GET["error"] = 404; // Not yet implemented
+		/* Not implemented: <type> does not exist 
+		} else {
+			//$_GET["error"] = 404;
+		} */
+	}
+} else {
+	/* Unset the current organization id to reset menu */
+	if(isset($orgid)) {
+		unset($orgid);
 	}
 
-/* Check for "search=<keyword>" in query string */
-} elseif(isset($_GET["search"])) {
+	/* Check for "search=<keyword>" in query string */
+	if(isset($_GET["search"])) {
+		/* Load search page */
+		include("../php/pages/search.php");
+		// To get keyword: $_GET["search"]
 
-	/* Load search page */
-	include("../php/pages/search.php");
-	// To get keyword: $_GET["search"]
-
-/* Load main page */
-} else {
-	include("../php/pages/main.php");
+	/* Load main page */
+	} else {
+		include("../php/pages/main.php");
+	}
 }
+
+/* MENU */
+include("../php/menu.php");
 
 /* FOOTER */
 include("../php/footer.php");

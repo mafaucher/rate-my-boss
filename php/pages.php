@@ -1,7 +1,12 @@
 <?php
+/* Array used to determine page content. Also used to manage permissions
+ * (key only exists if user has permission to visit the page) */
+
+// Permissions not implemented - waiting for user info
+
 	$pageArray = array(
 		/* No ID given (main pages) */
-		"company" => "../php/pages/company.php",
+		"organization" => "../php/pages/organization.php",
 		"evaluation" => "../php/pages/evaluation.php",
 		"document" => "../php/pages/document.php",
 		"supervisor" => "../php/pages/supervisor.php",
@@ -12,7 +17,7 @@
 		"financeadmin" => "../php/pages/financeadmin.php",
 		
 		/* With ID field */
-		"companyid" => "../php/pages/companyid.php",
+		"organizationid" => "../php/pages/organizationid.php",
 		"evaluationid" => "../php/pages/evaluationid.php",
 		"documentid" => "../php/pages/documentid.php",
 		"supervisorid" => "../php/pages/supervisorid.php",
@@ -21,16 +26,4 @@
 		"advertisementid" => "../php/pages/advertisementid.php"
 	);
 
-	$titleArray = array(
-		"company" => "Companies",
-		"evaluation" => "Company Evaluations",
-		"document" => "Documents",
-		"supervisor" => "Supervisor Evaluations",
-
-		// Privileged
-		"advertisement" => "Advertisements",
-		"siteadmin" => "Site Administration",
-		"financeadmin" => "Financial Administration",
-	);
-	
 ?>

@@ -5,11 +5,25 @@
 		<ul>
 <?php
 
-include_once("../php/pages.php");
+print "			<li><a href=index.php?>Main Page</a></li>\n";
+print "			<li><a href=index.php?page=organization>Organization List</a></li>\n";
 
-foreach ($titleArray as $key => $title) {
+/* If organization was selected */
+if (isset($orgid)) {
+	print "			<li><a href=index.php?page=evaluation>Organization Evaluations</a></li>\n";
+	print "			<li><a href=index.php?page=document>Documents</a></li>\n";
+	print "			<li><a href=index.php?page=supervisor>Supervisor List</a></li>\n";
+}
 
-	print "			<li><a href=index.php?page=$key>$title</a></li>\n";
+/* Restricted menu items */
+if (isset($pageArray["advertisement"])) {
+	print "			<li><a href=index.php?page=advertisement>Advertisements</a></li>\n";
+}
+if (isset($pageArray["siteadmin"])) {
+	print "			<li><a href=index.php?page=siteadmin>Site Administration</a></li>\n";
+}
+if (isset($pageArray["financeadmin"])) {
+	print "			<li><a href=index.php?page=financeadmin>Financial Administration</a></li>\n";
 }
 
 ?>
