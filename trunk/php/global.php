@@ -3,7 +3,6 @@
 $host="localhost";
 $database="";
 
-
 // Hardcoded, this will be replaced with database queries
 $userpassword = array (
 	"aaa" => "aaa",
