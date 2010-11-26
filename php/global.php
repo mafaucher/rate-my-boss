@@ -1,9 +1,12 @@
 <?php
 
-$host="localhost";
-$database="";
+/* Database information */
+$dbhost = "localhost";
+$dbuser = "tjc353_2";
+$dbpass = "ahf3HY";
+$dbname = $dbuser;
 
-// Hardcoded, this will be replaced with database queries
+// Hardcoded data used as test, this will be replaced with database queries
 $userpassword = array (
 	"aaa" => "aaa",
 	"bbb" => "bbb",
