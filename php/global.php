@@ -1,7 +1,7 @@
 <?php
 
 /* Database information */
-$dbhost = "localhost";
+$dbhost = "clipper.encs.concordia.ca";
 $dbuser = "tjc353_2";
 $dbpass = "ahf3HY";
 $dbname = $dbuser;
