@@ -4,7 +4,7 @@
 $dbhost = "clipper.encs.concordia.ca";
 $dbuser = "tjc353_2";
 $dbpass = "ahf3HY";
-$dbname = $dbuser;
+$dbname = "tjc353_2";
 
 // Hardcoded data used as test, this will be replaced with database queries
 $userpassword = array (
