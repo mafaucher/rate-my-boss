@@ -8,7 +8,7 @@ $result = mysql_query($query);
 
 while($row = mysql_fetch_array($result, MYSQL_ASSOC))
 {
-    echo "Name :{$row['name']} <br>" .
+    echo "Name :{$row['name']} <br>";
 }
  
 include "../php/closedb.php";
