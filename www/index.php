@@ -1,6 +1,7 @@
 <?php
 
 /* SESSION */
+session_start();
 include("../php/session.php");
 	
 /* GLOBAL_VARS */
