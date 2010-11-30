@@ -1,9 +1,7 @@
 <?php
 /**
  * This code is called to verify the session information every time
- * the page is loaded and perform verifications on the user array.
- * Currently this is a global.php array, but it will be replaced with
- * an actual SQL query and verification.
+ * the page is loaded and perform verifications against the 'user' table
  **/
 
 /**
@@ -13,13 +11,12 @@
  * 2 = no password
  * 3 = username doesn't exist
  * 4 = username/password do not match
- * 5 = new user ?
  **/
 
 /* Set variables using POST */
 $username = $_POST["username"];
-$password = $_POST["password"];
-//$password = md5($_POST["password"]); // For testing purposes I'm not encrypting the password
+$password = md5($_POST["password"]);
+//$password = $_POST["password"]; // For testing purposes I'm not encrypting the password
 
 /* Initialize session error variable */
 if (!isset($_SESSION["error"])) {
@@ -57,32 +54,38 @@ elseif( empty($_POST["password"]) && !empty($_POST["username"]) ) {
 
 /* Ready for validation */
 else {
-	// This uses hardcoded user info, see global.php
-	if (array_key_exists($username, $userpassword)) {
+	// SQL query
+	include "../php/userdb.php";
 
-		/* User info validates*/
-		if ($userpassword[$username] == $password) {
-			/* Set session information */
-			$_SESSION["error"] = 0;
-			$_SESSION["username"] = $username;
-			$_SESSION["password"] = $password;
-			$_SESSION["logged"] = true;
-			
-			/* Set cookies if "Remember me" is selected */
-			if (isset($_POST["remember"]) ) {
-				$_COOKIE["username"] = $username;
-				$_COOKIE["password"] = $password;
+	// Search each row for a matching user name
+	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		if (row['name'] == $username) {
+			/* User info validates*/
+			if (row['password'] == $password) {
+				/* Set session information */
+				$_SESSION["error"] = 0;
+				$_SESSION["username"] = $username;
+				$_SESSION["password"] = $password;
+				$_SESSION["logged"] = true;
+				
+				/* Set cookies if "Remember me" is selected */
+				if (isset($_POST["remember"]) ) {
+					$_COOKIE["username"] = $username;
+					$_COOKIE["password"] = $password;
+				}
 			}
-		}
-		/* password does not match */
-		else {
-			$_SESSION["error"] = 4;
-		}
+			/* password does not match */
+			else {
+				$_SESSION["error"] = 4;
+			}
+			/* No entry should have the same username */
+			break;	}
 	}
 
 	/* username does not exist */
-	else {
+	if (! $_SESSION["logged"]) {
 		$_SESSION["error"] = 3;
 	}
 }
+
 ?>

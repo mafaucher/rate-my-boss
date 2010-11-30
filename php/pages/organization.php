@@ -3,10 +3,10 @@
 //Remember to set $orgid once an organization is chosen
 include "../php/opendb.php";
 
-$query  = "SELECT * FROM organization";
+$query = "SELECT * FROM organization";
 $result = mysql_query($query);
 
-while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+while($row = mysql_fetch_array($result))
 {
     echo "Name :{$row['name']} <br>";
 }

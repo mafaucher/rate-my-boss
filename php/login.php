@@ -4,17 +4,11 @@
 
 <?php
 
-/* New user */
-if ($_SESSION["error"] == 5) {
-	$_SESSION["error"] = 0;
-	echo("<p>This is just a test, reload to return.</p>");
-	/**
-	 * Registering information - I haven't made this yet since
-	 * I don't know if we need to make a new page for this ...
-	 **/
-}
+include "../php/checklogin.php";
+
 /* User is not logged in */
-else if ( !isset($_SESSION["username"]) ) {
+if ( !isset($_SESSION["username"]) ) {
+
 	echo("		<form action='' method='post'>\n");
 	echo("			<p>Username:&nbsp;&nbsp;<input class='loginbox' type='text' name='username' /></p>\n");
 	echo("			<p>Password:&nbsp;&nbsp;<input class='loginbox' type='password' name='password' /></p>\n");
@@ -44,10 +38,9 @@ else if ( !isset($_SESSION["username"]) ) {
 }
 /* User is logged in */
 else {
-	echo("	<p>Welcome <strong>{$_SESSION['username']}</strong> (<a href='logout.php'>logout</a>)</p>");
+	echo("	<p>Welcome <strong>{$_SESSION['username']}</strong> (<a href='logout.php'>logout</a>)</p>\n");
+//	echo("	<p>(<a href='newpassword.php'>change your password</a>)</p>\n");
 }
-
-
 
 ?>
 
