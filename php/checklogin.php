@@ -57,22 +57,24 @@ else {
 	// SQL query
 	include "../php/userdb.php";
 
+
 	// Search each row for a matching user name
-	while($row = mysql_fetch_array($userdb, MYSQL_ASSOC)) {
-		if (row['name'] == $username) {
-			/* User info validates*/
-			if (row['password'] == $password) {
-				/* Set session information */
-				$_SESSION["error"] = 0;
-				$_SESSION["username"] = $username;
-				$_SESSION["password"] = $password;
-				$_SESSION["logged"] = true;
+//	while($row = mysql_fetch_array($userdb, MYSQL_ASSOC)) {
+//		if (row['name'] == $username) {
+//			/* User info validates*/
+//			if ($row['password'] == $password) {
+//				/* Set session information */
+//				$_SESSION["error"] = 0;
+//				$_SESSION["username"] = $username;
+//				$_SESSION["password"] = $password;
+//				$_SESSION["logged"] = true;
 				
 				/* Set cookies if "Remember me" is selected */
-				if (isset($_POST["remember"]) ) {
-					$_COOKIE["username"] = $username;
-					$_COOKIE["password"] = $password;
-				}
+//				if (isset($_POST["remember"]) ) {
+//					$_COOKIE["username"] = $username;
+//					$_COOKIE["password"] = $password;
+//				}
+			if (false) {
 			}
 			/* password does not match */
 			else {
