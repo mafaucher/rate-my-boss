@@ -9,7 +9,6 @@ include("../php/global.php");
 include("../php/header.php");
 
 /* LOGIN */
-include("../php/checklogin.php");
 include("../php/login.php");
 
 /* SEARCHBOX */

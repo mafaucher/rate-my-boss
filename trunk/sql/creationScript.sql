@@ -210,10 +210,10 @@ insert into organization (name, industryType, city, province, website, numberofE
 # admin: peter - p_rockw; leila - l_behja; marc - ma_fauch;
 # finance: accounting - cashman
 # agent: jobboom - getajob
-insert into user (name, password, type, answer1, answer2, answer3) values
-("peter", "ca3833c88ae75359364903070601c689", "admin", "empty", "empty", "empty"),
-("leila", "4977f6c363b1f59d6a238ddfb8f5f2e9", "admin", "empty", "empty", "empty"),
-("marc",  "1f698b8ef7a1ddb851f634df654fa1ec", "admin", "empty", "empty", "empty"),
-("accounting", "a426f39a10e5ecf1473daa39511919b4", "finance", "empty", "empty", "empty"),
-("jobboom", "ff9f1ab9f2297a75acfbe7e65fac735b", "agent", "empty", "empty", "empty");
+insert into user (name, password, type, answer1, answer2, answer3, isPending) values
+("peter", "ca3833c88ae75359364903070601c689", "admin", "empty", "empty", "empty", 0),
+("leila", "4977f6c363b1f59d6a238ddfb8f5f2e9", "admin", "empty", "empty", "empty", 0),
+("marc",  "1f698b8ef7a1ddb851f634df654fa1ec", "admin", "empty", "empty", "empty", 0),
+("accounting", "a426f39a10e5ecf1473daa39511919b4", "finance", "empty", "empty", "empty", 0),
+("jobboom", "ff9f1ab9f2297a75acfbe7e65fac735b", "agent", "empty", "empty", "empty", 0);
 
