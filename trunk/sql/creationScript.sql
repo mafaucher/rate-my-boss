@@ -77,6 +77,7 @@ create table orgEvaluation
 (
 orgEvalId INT NOT NULL AUTO_INCREMENT,
 orgId INT NOT NULL,
+title VARCHAR(40) NOT NULL,
 text VARCHAR(600) NOT NULL,
 reported INT NOT NULL,
 uString CHAR(32) NOT NULL,
@@ -90,6 +91,7 @@ create table superEvaluation
 (
 superEvalId INT NOT NULL AUTO_INCREMENT,
 superId INT NOT NULL,
+title VARCHAR(40) NOT NULL,
 text VARCHAR(600) NOT NULL,
 reported INT NOT NULL,
 uString CHAR(32) NOT NULL,
@@ -109,17 +111,17 @@ uString CHAR(32) NOT NULL,
 PRIMARY KEY (orgCommentId)
 );
 
-# SUPERVISOR COMMENT
+# DOCUMENT COMMENT
 
-drop table superComment;
-create table superComment
+drop table docComment;
+create table docComment
 (
-superCommentId INT NOT NULL AUTO_INCREMENT,
-superEvaluationId INT NOT NULL,
+docCommentId INT NOT NULL AUTO_INCREMENT,
+docEvaluationId INT NOT NULL,
 text VARCHAR(600) NOT NULL,
 reported INT NOT NULL,
 uString CHAR(32) NOT NULL,
-PRIMARY KEY (superCommentId)
+PRIMARY KEY (docCommentId)
 );
 
 # SUPERVISOR COMMENT
@@ -160,6 +162,7 @@ type VARCHAR(40) NOT NULL,
 answer1 VARCHAR(40) NOT NULL,
 answer2 VARCHAR(40) NOT NULL,
 answer3 VARCHAR(40) NOT NULL,
+isPending INT NOT NULL,
 PRIMARY KEY (userId)
 );
 
@@ -172,7 +175,7 @@ adId INT NOT NULL AUTO_INCREMENT,
 businessId INT NOT NULL,
 content VARCHAR(600) NOT NULL,
 counter INT NOT NULL,
-timestamp DATE,
+timestamp DATE NOT NULL,
 reported INT NOT NULL,
 PRIMARY KEY (adId)
 );
