@@ -58,7 +58,7 @@ else {
 	include "../php/userdb.php";
 
 	// Search each row for a matching user name
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while($row = mysql_fetch_array($userdb, MYSQL_ASSOC)) {
 		if (row['name'] == $username) {
 			/* User info validates*/
 			if (row['password'] == $password) {
