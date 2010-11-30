@@ -55,10 +55,10 @@ elseif( empty($_POST["password"]) && !empty($_POST["username"]) ) {
 /* Ready for validation */
 else {
 	// SQL query
-	include "../php/userdb.php";
-
-
-	// Search each row for a matching user name
+//	include "../php/userdb.php";
+//
+//
+//	// Search each row for a matching user name
 //	while($row = mysql_fetch_array($userdb, MYSQL_ASSOC)) {
 //		if (row['name'] == $username) {
 //			/* User info validates*/
@@ -68,21 +68,21 @@ else {
 //				$_SESSION["username"] = $username;
 //				$_SESSION["password"] = $password;
 //				$_SESSION["logged"] = true;
-				
-				/* Set cookies if "Remember me" is selected */
+//				
+//				/* Set cookies if "Remember me" is selected */
 //				if (isset($_POST["remember"]) ) {
 //					$_COOKIE["username"] = $username;
 //					$_COOKIE["password"] = $password;
 //				}
-			if (false) {
-			}
-			/* password does not match */
-			else {
-				$_SESSION["error"] = 4;
-			}
-			/* No entry should have the same username */
-			break;	}
+	if (false) {
 	}
+	/* password does not match */
+	else {
+		$_SESSION["error"] = 4;
+	}
+//		/* No entry should have the same username */
+//		break;
+//	}
 
 	/* username does not exist */
 	if (! $_SESSION["logged"]) {
