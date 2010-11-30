@@ -148,11 +148,13 @@ PRIMARY KEY (tagId)
 );
 
 # USER
+# type = "admin", "finance", "registered", or "agent"
 
 drop table user;
 create table user
 (
 userId INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(40) NOT NULL,
 password VARCHAR(40) NOT NULL,
 type VARCHAR(40) NOT NULL,
 answer1 VARCHAR(40) NOT NULL,
@@ -201,5 +203,17 @@ PRIMARY KEY (businessId)
 
 # INSERT VALUES
 
-insert into organization (name, industryType, city, province, website, numberofEmployees, isPending) values ('Bell','telecommunications', 'Montreal', 'Quebec', 'www.bell.ca', 843, 1),
+insert into organization (name, industryType, city, province, website, numberofEmployees, isPending) values
+('Bell','telecommunications', 'Montreal', 'Quebec', 'www.bell.ca', 843, 1),
 ('Google','web', 'Irvine', 'California', 'www.google.ca', 307, 1);
+
+# admin: peter - p_rockw; leila - l_behja; marc - ma_fauch;
+# finance: accounting - cashman
+# agent: jobboom - getajob
+insert into user (name, password, type, answer1, answer2, answer3) values
+("peter", "ca3833c88ae75359364903070601c689", "admin", "empty", "empty", "empty"),
+("leila", "4977f6c363b1f59d6a238ddfb8f5f2e9", "admin", "empty", "empty", "empty"),
+("marc",  "1f698b8ef7a1ddb851f634df654fa1ec", "admin", "empty", "empty", "empty"),
+("accounting", "a426f39a10e5ecf1473daa39511919b4", "finance", "empty", "empty", "empty"),
+("jobboom", "ff9f1ab9f2297a75acfbe7e65fac735b", "agent", "empty", "empty", "empty");
+
