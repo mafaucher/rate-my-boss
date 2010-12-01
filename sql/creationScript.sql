@@ -26,7 +26,8 @@ orgId INT NOT NULL,
 title VARCHAR(40) NOT NULL,
 levelOfAuthority INT,
 isPending INT NOT NULL,
-PRIMARY KEY (superId)
+PRIMARY KEY (superId),
+FOREIGN KEY (orgId) REFERENCES organization
 );
 
 # DOCUMENT
@@ -38,7 +39,8 @@ docId INT NOT NULL AUTO_INCREMENT,
 orgId INT NOT NULL,
 title VARCHAR(40) NOT NULL,
 reported INT NOT NULL,
-PRIMARY KEY (docId)
+PRIMARY KEY (docId),
+FOREIGN KEY (orgId) REFERENCES organization
 );
 
 # RATING
@@ -67,7 +69,8 @@ levelBureaucracy INT,
 advancement INT,
 supportFamily INT,
 uString CHAR(32) NOT NULL,
-PRIMARY KEY (ratingId)
+PRIMARY KEY (ratingId),
+FOREIGN KEY (orgId) REFERENCES organization
 );
 
 # ORGANIZATION EVALUATION
@@ -81,7 +84,8 @@ title VARCHAR(40) NOT NULL,
 text VARCHAR(600) NOT NULL,
 reported INT NOT NULL,
 uString CHAR(32) NOT NULL,
-PRIMARY KEY (orgEvalId)
+PRIMARY KEY (orgEvalId),
+FOREIGN KEY (orgId) REFERENCES organization
 );
 
 # SUPERVISOR EVALUATION
@@ -95,7 +99,8 @@ title VARCHAR(40) NOT NULL,
 text VARCHAR(600) NOT NULL,
 reported INT NOT NULL,
 uString CHAR(32) NOT NULL,
-PRIMARY KEY (superEvalId)
+PRIMARY KEY (superEvalId),
+FOREIGN KEY (superId) REFERENCES supervisor
 );
 
 # ORGANIZATION COMMENT
@@ -104,11 +109,26 @@ drop table orgComment;
 create table orgComment
 (
 orgCommentId INT NOT NULL AUTO_INCREMENT,
-orgEvaluationId INT NOT NULL,
+orgEvalId INT NOT NULL,
 text VARCHAR(600) NOT NULL,
 reported INT NOT NULL,
 uString CHAR(32) NOT NULL,
-PRIMARY KEY (orgCommentId)
+PRIMARY KEY (orgCommentId),
+FOREIGN KEY (orgEvaluationId) REFERENCES orgEvaluation
+);
+
+# DOCUMENT COMMENT
+
+drop table docComment;
+create table docComment
+(
+superCommentId INT NOT NULL AUTO_INCREMENT,
+superEvalId INT NOT NULL,
+text VARCHAR(600) NOT NULL,
+reported INT NOT NULL,
+uString CHAR(32) NOT NULL,
+PRIMARY KEY (docCommentId)
+FOREIGN KEY (superEvalId) REFERENCES superEvaluation
 );
 
 # DOCUMENT COMMENT
@@ -117,24 +137,12 @@ drop table docComment;
 create table docComment
 (
 docCommentId INT NOT NULL AUTO_INCREMENT,
-docEvaluationId INT NOT NULL,
+docId INT NOT NULL,
 text VARCHAR(600) NOT NULL,
 reported INT NOT NULL,
 uString CHAR(32) NOT NULL,
-PRIMARY KEY (docCommentId)
-);
-
-# SUPERVISOR COMMENT
-
-drop table superComment;
-create table superComment
-(
-superCommentId INT NOT NULL AUTO_INCREMENT,
-superEvaluationId INT NOT NULL,
-text VARCHAR(600) NOT NULL,
-reported INT NOT NULL,
-uString CHAR(32) NOT NULL,
-PRIMARY KEY (superCommentId)
+PRIMARY KEY (docCommentId),
+FOREIGN KEY (docId) REFERENCES document
 );
 
 # TAG
@@ -178,6 +186,7 @@ counter INT NOT NULL,
 timestamp DATE NOT NULL,
 reported INT NOT NULL,
 PRIMARY KEY (adId)
+FOREIGN KEY (businessId) REFERENCES business
 );
 
 # BUSINESS
@@ -202,6 +211,7 @@ contactNumberFax VARCHAR(40),
 contactPosition VARCHAR(40),
 contactEmail VARCHAR(40),
 PRIMARY KEY (businessId)
+FOREIGN KEY (userId) REFERENCES user
 );
 
 # INSERT VALUES

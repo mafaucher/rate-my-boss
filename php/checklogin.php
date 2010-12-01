@@ -54,11 +54,15 @@ elseif( empty($_POST["password"]) && !empty($_POST["username"]) ) {
 
 /* Ready for validation */
 else {
-	// SQL query
-//	include "../php/userdb.php";
-//
-//
-//	// Search each row for a matching user name
+	/* SQL query */
+	include "../php/opendb.php";
+
+	$query = "SELECT u.name FROM user u where u.name=$username;";
+	$result = mysql_query($query);
+
+	include "../php/closedb.php";
+
+	if ($row = mysql_fetch_assoc($result))
 //	while($row = mysql_fetch_array($userdb, MYSQL_ASSOC)) {
 //		if (row['name'] == $username) {
 //			/* User info validates*/
