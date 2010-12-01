@@ -16,6 +16,7 @@
 /* Set variables using POST */
 $username = $_POST["username"];
 $password = md5($_POST["password"]);
+$usertype = "";
 
 /* Initialize session error variable */
 if (!isset($_SESSION["error"])) {
@@ -26,6 +27,7 @@ if (!isset($_SESSION["error"])) {
 if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
 	$username = $_SESSION["username"];
 	$password = $_SESSION["password"];
+	$usertype = $_SESSION["usertype"];
 	$_SESSION["error"] = 0;
 }
 
@@ -33,6 +35,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
 elseif(isset($_COOKIE["name"]) && isset($_COOKIE["pass"])){
 	$_SESSION["username"] = $_COOKIE["username"];
 	$_SESSION["password"] = $_COOKIE["password"];
+	$_SESSION["usertype"] = $_COOKIE["usertype"];
 	$_SESSION["error"] = 0;
 }
 
@@ -56,25 +59,28 @@ else {
 	/* SQL query */
 	include "../php/opendb.php";
 
-	$query = "SELECT name, password FROM user u where u.name='$username';";
+	$query = "SELECT name, password, type FROM user u where u.name='$username' and isPending=0;";
 	$result = mysql_query($query);
 
 	include "../php/closedb.php";
 
 	/* User info validates*/
 	if ($row = mysql_fetch_array($result)) {
-	print_r($row);
 		if (strcmp($row['password'], $password) == 0) {
+			$usertype = $row['type'];
+
 			/* Set session information */
 			$_SESSION["error"] = 0;
 			$_SESSION["username"] = $username;
 			$_SESSION["password"] = $password;
+			$_SESSION["usertype"] = $usertype;
 			$_SESSION["logged"] = true;
 			
 			/* Set cookies if "Remember me" is selected */
 			if (isset($_POST["remember"]) ) {
 				$_COOKIE["username"] = $username;
 				$_COOKIE["password"] = $password;
+				$_COOKIE["usertype"] = $usertype;
 			}
 		}
 		/* password does not match */
