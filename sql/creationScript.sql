@@ -215,10 +215,18 @@ FOREIGN KEY (userId) REFERENCES user
 );
 
 # INSERT VALUES
-
+# 1 = Bell, 2 = Google, 3 = Hydro-Québec, 4 = Microsoft, 5 = Telus , 6 = Disney, 7 = BASF , 8 = , 
 insert into organization (name, industryType, city, province, website, numberofEmployees, isPending) values
-('Bell','telecommunications', 'Montreal', 'Quebec', 'www.bell.ca', 843, 1),
-('Google','web', 'Irvine', 'California', 'www.google.ca', 307, 1);
+('Bell','Telecommunications', 'Montreal', 'Quebec', 'www.bell.ca', 843, 1),
+('Google','web', 'Irvine', 'California', 'www.google.ca', 307, 1),
+('Hydro-Québec','Generation and Distribution of Electricity ', 'Montreal', 'Quebec', 'www.hydroquebec.com', 23616, 1)
+('Microsoft','Manufacturing Computing Devices and IT consulting', 'Redmond',  'Washington', 'www.microsoft.com', 89000, 1),
+('Telus', 'Telecommunications', 'Burnaby', 'British Columbia','	www.telus.com',36600, 1 ),
+('Disney','Media and Entertainment', 'Los Angeles', 'California','http://www.disney.com', 150000, 1),
+('BASF', 'Chemicals and Energy', 'Ludwigshafen','Germany','www.basf.com', 104780, 1 ),
+
+
+;
 
 # admin: peter - p_rockw; leila - l_behja; marc - ma_fauch;
 # finance: accounting - cashman
