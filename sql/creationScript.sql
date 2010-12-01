@@ -219,14 +219,11 @@ FOREIGN KEY (userId) REFERENCES user
 insert into organization (name, industryType, city, province, website, numberofEmployees, isPending) values
 ('Bell','Telecommunications', 'Montreal', 'Quebec', 'www.bell.ca', 843, 1),
 ('Google','web', 'Irvine', 'California', 'www.google.ca', 307, 1),
-('Hydro-Québec','Generation and Distribution of Electricity ', 'Montreal', 'Quebec', 'www.hydroquebec.com', 23616, 1)
-('Microsoft','Manufacturing Computing Devices and IT consulting', 'Redmond',  'Washington', 'www.microsoft.com', 89000, 1),
+('Hydro-Québec','Generation/Distribution of Electricity', 'Montreal', 'Quebec', 'www.hydroquebec.com', 23616, 1),
+('Microsoft','Manufacturing Computing Devices and IT', 'Redmond',  'Washington', 'www.microsoft.com', 89000, 1),
 ('Telus', 'Telecommunications', 'Burnaby', 'British Columbia','	www.telus.com',36600, 1 ),
 ('Disney','Media and Entertainment', 'Los Angeles', 'California','http://www.disney.com', 150000, 1),
-('BASF', 'Chemicals and Energy', 'Ludwigshafen','Germany','www.basf.com', 104780, 1 ),
-
-
-;
+('BASF', 'Chemicals and Energy', 'Ludwigshafen','Germany','www.basf.com', 104780, 1);
 
 # admin: peter - p_rockw; leila - l_behja; marc - ma_fauch;
 # finance: accounting - cashman
@@ -234,6 +231,6 @@ insert into organization (name, industryType, city, province, website, numberofE
 insert into user (name, password, type, answer1, answer2, answer3, isPending) values
 ("peter", "ca3833c88ae75359364903070601c689", "admin", "empty", "empty", "empty", 0),
 ("leila", "4977f6c363b1f59d6a238ddfb8f5f2e9", "admin", "empty", "empty", "empty", 0),
-("marc",  "1f698b8ef7a1ddb851f634df654fa1ec", "admin", "empty", "empty", "empty", 0),
+("marc",  "8b55849c65a291d77c476dc68cd6a555", "admin", "empty", "empty", "empty", 0),
 ("accounting", "a426f39a10e5ecf1473daa39511919b4", "finance", "empty", "empty", "empty", 0),
 ("jobboom", "ff9f1ab9f2297a75acfbe7e65fac735b", "agent", "empty", "empty", "empty", 0);
