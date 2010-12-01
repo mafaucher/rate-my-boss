@@ -117,17 +117,17 @@ PRIMARY KEY (orgCommentId),
 FOREIGN KEY (orgEvalId) REFERENCES orgEvaluation
 );
 
-# DOCUMENT COMMENT
+# SUPERVISOR COMMENT
 
-drop table docComment;
-create table docComment
+drop table superComment;
+create table superComment
 (
 superCommentId INT NOT NULL AUTO_INCREMENT,
 superEvalId INT NOT NULL,
 text VARCHAR(600) NOT NULL,
 reported INT NOT NULL,
 uString CHAR(32) NOT NULL,
-PRIMARY KEY (docCommentId)
+PRIMARY KEY (superCommentId),
 FOREIGN KEY (superEvalId) REFERENCES superEvaluation
 );
 
@@ -185,7 +185,7 @@ content VARCHAR(600) NOT NULL,
 counter INT NOT NULL,
 timestamp DATE NOT NULL,
 reported INT NOT NULL,
-PRIMARY KEY (adId)
+PRIMARY KEY (adId),
 FOREIGN KEY (businessId) REFERENCES business
 );
 
@@ -210,7 +210,7 @@ contactNumberMobile VARCHAR(40),
 contactNumberFax VARCHAR(40),
 contactPosition VARCHAR(40),
 contactEmail VARCHAR(40),
-PRIMARY KEY (businessId)
+PRIMARY KEY (businessId),
 FOREIGN KEY (userId) REFERENCES user
 );
 
