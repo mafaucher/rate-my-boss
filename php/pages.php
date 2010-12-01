@@ -27,7 +27,7 @@ case "admin":
 	break;
 case "finance":
 	$pageArray["financeadmin"] = "../php/pages/financeadmin.php";
-	break
+	break;
 }
 
 ?>
