@@ -66,7 +66,7 @@ else {
 
 	/* User info validates*/
 	if ($row = mysql_fetch_array($result)) {
-		if (strcmp($row['password'], $password) == 0) {
+		if ($row['password'] == $password) {
 			$usertype = $row['type'];
 
 			/* Set session information */
