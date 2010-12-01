@@ -114,7 +114,7 @@ text VARCHAR(600) NOT NULL,
 reported INT NOT NULL,
 uString CHAR(32) NOT NULL,
 PRIMARY KEY (orgCommentId),
-FOREIGN KEY (orgEvaluationId) REFERENCES orgEvaluation
+FOREIGN KEY (orgEvalId) REFERENCES orgEvaluation
 );
 
 # DOCUMENT COMMENT
