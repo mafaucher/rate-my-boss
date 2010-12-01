@@ -229,4 +229,3 @@ insert into user (name, password, type, answer1, answer2, answer3, isPending) va
 ("marc",  "1f698b8ef7a1ddb851f634df654fa1ec", "admin", "empty", "empty", "empty", 0),
 ("accounting", "a426f39a10e5ecf1473daa39511919b4", "finance", "empty", "empty", "empty", 0),
 ("jobboom", "ff9f1ab9f2297a75acfbe7e65fac735b", "agent", "empty", "empty", "empty", 0);
-

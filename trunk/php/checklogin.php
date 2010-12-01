@@ -16,7 +16,6 @@
 /* Set variables using POST */
 $username = $_POST["username"];
 $password = md5($_POST["password"]);
-//$password = $_POST["password"]; // For testing purposes I'm not encrypting the password
 
 /* Initialize session error variable */
 if (!isset($_SESSION["error"])) {
@@ -57,37 +56,32 @@ else {
 	/* SQL query */
 	include "../php/opendb.php";
 
-	$query = "SELECT u.name FROM user u where u.name=$username;";
+	$query = "SELECT name, password FROM user u where u.name='$username';";
 	$result = mysql_query($query);
 
 	include "../php/closedb.php";
 
-	if ($row = mysql_fetch_assoc($result))
-//	while($row = mysql_fetch_array($userdb, MYSQL_ASSOC)) {
-//		if (row['name'] == $username) {
-//			/* User info validates*/
-//			if ($row['password'] == $password) {
-//				/* Set session information */
-//				$_SESSION["error"] = 0;
-//				$_SESSION["username"] = $username;
-//				$_SESSION["password"] = $password;
-//				$_SESSION["logged"] = true;
-//				
-//				/* Set cookies if "Remember me" is selected */
-//				if (isset($_POST["remember"]) ) {
-//					$_COOKIE["username"] = $username;
-//					$_COOKIE["password"] = $password;
-//				}
-	if (false) {
-	}
-	/* password does not match */
-	else {
+	/* User info validates*/
+	if ($row = mysql_fetch_array($result)) {
+	print_r($row);
+		if (strcmp($row['password'], $password) == 0) {
+			/* Set session information */
+			$_SESSION["error"] = 0;
+			$_SESSION["username"] = $username;
+			$_SESSION["password"] = $password;
+			$_SESSION["logged"] = true;
+			
+			/* Set cookies if "Remember me" is selected */
+			if (isset($_POST["remember"]) ) {
+				$_COOKIE["username"] = $username;
+				$_COOKIE["password"] = $password;
+			}
+		}
+		/* password does not match */
+		else {
 		$_SESSION["error"] = 4;
+		}
 	}
-//		/* No entry should have the same username */
-//		break;
-//	}
-
 	/* username does not exist */
 	if (! $_SESSION["logged"]) {
 		$_SESSION["error"] = 3;
