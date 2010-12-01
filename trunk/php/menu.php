@@ -9,7 +9,7 @@ print "			<li><a href=index.php?>Main Page</a></li>\n";
 print "			<li><a href=index.php?page=organization>Organization List</a></li>\n";
 
 /* If organization was selected */
-if (isset($orgid)) {
+if (isset($orgId)) {
 	print "			<li><a href=index.php?page=evaluation>Organization Evaluations</a></li>\n";
 	print "			<li><a href=index.php?page=document>Documents</a></li>\n";
 	print "			<li><a href=index.php?page=supervisor>Supervisor List</a></li>\n";
