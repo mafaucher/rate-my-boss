@@ -11,6 +11,7 @@
 	<meta http-equiv="content-type" content="text/html+xml; charset=utf-8" />
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link rel="favorite icon" type="image/png" href="images/icon.png" />
+	<script type='text/javascript' src="javascript/validation.js"></script>
 
 </head>
 
