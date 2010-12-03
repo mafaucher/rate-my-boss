@@ -28,6 +28,11 @@ case "admin":
 case "finance":
 	$pageArray["financeadmin"] = "../php/pages/financeadmin.php";
 	break;
+case "registered":
+	break;
+default:
+	$pageArray["register"] = "../php/pages/register.php";
+	break;
 }
 
 ?>

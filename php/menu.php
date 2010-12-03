@@ -15,6 +15,11 @@ if (isset($orgId)) {
 	print "			<li><a href=index.php?page=supervisor>Supervisor List</a></li>\n";
 }
 
+/* If no user is logged in */
+if (isset($pageArray["register"])) {
+	print "			<li><a href=index.php?page=register>Register an Account</a></li>\n";
+}
+
 /* Restricted menu items */
 if (isset($pageArray["advertisement"])) {
 	print "			<li><a href=index.php?page=advertisement>Advertisements</a></li>\n";
