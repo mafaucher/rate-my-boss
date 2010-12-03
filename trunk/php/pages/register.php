@@ -13,12 +13,26 @@
 		random string of characters which you can use to edit your posts.</p>
 		
 		<p>Entries marked with a star (*) are obligatory. If you choose to provide answers
-		to your three secret questions, you will be able to change your password at any time.</p>
+		to your three secret questions, you will be able to change your password at any time.
+		Otherwise, there will be <strong>no way</strong> for you to change your password,
+		and we won't be able to change it for you.</p>
 		
 		<form action='javascript/checkregistration.js' method='post'>
-			<p>Pick a username:&nbsp;&nbsp;&nbsp;<input class='loginbox' type='text' name='username' />*</p>
-			<p>Enter a Password:&nbsp;&nbsp;<input class='loginbox' type='password' name='password' />*</p>
-			<p>Repeat Password:&nbsp;&nbsp;<input class='loginbox' type='password' name='pwrepeat' />*</p>
+			<radio>
+			<input class='register' type='radio' name='register' value='Regular User' /> Male<br />
+			<input type="radio" name="sex" value="female" /> Female
+			</form>
+			<br />
+			<p>Pick a username:&nbsp;&nbsp;&nbsp;<input class='register' type='text' name='username' />*</p>
+			<p>Enter a Password:&nbsp;&nbsp;<input class='register' type='password' name='password' />*</p>
+			<p>Repeat Password:&nbsp;&nbsp;<input class='register' type='password' name='pwrepeat' />*</p>
+			<br />
+			<p><strong>Question 1</strong>: What is your mother's maiden name?</p>
+			<p><input class='register' type='text' name='answer1' /></p>
+			<p><strong>Question 2</strong>: What is the name of your first pet?</p>
+			<p><input class='register' type='text' name='answer2' /></p>
+			<p><strong>Question 3</strong>: What is the name of your favorite magazine?</p>
+			<p><input class='register' type='text' name='answer3' /></p>
 			<input type='submit' name='subregister' value='Register' /></p>
 		</form>
 	</div>
