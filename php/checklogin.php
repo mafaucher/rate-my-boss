@@ -59,7 +59,8 @@ else {
 	/* SQL query */
 	include "../php/opendb.php";
 	
-	$query = "SELECT name, password, type FROM user u where u.name='mysql_real_escape_string($_POST[username])' and NOT isPending;";
+	$query = sprintf("SELECT password, type FROM user WHERE name='%s' AND NOT isPending",
+		mysql_real_escape_string($username));
 	$result = mysql_query($query);
 
 	include "../php/closedb.php";

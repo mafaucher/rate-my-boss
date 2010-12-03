@@ -16,17 +16,18 @@
 		to your three secret questions, you will be able to change your password at any time.
 		Otherwise, there will be <strong>no way</strong> for you to change your password,
 		and we won't be able to change it for you.</p>
-		
-		<form action='javascript/checkregistration.js' method='post'>
-			<radio>
+		<br />
+		<form action='' method='post'>
+			<p>* What type of account do you wish to create?
+			(new administrators require approval from a site administrator)</p>
 			<input class='register' type='radio' name='register' value='registered' />Regular User<br />
-			<input class='register' type='radio' name='register' value='registered' />Regular User<br />
-			<input class='register' type='radio' name='register' value='registered' />Regular User<br />
-			</form>
+			<input class='register' type='radio' name='register' value='agent' />Business Agent<br />
+			<input class='register' type='radio' name='register' value='admin' />Site Administrator<br />
+			<input class='register' type='radio' name='register' value='finance' />Financial Administrator<br />
 			<br />
-			<p>Pick a username:&nbsp;&nbsp;&nbsp;<input class='register' type='text' name='username' />*</p>
-			<p>Enter a Password:&nbsp;&nbsp;<input class='register' type='password' name='password' />*</p>
-			<p>Repeat Password:&nbsp;&nbsp;<input class='register' type='password' name='pwrepeat' />*</p>
+			<p>* Pick a username:&nbsp;&nbsp;&nbsp;<input class='register' type='text' name='username' /></p>
+			<p>* Enter a Password:&nbsp;&nbsp;<input class='register' type='password' name='password' /></p>
+			<p>* Repeat Password:&nbsp;&nbsp;<input class='register' type='password' name='pwrepeat' /></p>
 			<br />
 			<p><strong>Question 1</strong>: What is your mother's maiden name?</p>
 			<p><input class='register' type='text' name='answer1' /></p>
