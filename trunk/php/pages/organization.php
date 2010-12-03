@@ -11,7 +11,7 @@ if(isset($orgId)) {
 
 include "../php/opendb.php";
 
-$query = "SELECT * FROM organization";
+$query = "SELECT * FROM organization WHERE NOT isPending";
 $result = mysql_query($query);
 
 /* Prints the list of organization names as links to their individual pages */
