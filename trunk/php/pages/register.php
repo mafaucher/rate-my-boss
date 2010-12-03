@@ -16,7 +16,7 @@
 		to your three secret questions, you will be able to change your password at any time.</p>
 		
 		<form action='javascript/checkregistration.js' method='post'>
-			<p>Pick a username:&nbsp;&nbsp;<input class='loginbox' type='text' name='username' />*</p>
+			<p>Pick a username:&nbsp;&nbsp;&nbsp;<input class='loginbox' type='text' name='username' />*</p>
 			<p>Enter a Password:&nbsp;&nbsp;<input class='loginbox' type='password' name='password' />*</p>
 			<p>Repeat Password:&nbsp;&nbsp;<input class='loginbox' type='password' name='pwrepeat' />*</p>
 			<input type='submit' name='subregister' value='Register' /></p>

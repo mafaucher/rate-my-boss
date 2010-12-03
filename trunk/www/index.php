@@ -42,7 +42,6 @@ if(isset($_GET["page"])) {
 } else {
 	/* Unset the current organization id to reset menu */
 	if(isset($orgId)) {
-		unset($orgId);
 	}
 
 	/* Check for "search=<keyword>" in query string */
