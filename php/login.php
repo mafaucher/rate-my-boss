@@ -5,6 +5,7 @@
 <?php
 
 include "../php/checklogin.php";
+include "../php/checkregistration.php";
 
 /* User is not logged in */
 if ( !isset($_SESSION["username"]) ) {

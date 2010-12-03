@@ -2,6 +2,15 @@
 
 	<div class="main">
 
+<?php
+
+/* Unset the current organization id to reset menu */
+if(isset($orgId)) {
+        unset($orgId);
+}
+
+?>
+
 		<h1>New User Registration</h1>
 
 		<p>You do <strong>not</strong> need to register to post comments on the site.
@@ -17,17 +26,21 @@
 		Otherwise, there will be <strong>no way</strong> for you to change your password,
 		and we won't be able to change it for you.</p>
 		<br />
-		<form action='' method='post'>
-			<p>* What type of account do you wish to create?
+
+		<form name="registration" onsubmit="return validateRegistration(this)" action='index.php' method='post'>
+			<p>* <strong>What type of account do you wish to create?</strong>
 			(new administrators require approval from a site administrator)</p>
-			<input class='register' type='radio' name='register' value='registered' />Regular User<br />
+			<input class='register' type='radio' name='register' value='registered' CHECKED />Regular User<br />
 			<input class='register' type='radio' name='register' value='agent' />Business Agent<br />
 			<input class='register' type='radio' name='register' value='admin' />Site Administrator<br />
 			<input class='register' type='radio' name='register' value='finance' />Financial Administrator<br />
 			<br />
-			<p>* Pick a username:&nbsp;&nbsp;&nbsp;<input class='register' type='text' name='username' /></p>
-			<p>* Enter a Password:&nbsp;&nbsp;<input class='register' type='password' name='password' /></p>
-			<p>* Repeat Password:&nbsp;&nbsp;<input class='register' type='password' name='pwrepeat' /></p>
+			<p>* <strong>Pick a Username</strong>:&nbsp;&nbsp;&nbsp;
+			<input class='register' type='text' name='newusername' /></p>
+			<p>* <strong>Enter a Password</strong>:&nbsp;&nbsp;
+			<input class='register' type='password' name='newpassword' /></p>
+			<p>* <strong>Repeat Password</strong>:&nbsp;&nbsp;
+			<input class='register' type='password' name='newpwrepeat' /></p>
 			<br />
 			<p><strong>Question 1</strong>: What is your mother's maiden name?</p>
 			<p><input class='register' type='text' name='answer1' /></p>
@@ -35,8 +48,10 @@
 			<p><input class='register' type='text' name='answer2' /></p>
 			<p><strong>Question 3</strong>: What is the name of your favorite magazine?</p>
 			<p><input class='register' type='text' name='answer3' /></p>
-			<input type='submit' name='subregister' value='Register' /></p>
+			<br />
+			<input type='submit' name='subregister' value='Create a New User' /></p>
 		</form>
+
 	</div>
    
 <!-- END OF MAIN -->

@@ -68,6 +68,7 @@ else {
 	/* User info validates*/
 	if ($row = mysql_fetch_array($result)) {
 		if ($row['password'] == $password) {
+			print_r($row); // For testing: Uncomment to generate md5 checksum
 			$usertype = $row['type'];
 
 			/* Set session information */

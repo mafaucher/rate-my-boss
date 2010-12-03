@@ -242,9 +242,9 @@ insert into rating (orgId, socialValues, professionalism, openness, encouraging,
 # agent: jobboom - getajob
 # registered: public - dbs0610
 insert into user (name, password, type, answer1, answer2, answer3, isPending) values
-("peter", "05c60e65cae54a3364582dccf190e955", "admin", "empty", "empty", "empty", 0),
-("leila", "d8e8de91f10ba4adf900a65203918df5", "admin", "empty", "empty", "empty", 0),
-("marc",  "8b55849c65a291d77c476dc68cd6a555", "admin", "empty", "empty", "empty", 0),
-("accounting", "45143951d8d46d2902dcc9b6d2fd884d", "finance", "empty", "empty", "empty", 0),
-("jobboom", "366612fada618dc350f1035ee8ceaea9", "agent", "empty", "empty", "empty", 0),
-("public", "f998eea644728e3a11925c3c8a40c48a", "registered", "empty", "empty", "empty", 0);
+("peter", "05c60e65cae54a3364582dccf190e955", "admin", "", "", "", 0),
+("leila", "d8e8de91f10ba4adf900a65203918df5", "admin", "", "", "", 0),
+("marc",  "8b55849c65a291d77c476dc68cd6a555", "admin", "", "", "", 0),
+("accounting", "45143951d8d46d2902dcc9b6d2fd884d", "finance", "", "", "", 0),
+("jobboom", "366612fada618dc350f1035ee8ceaea9", "agent", "", "", "", 0),
+("public", "f998eea644728e3a11925c3c8a40c48a", "registered", "", "", "", 0);

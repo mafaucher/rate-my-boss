@@ -3,6 +3,12 @@
 <h2> List of Organizations:</h2>
 <ul class="listing">
 <?php
+
+/* Unset the current organization id to reset menu */
+if(isset($orgId)) {
+	unset($orgId);
+}
+
 include "../php/opendb.php";
 
 $query = "SELECT * FROM organization";
