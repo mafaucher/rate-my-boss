@@ -19,8 +19,9 @@
 		
 		<form action='javascript/checkregistration.js' method='post'>
 			<radio>
-			<input class='register' type='radio' name='register' value='Regular User' /> Male<br />
-			<input type="radio" name="sex" value="female" /> Female
+			<input class='register' type='radio' name='register' value='registered' />Regular User<br />
+			<input class='register' type='radio' name='register' value='registered' />Regular User<br />
+			<input class='register' type='radio' name='register' value='registered' />Regular User<br />
 			</form>
 			<br />
 			<p>Pick a username:&nbsp;&nbsp;&nbsp;<input class='register' type='text' name='username' />*</p>
