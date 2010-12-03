@@ -216,6 +216,9 @@ FOREIGN KEY (userId) REFERENCES user
 
 # INSERT VALUES
 # 1 = Bell, 2 = Google, 3 = Hydro-Québec, 4 = Microsoft, 5 = Telus , 6 = Disney, 7 = BASF , 8 = , 
+
+# Organizations
+
 insert into organization (name, industryType, city, province, website, numberofEmployees, isPending) values
 ('Bell','Telecommunications', 'Montreal', 'Quebec', 'www.bell.ca', 843, 1),
 ('Google','web', 'Irvine', 'California', 'www.google.ca', 307, 1),
@@ -224,6 +227,15 @@ insert into organization (name, industryType, city, province, website, numberofE
 ('Telus', 'Telecommunications', 'Burnaby', 'British Columbia','	www.telus.com',36600, 1 ),
 ('Disney','Media and Entertainment', 'Los Angeles', 'California','http://www.disney.com', 150000, 1),
 ('BASF', 'Chemicals and Energy', 'Ludwigshafen','Germany','www.basf.com', 104780, 1);
+
+#Supervisors
+
+#Ratings
+
+insert into rating (orgId, socialValues, professionalism, openness, encouraging, acceptance, recognition, qualityWorkplace, fairness, cooperation, rewardSystem, fairWages, qualityBenefits, supportEmployees, levelStress, levelCollegiality, levelBureaucracy, advancement, supportFamily, uString) values
+(1,5,8, 8, 6, 4, 9, 8, 6, 7,7, 9, 6, 5, 4, 7, 6,8, 9, 'aaa'),
+(1,7,8, 1, 3, 5, 9, 8, 2, 8,3, 6, 5, 8, 4, 5, 6,1, 3, 'aaa'),
+(1,6,8, 5, 9, 6, 8, 6, 3, 8,7, 8, 6, 7, 3, 8, 7,7, 8, 'aaa');
 
 # admin: peter - p_rockw; leila - l_behja; marc - ma_fauch;
 # finance: accounting - cashman
