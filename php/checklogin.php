@@ -14,7 +14,7 @@
  **/
 
 /* Set variables using POST */
-$username = $_POST["username"];
+$username = mysql_real_escape_string($_POST["username"]);
 $password = md5($_POST["password"]);
 $usertype = "";
 
@@ -58,7 +58,7 @@ elseif( empty($_POST["password"]) && !empty($_POST["username"]) ) {
 else {
 	/* SQL query */
 	include "../php/opendb.php";
-
+	
 	$query = "SELECT name, password, type FROM user u where u.name='$username' and isPending=0;";
 	$result = mysql_query($query);
 
