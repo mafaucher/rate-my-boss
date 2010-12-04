@@ -142,19 +142,11 @@ echo "
 <td><strong>Support for family:</strong> </td><td>$rating18</td>
 </tr>
 <tr>
-<td><span class='score'><strong>Average score:</strong></span></td><td><span class='score'>$averageRating / 10</span></td>
+<td><span class='score'><strong>Average score:</strong></span></td><td><span class='score'>$averageRating</span> / 10</td>
 </table>
+<br />
+<a href='index.php?page=ratingform'><button type='button'>Add a Rating</button></a>
 ";
-
-//ADD A RATING
-
-
-
-// ratings
-
-// supervisors
-
-// documents
 
 include "../php/closedb.php";
 ?>
