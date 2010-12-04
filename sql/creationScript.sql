@@ -220,9 +220,9 @@ FOREIGN KEY (userId) REFERENCES user
 # Organizations
 
 insert into organization (name, industryType, city, province, website, numberofEmployees, isPending) values
-('Bell','Telecommunications', 'Montreal', 'Quebec', 'www.bell.ca', 843, 1),
-('Google','web', 'Irvine', 'California', 'www.google.ca', 307, 1),
-('Hydro-Québec','Generation/Distribution of Electricity', 'Montreal', 'Quebec', 'www.hydroquebec.com', 23616, 1),
+('Bell','Telecommunications', 'Montreal', 'Quebec', 'www.bell.ca', 843, 0),
+('Google','web', 'Irvine', 'California', 'www.google.ca', 307, 0),
+('Hydro-Québec','Generation/Distribution of Electricity', 'Montreal', 'Quebec', 'www.hydroquebec.com', 23616, 0),
 ('Microsoft','Manufacturing Computing Devices and IT', 'Redmond',  'Washington', 'www.microsoft.com', 89000, 1),
 ('Telus', 'Telecommunications', 'Burnaby', 'British Columbia','	www.telus.com',36600, 1 ),
 ('Disney','Media and Entertainment', 'Los Angeles', 'California','http://www.disney.com', 150000, 1),
@@ -237,10 +237,12 @@ insert into rating (orgId, socialValues, professionalism, openness, encouraging,
 (1,7,8, 1, 3, 5, 9, 8, 2, 8,3, 6, 5, 8, 4, 5, 6,1, 3, 'aaa'),
 (1,6,8, 5, 9, 6, 8, 6, 3, 8,7, 8, 6, 7, 3, 8, 7,7, 8, 'aaa');
 
-# admin: peter - p_rockw; leila - l_behja; marc - ma_fauch;
-# finance: accounting - cashman
-# agent: jobboom - getajob
-# registered: public - dbs0610
+# User
+
+# admin:	1 = peter - p_rockw; 2 = leila - l_behja; 3 = marc - ma_fauch;
+# finance:	4 = accounting - cashman
+# agent:	5 = jobboom - getajob
+# registered:	6 = public - dbs0610
 insert into user (name, password, type, answer1, answer2, answer3, isPending) values
 ("peter", "05c60e65cae54a3364582dccf190e955", "admin", "", "", "", 0),
 ("leila", "d8e8de91f10ba4adf900a65203918df5", "admin", "", "", "", 0),
@@ -248,3 +250,8 @@ insert into user (name, password, type, answer1, answer2, answer3, isPending) va
 ("accounting", "45143951d8d46d2902dcc9b6d2fd884d", "finance", "", "", "", 0),
 ("jobboom", "366612fada618dc350f1035ee8ceaea9", "agent", "", "", "", 0),
 ("public", "f998eea644728e3a11925c3c8a40c48a", "registered", "", "", "", 0);
+
+# Business
+
+insert into business (userId, name, charter, address, city, state, country, postalCode, email, contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail) values
+(5, "Canoe inc.", NULL, "333 King Street East", "Toronto", "Ontario", "Canada", "M5A 3X5", "info@canoe.ca", "Tom Setzer", "(877) 448-4434 X 6150", "(416) 350-6150", "(416) 350-6238", "Representative of Online Services", "")
