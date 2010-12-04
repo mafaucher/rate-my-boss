@@ -18,14 +18,23 @@ $row = mysql_fetch_array($result);
 echo "
 
 <h2>{$row[name]}</h2>
-<p class='listing'>
-<strong>Type of industry:</strong> {$row[industryType]} <br />
-<strong>City:</strong> {$row[city]} <br />
-<strong>Province:</strong> {$row[province]} <br />
-<strong>Website:</strong> {$row[website]} <br />
-<strong>Number of employees:</strong> {$row[numberofEmployees]} <br />
-</p>
-<h2>Ratings:</h2>
+<table border='0' class='listing'>
+<tr>
+<td><strong>Type of industry:</strong></td><td>{$row[industryType]} </td>
+</tr>
+<tr>
+<td><strong>City:</strong></td><td>{$row[city]} </td>
+</tr>
+<tr>
+<td><strong>Province:</strong></td><td>{$row[province]} </td>
+</tr>
+<tr>
+<td><strong>Website:</strong></td><td>{$row[website]} </td>
+</tr>
+<tr>
+<td><strong>Number of employees:</strong></td><td>{$row[numberofEmployees]} </td>
+</tr>
+</table>
 ";
 
 $query = "SELECT
@@ -73,25 +82,68 @@ $rating16 = number_format($row['AVG(levelBureaucracy)'], 2, '.', '');
 $rating17 = number_format($row['AVG(advancement)'], 2, '.', '');
 $rating18 = number_format($row['AVG(supportFamily)'], 2, '.', '');
 
+$averageRating = number_format(($rating1+$rating2+$rating3+$rating4+$rating5+$rating6+$rating7+$rating8+$rating9+$rating10+$rating11+$rating12+$rating13+$rating14+$rating15+$rating16+$rating17+$rating18)/18,2,'.','');
+
 echo "
-<strong>Social values:</strong> $rating1<br />
-<strong>Professionalism of management:</strong> $rating2<br />
-<strong>Openness with staff:</strong> $rating3<br />
-<strong>Encouraging innovation:</strong> $rating4<br />
-<strong>Acceptance of ideas from workforce:</strong> $rating5<br />
-<strong>Recognition of achievement:</strong> $rating6<br />
-<strong>Quality of workplace:</strong> $rating7<br />
-<strong>Fairness of evaluation:</strong> $rating8<br />
-<strong>Cooperation among employees:</strong> $rating9<br />
-<strong>Reward system:</strong> $rating10<br />
-<strong>Fair wages:</strong> $rating11<br />
-<strong>Quality of benefits:</strong> $rating12<br />
-<strong>Support for employees:</strong> $rating13<br />
-<strong>Level of stress:</strong> $rating14<br />
-<strong>Level of collegiality:</strong> $rating15<br />
-<strong>Level of bureaucracy and red tape:</strong> $rating16<br />
-<strong>Possibility for advancement:</strong> $rating17<br />
-<strong>Support for family:</strong> $rating18<br />
+<h2>Ratings:</h2>
+<table border='0' class='listing'>
+<tr>
+<td><strong>Social values:</strong></td><td>$rating1</td>
+</tr>
+<tr>
+<td><strong>Professionalism of management:</strong></td><td>$rating2</td>
+</tr>
+<tr>
+<td><strong>Openness with staff:</strong></td><td>$rating3</td>
+</tr>
+<tr>
+<td><strong>Encouraging innovation:</strong> </td><td>$rating4</td>
+</tr>
+<tr>
+<td><strong>Acceptance of ideas from workforce:</strong> </td><td>$rating5</td>
+</tr>
+<tr>
+<td><strong>Recognition of achievement:</strong> </td><td>$rating6</td>
+</tr>
+<tr>
+<td><strong>Quality of workplace:</strong> </td><td>$rating7</td>
+</tr>
+<tr>
+<td><strong>Fairness of evaluation:</strong> </td><td>$rating8</td>
+</tr>
+<tr>
+<td><strong>Cooperation among employees:</strong> </td><td>$rating9</td>
+</tr>
+<tr>
+<td><strong>Reward system:</strong> </td><td>$rating10</td>
+</tr>
+<tr>
+<td><strong>Fair wages:</strong> </td><td>$rating11</td>
+</tr>
+<tr>
+<td><strong>Quality of benefits:</strong> </td><td>$rating12</td>
+</tr>
+<tr>
+<td><strong>Support for employees:</strong> </td><td>$rating13</td>
+</tr>
+<tr>
+<td><strong>Level of stress:</strong> </td><td>$rating14</td>
+</tr>
+<tr>
+<td><strong>Level of collegiality:</strong> </td><td>$rating15</td>
+</tr>
+<tr>
+<td><strong>Level of bureaucracy and red tape:</strong> </td><td>$rating16</td>
+</tr>
+<tr>
+<td><strong>Possibility for advancement:</strong> </td><td>$rating17</td>
+</tr>
+<tr>
+<td><strong>Support for family:</strong> </td><td>$rating18</td>
+</tr>
+<tr>
+<td><span class='score'><strong>Average score:</strong></span></td><td><span class='score'>$averageRating / 10</span></td>
+</table>
 ";
 
 //ADD A RATING
