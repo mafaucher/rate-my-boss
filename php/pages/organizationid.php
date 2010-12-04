@@ -3,7 +3,7 @@
 <?php
 include "../php/opendb.php";
 
-//Set orgId for the session to allow for menu items
+//Set orgId for the session to allow access to appropriate menu items
 $_SESSION["orgId"] = $_GET[id];
 $orgId = $_GET[id];
 
@@ -12,12 +12,43 @@ $query = "SELECT * FROM organization
 		where orgId=$orgId";
 
 $result = mysql_query($query);
-
 $row = mysql_fetch_array($result);
 
-echo "
+echo"<div id='left'><h2>{$row[name]}</h2></div>";
 
-<h2>{$row[name]}</h2>
+//Check if a rating form has been submitted
+if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
+echo "<div id='right' class='score'>Thanks for adding a rating!</div><div class='clear'></div>";
+
+//process form information when a new rating is added.
+$socialValues = $_POST['socialValues'];
+$professionalism = $_POST['professionalism'];
+$openness = $_POST['openness'];
+$encouraging = $_POST['encouraging'];
+$acceptance = $_POST['acceptance'];
+$recognition = $_POST['recognition'];
+$qualityWorkplace = $_POST['qualityWorkplace'];
+$fairness = $_POST['fairness'];
+$cooperation = $_POST['cooperation'];
+$rewardSystem = $_POST['rewardSystem'];
+$fairWages = $_POST['fairWages'];
+$qualityBenefits = $_POST['qualityBenefits'];
+$supportEmployees = $_POST['supportEmployees'];
+$levelStress = $_POST['levelStress'];
+$levelCollegiality = $_POST['levelCollegiality'];
+$levelBureaucracy = $_POST['levelBureaucracy'];
+$advancement = $_POST['advancement'];
+$supportFamily = $_POST['supportFamily'];
+
+$sql="insert into rating (orgId, socialValues, professionalism, openness, encouraging, acceptance, recognition, qualityWorkplace, fairness, cooperation, rewardSystem, fairWages, qualityBenefits, supportEmployees, levelStress, levelCollegiality, levelBureaucracy, advancement, supportFamily, uString) values ($orgId, $socialValues, $professionalism, $openness, $encouraging, $acceptance, $recognition, $qualityWorkplace, $fairness, $cooperation, $rewardSystem, $fairWages, $qualityBenefits, $supportEmployees, $levelStress, $levelCollegiality, $levelBureaucracy, $advancement, $supportFamily, 'bbb')";
+
+mysql_query($sql);
+
+} else {
+echo "<div id='right'><a href='index.php?page=ratingform'><button type='button'>Add a Rating</button></a></div><div class='clear'></div>";
+}
+
+echo "
 <table border='0' class='listing'>
 <tr>
 <td><strong>Type of industry:</strong></td><td>{$row[industryType]} </td>
@@ -144,10 +175,7 @@ echo "
 <tr>
 <td><span class='score'><strong>Average score:</strong></span></td><td><span class='score'>$averageRating</span> / 10</td>
 </table>
-<br />
-<a href='index.php?page=ratingform'><button type='button'>Add a Rating</button></a>
 ";
-
 include "../php/closedb.php";
 ?>
 </div>
