@@ -70,8 +70,6 @@ a:visited:hover { color: #000000; }
         font-weight: bold;
         color: #2E3192;
 }
-/* ORGANIZATION PAGE */
-
 /* SEARCHBOX */
 
 .search { /* search box position */
@@ -98,14 +96,26 @@ a:visited:hover { color: #000000; }
 
 .main {
         margin-top: 168px;
-        margin-left: 280px;
+        margin-left: 268px;
         margin-right: 50px;
 }
 
 /* LIST FROM MYSQL */
 
+.listing strong{
+	color: #2E3192;
+	font-weight:normal;
+}
+
+.score{
+	font-size:160%;	
+}
+
+.listing td{
+padding-right:50px;
+}
+
 .listing{
-	font-size: 120%;
 }
 
 ul {
