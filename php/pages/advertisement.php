@@ -20,8 +20,7 @@ include "../php/closedb.php";
 
 if ($row = mysql_fetch_array($result)) {
 
-	echo "
-<!-- START OF MAIN -->
+	echo "<!-- START OF MAIN -->
 
 	<div class='main'>";
 	
@@ -46,21 +45,26 @@ if ($row = mysql_fetch_array($result)) {
 		<p><strong>Email:</strong> $row[contactEmail] </p>
 		";
 
-	/* Link to business, to change info */
+	/* Link to business.php, to change business info */
 
 	echo "<p>(<a href='index.php?page=business'>Change information</a>)</p>";
 	
 	/* TODO: Print list of ads */
 
+
+
 	/* TODO: New ad button and form */
+
+	echo "		<a href='index.php?page=adform'><button type='button'>Add an Ad</button></a>\n"
 
 	echo "
 	</div>
 
-<!-- END OF MAIN -->";
+<!-- END OF MAIN -->
+	";
 
 }
-/* The business for this agent hasn't been created */
+/* The business for this agent hasn't been created  */
 else {
 	include "../php/pages/business.php";
 }

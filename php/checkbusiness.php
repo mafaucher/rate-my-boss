@@ -5,12 +5,12 @@ if (isset($_POST['businessname'])) {
 	
 	include "../php/opendb.php";
 
-	$query = sprintf("INSERT INTO business (userId, name, charter, address, city, state, country, postalCode, email,
-		contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail)
-		ON DUPLICATE KEY UPDATE",
+	// userId, name, charter (NULL), address, city, state, country, postalCode, email,
+	// contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail
+	$query = sprintf("REPLACE INTO business VALUES
+		(%d, '%s', NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 			mysql_real_escape_string($userid),
 			mysql_real_escape_string($_POST['businessname']),
-			NULL,
 			mysql_real_escape_string($_POST['businessaddress']),
 			mysql_real_escape_string($_POST['businesscity']),
 			mysql_real_escape_string($_POST['businessstate']),
@@ -23,6 +23,8 @@ if (isset($_POST['businessname'])) {
 			mysql_real_escape_string($_POST['contactmobilenum']),
 			mysql_real_escape_string($_POST['contactfaxnum']),
 			mysql_real_escape_string($_POST['contactemail']));
+
+	$result = mysql_query($query);
 
 	include "../php/closedb.php";
 }
