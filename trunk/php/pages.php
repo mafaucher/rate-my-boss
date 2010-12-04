@@ -8,8 +8,8 @@ $pageArray = array(
 	"evaluation" => "../php/pages/evaluation.php",
 	"document" => "../php/pages/document.php",
 	"supervisor" => "../php/pages/supervisor.php",
-
 	"business" => "../php/pages/business.php",
+	"suggestorg" => "../php/pages/suggestorg.php",
 
 	/* With ID field */
 	"organizationid" => "../php/pages/organizationid.php",

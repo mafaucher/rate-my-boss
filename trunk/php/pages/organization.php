@@ -25,6 +25,13 @@ while($row = mysql_fetch_array($result))
     </a>
     </li>";
 }
+echo "
+<br />
+<a href='index.php?page=suggestorg'><button type='button'>Suggest an Organization</button></a> <br />
+";
+if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
+echo "<span class='score'>Thanks for suggesting an organization!</span> It will be pending until an administrator can confirm it.";
+}
 
 include "../php/closedb.php";
 ?>
