@@ -184,6 +184,7 @@ businessId INT NOT NULL,
 content VARCHAR(600) NOT NULL,
 counter INT NOT NULL,
 timestamp DATE NOT NULL,
+isPending INT NOT NULL,
 reported INT NOT NULL,
 PRIMARY KEY (adId),
 FOREIGN KEY (businessId) REFERENCES business
@@ -194,7 +195,6 @@ FOREIGN KEY (businessId) REFERENCES business
 drop table business;
 create table business
 (
-businessId INT NOT NULL AUTO_INCREMENT,
 userId INT NOT NULL,
 name VARCHAR(40) NOT NULL,
 charter VARCHAR(600),
@@ -210,9 +210,19 @@ contactNumberMobile VARCHAR(40),
 contactNumberFax VARCHAR(40),
 contactPosition VARCHAR(40),
 contactEmail VARCHAR(40),
-PRIMARY KEY (businessId),
+PRIMARY KEY (userId),
 FOREIGN KEY (userId) REFERENCES user
 );
+
+# ADMINISTRATOR
+
+drop table administrator;
+create table administrator
+(
+adminId INT NOT NULL PRIMARY KEY,
+adPrice DECIMAL(10,2) NOT NULL
+);
+
 
 # INSERT VALUES
 # 1 = Bell, 2 = Google, 3 = Hydro-Québec, 4 = Microsoft, 5 = Telus , 6 = Disney, 7 = BASF , 8 = , 
@@ -258,3 +268,7 @@ insert into user (name, password, type, answer1, answer2, answer3, isPending) va
 
 insert into business (userId, name, charter, address, city, state, country, postalCode, email, contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail) values
 (5, "Canoe inc.", NULL, "333 King Street East", "Toronto", "Ontario", "Canada", "M5A 3X5", "info@canoe.ca", "Tom Setzer", "(877) 448-4434 X 6150", "(416) 350-6150", "(416) 350-6238", "Representative of Online Services", "t_setzer@canoe.ca");
+
+# Administrator
+
+insert into administrator value (0, 0.10);
