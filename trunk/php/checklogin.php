@@ -17,6 +17,7 @@
 $username = $_POST["username"];
 $password = md5($_POST["password"]);
 $usertype = "";
+echo $password; // For testing, uncomment to get md5 checksum
 
 /* Initialize session error variable */
 if (!isset($_SESSION["error"])) {
@@ -68,7 +69,6 @@ else {
 	/* User info validates*/
 	if ($row = mysql_fetch_array($result)) {
 		if ($row['password'] == $password) {
-			print_r($row); // For testing: Uncomment to generate md5 checksum
 			$usertype = $row['type'];
 
 			/* Set session information */
@@ -87,7 +87,7 @@ else {
 		}
 		/* password does not match */
 		else {
-		$_SESSION["error"] = 4;
+			$_SESSION["error"] = 4;
 		}
 	}
 	/* username does not exist */

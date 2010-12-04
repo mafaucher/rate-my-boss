@@ -3,7 +3,7 @@
 /* Check if a user just registrated */
 if (isset($_POST['newusername'])) {
 
-	$password = md5($_POST['password']);
+	$password = md5($_POST['newpassword']);
 	$isPending = 0;
 	
 	/* Check if user type is restricted */
@@ -11,13 +11,13 @@ if (isset($_POST['newusername'])) {
 		$isPending = 1;
 	}
 
-        include "../php/opendb.php";
+	include "../php/opendb.php";
 	
 	/* Check if a user with that name exists */
 	$query = sprintf("SELECT name FROM user WHERE name='%s'",
 			mysql_real_escape_string($_POST['newusername']));
 	
-        $result = mysql_query($query);
+	$result = mysql_query($query);
 
 	/* Display error message in login box */
 	if ($row = mysql_fetch_array($result)) {
@@ -25,7 +25,7 @@ if (isset($_POST['newusername'])) {
 	}
 	else {
 		/* Prepare the query */	
-		$query = sprintf("INSERT INTO user (name, password, type, answer1, answer2, answer3, isPending) values
+		$query = sprintf("INSERT INTO user (name, password, type, answer3, answer2, answer3, isPending) values
 				('%s', '%s', '%s', '%s', '%s', '%s', '%d')",
 				mysql_real_escape_string($_POST['newusername']),
 				$password,
@@ -38,7 +38,6 @@ if (isset($_POST['newusername'])) {
 		/* Output error message */
 		$result = mysql_query($query);
 		if ($result != '1') echo $result; // For testing purposes
-
 
 	}
 
