@@ -241,17 +241,20 @@ insert into rating (orgId, socialValues, professionalism, openness, encouraging,
 
 # admin:	1 = peter - p_rockw; 2 = leila - l_behja; 3 = marc - ma_fauch;
 # finance:	4 = accounting - cashman
-# agent:	5 = jobboom - getajob
-# registered:	6 = public - dbs0610
+# agent:	5 = jobboom - getajob; 6 = googleads - dontbeevil
+# registered:	7 = public - dbs0610
 insert into user (name, password, type, answer1, answer2, answer3, isPending) values
 ("peter", "05c60e65cae54a3364582dccf190e955", "admin", "", "", "", 0),
 ("leila", "d8e8de91f10ba4adf900a65203918df5", "admin", "", "", "", 0),
 ("marc",  "8b55849c65a291d77c476dc68cd6a555", "admin", "", "", "", 0),
 ("accounting", "45143951d8d46d2902dcc9b6d2fd884d", "finance", "", "", "", 0),
 ("jobboom", "366612fada618dc350f1035ee8ceaea9", "agent", "", "", "", 0),
+("googleads", "14deb81a45ba42036204bfb588127a4f", "agent", "", "", "", 0),
 ("public", "f998eea644728e3a11925c3c8a40c48a", "registered", "", "", "", 0);
 
 # Business
+# User 5 (jobboom) has a business
+# User 6 (googleads) does not
 
 insert into business (userId, name, charter, address, city, state, country, postalCode, email, contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail) values
-(5, "Canoe inc.", NULL, "333 King Street East", "Toronto", "Ontario", "Canada", "M5A 3X5", "info@canoe.ca", "Tom Setzer", "(877) 448-4434 X 6150", "(416) 350-6150", "(416) 350-6238", "Representative of Online Services", "")
+(5, "Canoe inc.", NULL, "333 King Street East", "Toronto", "Ontario", "Canada", "M5A 3X5", "info@canoe.ca", "Tom Setzer", "(877) 448-4434 X 6150", "(416) 350-6150", "(416) 350-6238", "Representative of Online Services", "t_setzer@canoe.ca");

@@ -16,6 +16,7 @@
 /* Set variables using POST */
 $username = $_POST["username"];
 $password = md5($_POST["password"]);
+$userId = 0;
 $usertype = "";
 echo $password; // For testing, uncomment to get md5 checksum
 
@@ -24,19 +25,21 @@ if (!isset($_SESSION["error"])) {
 	$_SESSION["error"] = 0;
 }
 
-/* Check is session info is already set. */
-if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
-	$username = $_SESSION["username"];
-	$password = $_SESSION["password"];
-	$usertype = $_SESSION["usertype"];
-	$_SESSION["error"] = 0;
-}
-
 /* Check is cookies were stored using "Remember me" */
 elseif(isset($_COOKIE["name"]) && isset($_COOKIE["pass"])){
 	$_SESSION["username"] = $_COOKIE["username"];
 	$_SESSION["password"] = $_COOKIE["password"];
 	$_SESSION["usertype"] = $_COOKIE["usertype"];
+	$_SESSION["userid"] = $_COOKIE["userid"];
+	$_SESSION["error"] = 0;
+}
+
+/* Check is session info is already set. */
+if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
+	$username = $_SESSION["username"];
+	$password = $_SESSION["password"];
+	$usertype = $_SESSION["usertype"];
+	$userid = $_SESSION["userid"];
 	$_SESSION["error"] = 0;
 }
 
@@ -60,7 +63,7 @@ else {
 	/* SQL query */
 	include "../php/opendb.php";
 	
-	$query = sprintf("SELECT password, type FROM user WHERE name='%s' AND NOT isPending",
+	$query = sprintf("SELECT userId, password, type FROM user WHERE name='%s' AND NOT isPending",
 		mysql_real_escape_string($username));
 	$result = mysql_query($query);
 
@@ -70,12 +73,14 @@ else {
 	if ($row = mysql_fetch_array($result)) {
 		if ($row['password'] == $password) {
 			$usertype = $row['type'];
+			$userid = $row['userId'];
 
 			/* Set session information */
 			$_SESSION["error"] = 0;
 			$_SESSION["username"] = $username;
 			$_SESSION["password"] = $password;
 			$_SESSION["usertype"] = $usertype;
+			$_SESSION["userid"] = $userid;
 			$_SESSION["logged"] = true;
 			
 			/* Set cookies if "Remember me" is selected */
@@ -83,6 +88,7 @@ else {
 				$_COOKIE["username"] = $username;
 				$_COOKIE["password"] = $password;
 				$_COOKIE["usertype"] = $usertype;
+				$_COOKIE["userid"] = $userid;
 			}
 		}
 		/* password does not match */

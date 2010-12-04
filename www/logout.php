@@ -4,6 +4,7 @@
 setcookie("username", $username, time()-60*60*24*100, "/");
 setcookie("password", $password, time()-60*60*24*100, "/");
 setcookie("usertype", $usertype, time()-60*60*24*100, "/");
+setcookie("userid", $userid, time()-60*60*24*100, "/");
 @session_start();
 @session_destroy();
 @header("Location: index.php");

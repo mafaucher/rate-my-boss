@@ -9,6 +9,8 @@ $pageArray = array(
 	"document" => "../php/pages/document.php",
 	"supervisor" => "../php/pages/supervisor.php",
 
+	"business" => "../php/pages/business.php",
+
 	/* With ID field */
 	"organizationid" => "../php/pages/organizationid.php",
 	"evaluationid" => "../php/pages/evaluationid.php",
