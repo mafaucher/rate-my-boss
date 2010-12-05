@@ -1,7 +1,9 @@
-/* 
+/* REGISTRATION VALIDATION
+ *
  * This code was inspired by the following tutorial:
  * http://www.webcheatsheet.com/javascript/form_validation.php
  */
+
 function validateRegistration(form) {
 	var reason = "";
 	
@@ -99,4 +101,45 @@ function validateAnswers(answer1, answer2, answer3) {
 	}
 
 	return error;
+}
+
+/* AD VALIDATION */
+
+function validateAd(form) {
+	var reason = "";
+	price = 0.10;
+	//price = (int)"<?= $adPrice ?>";
+	
+	reason += validateContent(form.content);
+	reason += validateCounter(form.counter);
+	reason += validateKeywords(form.keyword1, form.keyword2, form.keyword3, form.keyword4
+		form.keyword5, form.keyword6, form.keyword7, form.keyword8, form.keyword9, form.keyword10);
+
+	if (reason != "") {
+		alert("Some fields were not properly filled in:\n" + reason);
+		return false;
+	}
+	else {
+		return confirm("You will be billed $" + (price*form.counter) + ".\nDo you wish to continue?");
+	}
+}
+
+function validateContent(content) {
+	var error = "";
+	
+	if (username.value == "") {
+		error = "You must enter content for your ad.\n";
+	}
+	else if (username.value.length > 500) {
+		error = "Your ad is " + username.value.length + " characters long, the maximum size is 500.\n";
+	}
+	return error;
+}
+
+function validateCounter(counter) {
+	// Check for int between 1 and 500 000 000
+}
+
+function validateAnswers(answer1, answer2, answer3) {
+	// Check for word characters, length between 1 and 20
 }
