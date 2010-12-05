@@ -237,7 +237,10 @@ insert into organization (name, industryType, city, province, website, numberofE
 ('Disney','Media and Entertainment', 'Los Angeles', 'California','http://www.disney.com', 150000, 1),
 ('BASF', 'Chemicals and Energy', 'Ludwigshafen','Germany','www.basf.com', 104780, 1);
 
-#Supervisors
+insert into supervisor (orgId, title, isPending) values
+(1, 'CEO', 0),
+(1, 'Janitor', 0),
+(1, 'BossofallBosses', 1);
 
 #Ratings
 
