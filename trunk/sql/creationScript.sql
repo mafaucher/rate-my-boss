@@ -180,14 +180,13 @@ drop table ad;
 create table ad
 (
 adId INT NOT NULL AUTO_INCREMENT,
-businessId INT NOT NULL,
+userId INT NOT NULL,
 content VARCHAR(600) NOT NULL,
 counter INT NOT NULL,
-timestamp DATE NOT NULL,
+lastView TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 isPending INT NOT NULL,
-reported INT NOT NULL,
 PRIMARY KEY (adId),
-FOREIGN KEY (businessId) REFERENCES business
+FOREIGN KEY (userId) REFERENCES user
 );
 
 # BUSINESS
@@ -268,6 +267,10 @@ insert into user (name, password, type, answer1, answer2, answer3, isPending) va
 
 insert into business (userId, name, charter, address, city, state, country, postalCode, email, contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail) values
 (5, "Canoe inc.", NULL, "333 King Street East", "Toronto", "Ontario", "Canada", "M5A 3X5", "info@canoe.ca", "Tom Setzer", "(877) 448-4434 X 6150", "(416) 350-6150", "(416) 350-6238", "Representative of Online Services", "t_setzer@canoe.ca");
+
+insert into ad (userId, content, counter, isPending, reported) values
+(5, "Find a job on jobboom today!", 2, 0, 0),
+(5, "Recruit employees using jobboom's easy to use recruiting tools", 300, 1, 0);
 
 # Administrator
 

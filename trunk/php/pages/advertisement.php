@@ -9,6 +9,10 @@ if(isset($orgId)) {
 
 include "../php/checkbusiness.php";
 
+/* INSERT new ad information */
+
+include "../php/checkad.php";
+
 /* SELECT business information */
 
 include "../php/opendb.php";
@@ -51,11 +55,33 @@ if ($row = mysql_fetch_array($result)) {
 	
 	/* TODO: Print list of ads */
 
+	include "../php/opendb.php";
 
+	$query = sprintf("SELECT * FROM ad WHERE userId=$userid");
+	$result = mysql_query($query);
 
-	/* TODO: New ad button and form */
+	include "../php/closedb.php";
 
-	echo "		<a href='index.php?page=adform'><button type='button'>Add an Ad</button></a>\n"
+	$count = 0;
+	echo "		<ul>";
+	while ($row = mysql_fetch_array($result)) {
+		if ($count == 0) {
+			echo "<br />\n";
+			echo "<h2>Your advertisements</h2>\n";
+		}
+		$count += 1;
+		echo "		<li><strong>Avertisement $count</strong> <br />";
+		if ($row['isPending'] == 1) {
+			echo " <strong>This advertisement is pending approval from a financial administrator</strong><br />";
+		}
+		echo "				Last viewed: $row[lastView] <br />
+							Remaining views: $row[counter] <br />
+							$row[content]</li>";
+	}
+
+	/* New ad button and form (TODO: validate and confirm price ) */
+
+	echo "		<a href='index.php?page=adform'><button type='button'>Add a New Ad</button></a>\n";
 
 	echo "
 	</div>
