@@ -87,7 +87,7 @@ echo "
 			<p><strong>Email</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class='business' type='text' name='contactemail' value='$contactemail'/></p>
 			<br />
-			<input type='submit' name='subbusiness' value='Uptade your information' /></p>
+			<input type='submit' name='subbusiness' value='Update your information' /></p>
 			</form>
 	"
 ?>

@@ -1,25 +1,26 @@
 <div class="main">
-<?php
 
-include "../php/opendb.php";
-echo"
-<form action='index.php?page=organization' method='post'>
+<form name="evaluation" action='index.php?page=evaluation' method='post'>
 <table border='0' class='form'>
-<tr>
-<td><strong>Name:</strong></td>
-<td><input type='text' name='name' /></td>
-</tr>
-<tr>
-<td><strong>Type of industry:</strong></td>
-<td><input type='text' name='industryType' /></td>
-</tr>
-
+	<tr>
+		<td>Title:</td> <td><input type='text' name='title' /></td>
+	</tr>
+	<tr>
+		<td><textarea type='text' name='content' cols="75" rows="25"></textarea>
+	</tr>
 </table>
 <br />
-<input type='submit' name='submitOrg' value='Submit Organization' />
-";
+<input type='submit' name='submitEval' value='Submit evaluation' />
+</form>
 
+<?php
+/*
+Should set div class to evaluation
+
+include "../php/opendb.php";
 include "../php/closedb.php";
+*/
+
 ?>
 
 </div>
