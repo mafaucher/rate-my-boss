@@ -10,6 +10,7 @@ $pageArray = array(
 	"supervisor" => "../php/pages/supervisor.php",
 	"business" => "../php/pages/business.php",
 	"suggestorg" => "../php/pages/suggestorg.php",
+	"suggestsuper" => "../php/pages/suggestsuper.php",
 
 	/* With ID field */
 	"organizationid" => "../php/pages/organizationid.php",
