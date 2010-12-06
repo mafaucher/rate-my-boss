@@ -38,7 +38,7 @@ if ($row = mysql_fetch_array($result)) {
 		<p><strong>State/Province:</strong> $row[state] </p>
 		<p><strong>Country:</strong> $row[country] </p>
 		<p><strong>Postal Code:</strong> $row[postalCode] </p>
-		<p><strong>Email:</strong> $row[email] </p> <br />
+		<p><strong>Website:</strong> $row[website] </p> <br />
 		";
 	
 	echo "		<h2>$row[contactName]</h2>
