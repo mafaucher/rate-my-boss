@@ -31,7 +31,7 @@ $businesscity = "";
 $businessstate = "";
 $businesscountry = "";
 $businesspostalcode = "";
-$businessemail = "";
+$businesswebsite = "";
 $contactname = "";
 $contactposition = "";
 $contactlandnum = "";
@@ -46,7 +46,7 @@ if ($row = mysql_fetch_array($result)) {
 	$businessstate = "$row[state]";
 	$businesscountry = "$row[country]";
 	$businesspostalcode = "$row[postalCode]";
-	$businessemail = "$row[email]";
+	$businesswebsite = "$row[website]";
 	$contactname = "$row[contactName]";
 	$contactposition = "$row[contactPosition]";
 	$contactlandnum = "$row[contactNumberLand]";
@@ -58,33 +58,33 @@ if ($row = mysql_fetch_array($result)) {
 echo "
 		<form name='business' action='index.php?page=advertisement' method='post'>
 			<h3>Contact information</h3>
-			<p><strong>Company name</strong>:&nbsp;&nbsp;
+			<p><strong>Company name</strong>:
 			<input class='business' type='text' name='businessname' value='$businessname' /></p>
-			<p><strong>Address</strong>:&nbsp;&nbsp;&nbsp;&nbsp;
+			<p><strong>Address</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class='business' type='text' name='businessaddress' value='$businessaddress' /></p>
-			<p><strong>City</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<p><strong>City</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class='business' type='text' name='businesscity' value='$businesscity'/></p>
-			<p><strong>State/Province</strong>:
+			<p><strong>State/Province</strong>:&nbsp;&nbsp;
 			<input class='business' type='text' name='businessstate' value='$businessstate'/></p>
-			<p><strong>Country</strong>:&nbsp;&nbsp;&nbsp;&nbsp;
+			<p><strong>Country</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class='business' type='text' name='businesscountry' value='$businesscountry' /></p>
-			<p><strong>Postal Code</strong>:&nbsp;&nbsp;
+			<p><strong>Postal Code</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class='business' type='text' name='businesspostalcode' value='$businesspostalcode'/></p>
-			<p><strong>Email</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input class='business' type='text' name='businessemail' value='$businessemail'/></p>
+			<p><strong>Email</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input class='business' type='text' name='businesswebsite' value='$businesswebsite'/></p>
 			<br />
 			<h3>Contact information</h3>
-			<p><strong>Name</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<p><strong>Name</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class='business' type='text' name='contactname' value='$contactname'/></p>
-			<p><strong>Position</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<p><strong>Position</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class='business' type='text' name='contactposition' value='$contactposition'/></p>
-			<p><strong>Land Number</strong>:&nbsp;&nbsp;
+			<p><strong>Land Number</strong>:&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class='business' type='text' name='contactlandnum' value='$contactlandnum'/></p>
 			<p><strong>Mobile Number</strong>:&nbsp;
 			<input class='business' type='text' name='contactmobilenum' value='$contactmobilenum'/></p>
-			<p><strong>Fax Number</strong>:&nbsp;&nbsp;&nbsp;
+			<p><strong>Fax Number</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class='business' type='text' name='contactfaxnum' value='$contactfaxnum'/></p>
-			<p><strong>Email</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<p><strong>Email</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class='business' type='text' name='contactemail' value='$contactemail'/></p>
 			<br />
 			<input type='submit' name='subbusiness' value='Update your information' /></p>

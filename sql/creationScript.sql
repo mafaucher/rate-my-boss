@@ -203,7 +203,7 @@ city VARCHAR(40),
 state VARCHAR(40),
 country VARCHAR(40),
 postalCode VARCHAR(40),
-email VARCHAR(40),
+website VARCHAR(40),
 contactName VARCHAR(40) NOT NULL,
 contactNumberLand VARCHAR(40),
 contactNumberMobile VARCHAR(40),
@@ -269,8 +269,8 @@ insert into user (name, password, type, answer1, answer2, answer3, isPending) va
 # User 5 (jobboom) has a business
 # User 6 (googleads) does not
 
-insert into business (userId, name, charter, address, city, state, country, postalCode, email, contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail) values
-(5, "Canoe inc.", NULL, "333 King Street East", "Toronto", "Ontario", "Canada", "M5A 3X5", "info@canoe.ca", "Tom Setzer", "(877) 448-4434 X 6150", "(416) 350-6150", "(416) 350-6238", "Representative of Online Services", "t_setzer@canoe.ca");
+insert into business (userId, name, charter, address, city, state, country, postalCode, website, contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail) values
+(5, "Canoe inc.", NULL, "333 King Street East", "Toronto", "Ontario", "Canada", "M5A 3X5", "www.canoe.ca", "Tom Setzer", "(877) 448-4434 X 6150", "(416) 350-6150", "(416) 350-6238", "Representative of Online Services", "info@canoe.ca");
 
 # Ad
 
