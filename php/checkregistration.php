@@ -42,6 +42,8 @@ if (isset($_POST['newusername'])) {
 	}
 
 	include "../php/closedb.php";
+
+	unset($_POST['newusername']);
 }
 
 

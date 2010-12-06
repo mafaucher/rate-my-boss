@@ -9,6 +9,10 @@ if(isset($orgId)) {
         unset($orgId);
 }
 
+/* Select all pending admin, organizations and supervisors */
+
+/* Select all reported document, orgEval, superEval, orgComment, superComment, docComment */
+
 ?>
 
 	</div>

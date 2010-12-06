@@ -2,27 +2,6 @@
 
 	<div class="main">
 
-<?php
-
-	/* Unset the current organization id to reset menu */
-	if(isset($orgId)) {
-	        unset($orgId);
-	}
-
-	/* Fetch the Price of ads */
-
-	include "../php/opendb.php";
-
-	$query = sprintf("SELECT adPrice FROM administrator");
-	$result = mysql_query($query);
-	$row = mysql_fetch_array($result);
-	$adPrice = $row['adPrice'];
-
-	include "../php/closedb.php";
-	
-
-	echo "
-
 		<h1>Create a New Ad</h1>
 
 		<p>This form allows you to purchase ads for your company. Simply type in the content
@@ -30,11 +9,31 @@
 		your ad to be served. You are charged depending on how many times you wish your ad to
 		be shown.</p>
 
-		<h3>The current cost per ad displayed is: <strong>$$adPrice</strong></h3>
-		<br />
-		"
+<?php
+
+/* Unset the current organization id to reset menu */
+
+if(isset($orgId)) {
+	unset($orgId);
+}
+
+/* Fetch the Price of ads */
+
+include "../php/opendb.php";
+
+$query = sprintf("SELECT adPrice FROM administrator");
+$result = mysql_query($query);
+$row = mysql_fetch_array($result);
+$adPrice = $row['adPrice'];
+
+include "../php/closedb.php";
+	
+echo "		<p>The current cost per ad displayed is: <strong>$$adPrice</strong></p>\n";
+
+/* TODO: Javascript validation and confirmation */
 ?>
 
+		<br />
 		<form name="ad" onsubmit="return validateAd(this)" action='index.php?page=advertisement' method='post'>
 			<p><strong>How many times do you wish you ad to be shown?</strong>
 			<input class='ad' type='text' name='counter' /></p>
