@@ -54,7 +54,7 @@ if ($row = mysql_fetch_array($result)) {
 	$contactfaxnum = "$row[contactNumberFax]";
 	$contactemail = "$row[contactEmail]";
 }
-
+/* TODO: javascript validation, make contact name obligatory */
 echo "
 		<form name='business' action='index.php?page=advertisement' method='post'>
 			<h3>Contact information</h3>

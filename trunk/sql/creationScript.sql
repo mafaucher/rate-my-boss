@@ -184,6 +184,7 @@ userId INT NOT NULL,
 content VARCHAR(600) NOT NULL,
 counter INT NOT NULL,
 lastView TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+cost DECIMAL(10,2) NOT NULL,
 isPending INT NOT NULL,
 PRIMARY KEY (adId),
 FOREIGN KEY (userId) REFERENCES user
@@ -232,7 +233,7 @@ insert into organization (name, industryType, city, province, website, numberofE
 ('Bell','Telecommunications', 'Montreal', 'Quebec', 'www.bell.ca', 843, 0),
 ('Google','web', 'Irvine', 'California', 'www.google.ca', 307, 0),
 ('Hydro-Québec','Generation/Distribution of Electricity', 'Montreal', 'Quebec', 'www.hydroquebec.com', 23616, 0),
-('Microsoft','Manufacturing Computing Devices and IT', 'Redmond',  'Washington', 'www.microsoft.com', 89000, 1),
+('Microsoft','Manufacturing Computing Devices and IT', 'Redmond',  'Washington', 'www.microsoft.com', 89000, 0),
 ('Telus', 'Telecommunications', 'Burnaby', 'British Columbia','	www.telus.com',36600, 1 ),
 ('Disney','Media and Entertainment', 'Los Angeles', 'California','http://www.disney.com', 150000, 1),
 ('BASF', 'Chemicals and Energy', 'Ludwigshafen','Germany','www.basf.com', 104780, 1);
@@ -271,10 +272,12 @@ insert into user (name, password, type, answer1, answer2, answer3, isPending) va
 insert into business (userId, name, charter, address, city, state, country, postalCode, email, contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail) values
 (5, "Canoe inc.", NULL, "333 King Street East", "Toronto", "Ontario", "Canada", "M5A 3X5", "info@canoe.ca", "Tom Setzer", "(877) 448-4434 X 6150", "(416) 350-6150", "(416) 350-6238", "Representative of Online Services", "t_setzer@canoe.ca");
 
-insert into ad (userId, content, counter, isPending, reported) values
+# Ad
+
+insert into ad (userId, content, counter, cost, isPending) values
 (5, "Find a job on jobboom today!", 2, 0, 0),
-(5, "Recruit employees using jobboom's easy to use recruiting tools", 300, 1, 0);
+(5, "Recruit employees using jobboom's easy to use recruiting tools", 300, 3.0, 1);
 
 # Administrator
 
-insert into administrator value (0, 0.10);
+insert into administrator value (0, 0.1);

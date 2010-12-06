@@ -5,13 +5,13 @@ if(isset($orgId)) {
         unset($orgId);
 }
 
-/* INSERT new business information */
-
-include "../php/checkbusiness.php";
-
-/* INSERT new ad information */
+/* Check if user created a new ad# */
 
 include "../php/checkad.php";
+
+/* Check business information */
+
+include "../php/checkbusiness.php";
 
 /* SELECT business information */
 
@@ -53,7 +53,7 @@ if ($row = mysql_fetch_array($result)) {
 
 	echo "<p>(<a href='index.php?page=business'>Change information</a>)</p>";
 	
-	/* TODO: Print list of ads */
+	/* TODO: Display specific ad detail and allow purchasing additional funds */
 
 	include "../php/opendb.php";
 
@@ -70,13 +70,13 @@ if ($row = mysql_fetch_array($result)) {
 			echo "<h2>Your advertisements</h2>\n";
 		}
 		$count += 1;
-		echo "		<li><strong>Avertisement $count</strong> <br />";
-		if ($row['isPending'] == 1) {
-			echo " <strong>This advertisement is pending approval from a financial administrator</strong><br />";
+		echo "		<li><strong><a href='index.php?page=advertisement&id=$row[adId]'>Avertisement $count</a></strong> <br />";
+		if ($row['cost'] > 0) {
+			echo " <em>Financial administrators are awaiting $$row[cost] for this ad.</em><br />";
 		}
 		echo "				Last viewed: $row[lastView] <br />
 							Remaining views: $row[counter] <br />
-							$row[content]</li>";
+							<strong>$row[content]</strong></li><br />";
 	}
 
 	/* New ad button and form (TODO: validate and confirm price ) */
