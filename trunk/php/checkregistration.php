@@ -2,7 +2,7 @@
 
 /* Check if a user just registrated */
 if (isset($_POST['newusername'])) {
-
+	echo "here";
 	$password = md5($_POST['newpassword']);
 	$isPending = 0;
 	
