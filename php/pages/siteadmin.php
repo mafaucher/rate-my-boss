@@ -134,14 +134,27 @@ while ($row = mysql_fetch_array($result)) {
 }
 echo "		</ul>";
 
-/* Select all reported document, orgEval, superEval, orgComment, superComment, docComment 
+/* elect all reported document, orgEval, superEval, orgComment, superComment, docComment */
 
 include "../php/opendb.php";
-
-$query = "SELECT * FROM supervisor WHERE isPending ORDER BY orgId";
+$query = "SELECT orgEvalId FROM orgEvaluation WHERE reported";
 $result = mysql_query($query);
 
-echo "		<h3>Pending Supervisors</h3>
+while ($row = mysql_fetch_array($result)) {
+	if (isset($_POST["confirm_orgEval_$row[orgEvalId]"])) {
+		$subquery = "UPDATE orgEvaluation SET reported=0 WHERE orgEvalId=$row[orgEvalId]";
+		mysql_query($subquery);
+	}
+	else if (isset($_POST["deny_orgEval_$row[orgEvalId]"])) {
+		$subquery = "DELETE FROM orgEvaluation WHERE orgEvalId=$row[orgEvalId]";
+		mysql_query($subquery);
+	}
+}
+
+$query = "SELECT * FROM orgEvaluation WHERE reported ORDER BY orgId";
+$result = mysql_query($query);
+
+echo "		<h3>Reported Organization Evaluations</h3>
 			<ul>
 	";
 while ($row = mysql_fetch_array($result)) {
@@ -150,11 +163,17 @@ while ($row = mysql_fetch_array($result)) {
 	$subresult = mysql_query($subquery);
 	$subrow = mysql_fetch_array($subresult);
 
-	echo "<li><strong>$row[title]</strong> - $subrow[name]</li>\n";
-	
+	echo "<li>
+		<form action='' method='post'>
+		<strong>$row[title]</strong> - $subrow[name]</li>
+		<p>$row[text]</p>
+		<input type='submit' name='confirm_orgEval_$row[orgEvalId]' value='Unflag'/>
+		<input type='submit' name='deny_orgEval_$row[orgEvalId]' value='Remove Evaluation'/>
+		";
+
 }
 echo "		</ul>";
- */
+
 ?>
 
 	</div>
