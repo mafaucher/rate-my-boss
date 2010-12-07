@@ -103,7 +103,7 @@ function validateAnswers(answer1, answer2, answer3) {
 	return error;
 }
 
-/* AD VALIDATION */
+/* TODO: AD VALIDATION */
 
 function validateAd(form) {
 	var reason = "";
@@ -112,8 +112,8 @@ function validateAd(form) {
 	
 	reason += validateContent(form.content);
 	reason += validateCounter(form.counter);
-	reason += validateKeywords(form.keyword1, form.keyword2, form.keyword3, form.keyword4
-		form.keyword5, form.keyword6, form.keyword7, form.keyword8, form.keyword9, form.keyword10);
+	reason += validateKeywords(form.keyword1, form.keyword2, form.keyword3, form.keyword4,
+			form.keyword5, form.keyword6, form.keyword7, form.keyword8, form.keyword9, form.keyword10);
 
 	if (reason != "") {
 		alert("Some fields were not properly filled in:\n" + reason);
