@@ -143,6 +143,13 @@ li {
    clear: both;
 }
 
+.comment {
+	border:1px solid #000000;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-left: 10px;
+	padding-right:10px;
+}
 
 /* SPECIAL FORMATS */
 

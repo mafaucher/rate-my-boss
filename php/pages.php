@@ -13,6 +13,7 @@ $pageArray = array(
 	"suggestsuper" => "../php/pages/suggestsuper.php",
 
 	/* With ID field */
+	"evaluationform" => "../php/pages/evaluationform.php",
 	"organizationid" => "../php/pages/organizationid.php",
 	"evaluationid" => "../php/pages/evaluationid.php",
 	"documentid" => "../php/pages/documentid.php",

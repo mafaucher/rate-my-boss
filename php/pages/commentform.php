@@ -1,8 +1,5 @@
 <div class="main">
 <?php
-
-include "../php/opendb.php";
-echo"
 <h2>Suggest an Organizanation</h2>
 
 <form action='index.php?page=organization' method='post'>
@@ -35,9 +32,5 @@ echo"
 </table>
 <br />
 <input type='submit' name='submitOrg' value='Submit Organization' />
-";
-
-include "../php/closedb.php";
-?>
 
 </div>

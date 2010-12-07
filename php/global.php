@@ -13,4 +13,10 @@ $dbname = "tjc353_2";
 if (isset($_SESSION["orgId"])) {
 	$orgId = $_SESSION["orgId"];
 }
+
+// stores superId for evaluations and comments
+if (isset($_SESSION["superId"])) {
+	$superId = $_SESSION["superId"];
+}
+
 ?>
