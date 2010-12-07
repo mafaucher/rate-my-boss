@@ -1,4 +1,5 @@
 == GENERAL INFORMATION ==
+
 This presents general documentation for group 6's website,
 developped for the course COMP353 - Databases.
 
@@ -13,13 +14,14 @@ The projected website can be accessed at: https://clipper.encs.concordia.ca/~tjc
 
 www/		- The root of the website
 www/javascript/	- Javascript code
+sql/		- SQL creation script
 php/		- PHP code
 php/pages/	- PHP code which generates HTML body
 
 
 == INSTALLATION ==
 
-The website depends on M
+The website was created using the software available in the labs: MySQL 5, PHP 4.4.9. 
 
 
 == AUTHORS ==
@@ -32,3 +34,6 @@ FULL NAME 		NETNAME 	STUDENT ID 	EMAIL ADDRESS
 
 == SHELL SCRIPTS ==
 
+A few simple shell scripts were used to speed up development.
+
+db.sh - 
