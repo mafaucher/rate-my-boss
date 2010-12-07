@@ -4,9 +4,13 @@
 <ul class="listing">
 <?php
 
-/* Unset the current organization id to reset menu */
+/* Unset the current organization id and supervisor id to reset menu */
 if(isset($orgId)) {
 	unset($orgId);
+}
+
+if(isset($superId)) {
+	unset($superId);
 }
 
 include "../php/opendb.php";
@@ -25,6 +29,7 @@ while($row = mysql_fetch_array($result))
     </a>
     </li>";
 }
+
 echo "
 </ul>
 <br />

@@ -6,19 +6,20 @@
 include "../php/opendb.php";
 
 $query = "SELECT * FROM supervisor
-		wHERE orgId=$orgId and NOT isPending";
+		WHERE orgId=$orgId and NOT isPending";
 $result = mysql_query($query);
 
-/* Prints the list of organization names as links to their individual pages */
+/* Prints the list of supervisor titles as links to their individual pages */
 
 while($row = mysql_fetch_array($result))
 {
     echo "<li>
-    <a href='index.php?page=supervisor&id=${row[superId]}'>
+    <a href='index.php?page=supervisor&id=${row[orgId]}&superId=${row[superId]}'>
     {$row[title]}
     </a>
     </li>";
 }
+
 echo "
 </ul>
 <br />
