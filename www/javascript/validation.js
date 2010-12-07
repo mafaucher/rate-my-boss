@@ -140,6 +140,6 @@ function validateCounter(counter) {
 	// Check for int between 1 and 500 000 000
 }
 
-function validateAnswers(answer1, answer2, answer3) {
+function validateKeywords(keyword1,keyword2,keyword3,keyword4,keyword5,keyword6,keyword7,keyword8,keyword9,keyword10) {
 	// Check for word characters, length between 1 and 20
 }
