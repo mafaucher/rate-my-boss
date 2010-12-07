@@ -2,7 +2,7 @@
 
 /* Check if a user just registrated */
 if (isset($_POST['newusername'])) {
-	echo "here";
+
 	$password = md5($_POST['newpassword']);
 	$isPending = 0;
 	
@@ -25,7 +25,7 @@ if (isset($_POST['newusername'])) {
 	}
 	else {
 		/* Prepare the query */	
-		$query = sprintf("INSERT INTO user (name, password, type, answer3, answer2, answer3, isPending) values
+		$query = sprintf("INSERT INTO user (name, password, type, answer1, answer2, answer3, isPending) values
 				('%s', '%s', '%s', '%s', '%s', '%s', '%d')",
 				mysql_real_escape_string($_POST['newusername']),
 				$password,
