@@ -8,9 +8,9 @@ $pageArray = array(
 	"evaluation" => "../php/pages/evaluation.php",
 	"document" => "../php/pages/document.php",
 	"supervisor" => "../php/pages/supervisor.php",
-	"business" => "../php/pages/business.php",
 	"suggestorg" => "../php/pages/suggestorg.php",
 	"suggestsuper" => "../php/pages/suggestsuper.php",
+	"edit" => "../php/pages/edit.php",
 
 	/* With ID field */
 	"evaluationform" => "../php/pages/evaluationform.php",
@@ -18,7 +18,7 @@ $pageArray = array(
 	"evaluationid" => "../php/pages/evaluationid.php",
 	"documentid" => "../php/pages/documentid.php",
 	"supervisorid" => "../php/pages/supervisorid.php",
-	"ratingform" => "../php/pages/ratingform.php",
+	"ratingform" => "../php/pages/ratingform.php"
 );
 
 // Privileged -- Only inserted if user is of certain type
@@ -33,6 +33,7 @@ case "admin":
 	break;
 case "finance":
 	$pageArray["financeadmin"] = "../php/pages/financeadmin.php";
+	$pageArray["business"] = "../php/pages/business.php";
 	break;
 case "registered":
 	break;

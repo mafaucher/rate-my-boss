@@ -20,6 +20,10 @@ if (isset($orgId)) {
 if (isset($pageArray["register"])) {
 	print "			<li><strong><a href=index.php?page=register>Register an Account</a></strong></li>\n";
 }
+/* If any other user is logged in */
+else {
+	print "			<li><strong><a href=index.php?page=edit>Edit a Previous Post</a></strong></li>\n";
+}
 
 /* Restricted menu items */
 if (isset($pageArray["advertisement"])) {
