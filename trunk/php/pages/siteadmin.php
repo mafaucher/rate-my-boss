@@ -31,7 +31,7 @@ echo "		<h3>Pending Users</h3>
 	";
 while ($row = mysql_fetch_array($result)) {
 
-	echo "<li><strong>row[name]</strong> - row[type]</li>\n";
+	echo "<li><strong>$row[name]</strong> - $row[type]</li>\n";
 	
 }
 echo "		</ul>";
@@ -48,7 +48,7 @@ echo "		<h3>Pending Organizations</h3>
 	";
 while ($row = mysql_fetch_array($result)) {
 
-	echo "<li><strong>row[name]</strong> - row[industryType]</li>\n";
+	echo "<li><strong>$row[name]</strong> - $row[industryType]</li>\n";
 	
 }
 echo "		</ul>";
@@ -69,7 +69,7 @@ while ($row = mysql_fetch_array($result)) {
 	$subresult = mysql_query($subquery);
 	$subrow = mysql_fetch_array($subresult);
 
-	echo "<li><strong>row[title]</strong> - subrow[name]</li>\n";
+	echo "<li><strong>$row[title]</strong> - $subrow[name]</li>\n";
 	
 }
 echo "		</ul>";
@@ -90,7 +90,7 @@ while ($row = mysql_fetch_array($result)) {
 	$subresult = mysql_query($subquery);
 	$subrow = mysql_fetch_array($subresult);
 
-	echo "<li><strong>row[title]</strong> - subrow[name]</li>\n";
+	echo "<li><strong>$row[title]</strong> - $subrow[name]</li>\n";
 	
 }
 echo "		</ul>";
