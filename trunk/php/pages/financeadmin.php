@@ -15,9 +15,36 @@ if(isset($orgId)) {
 	unset($orgId);
 }
 
-/* Ad Price */
+/* Change Price */
+
+if (isset($_POST['cost'])) {
+	include "../php/opendb.php";
+
+	$query = "UPDATE administrator SET adPrice=$_POST[cost] WHERE adminId=0";
+	mysql_query($query);
+
+	include "../php/closedb.php";
+	
+	unset($_POST['cost']);
+}
 
 include "../php/opendb.php";
+
+$query = "SELECT adId FROM ad WHERE cost>0 ORDER BY userId";
+$result = mysql_query($query);
+
+while ($row = mysql_fetch_array($result)) {
+	if (isset($_POST["confirm_$row[adId]"])) {
+		$subquery = "UPDATE ad SET cost=0 WHERE adId=$row[adId]";
+		mysql_query($subquery);
+	}
+	else if (isset($_POST["deny_$row[adId]"])) {
+		$subquery = "DELETE FROM ad WHERE adId=$row[adId]";
+		mysql_query($subquery);
+	}
+}
+
+/* Get Price */
 
 $query = "SELECT adPrice FROM administrator";
 $result = mysql_query($query);
@@ -26,9 +53,15 @@ $adPrice = $row['adPrice'];
 
 include "../php/closedb.php";
 
-echo "		<p>The current cost per ad displayed is: <strong>$$adPrice</strong></p>\n";
+/* Change price form */
 
-/* TODO: Change price form */
+echo "
+			<form name='adPrice' action='' method='post'>
+			<p><strong>The current cost per ad is:</strong>:
+			<input class='adPrice' type='text' name='cost' value='$adPrice'/>
+			<input type='submit' name='subbusiness' value='Update the Price' /></p>
+			</form>
+	";
 
 echo "
 			<br />
@@ -48,7 +81,7 @@ include "../php/opendb.php";
 $query = "SELECT * FROM ad WHERE cost>0 ORDER BY userId";
 $result = mysql_query($query);
 
-/* TODO: List of ads and allow or deny options */
+/* List of ads and allow or deny options */
 
 $currentUser = 0;
 $totalPerUser = 0;
@@ -75,8 +108,14 @@ while ($row = mysql_fetch_array($result)) {
 	}
 	$totalPerUser += $row['cost'];
 
-	echo "			$row[content]<br />\n";
-	echo "			Cost: $$row[cost]<br /><br />\n";
+	echo "
+			<form action='' method='post'>
+				<p>$row[content]<br />
+				Cost: $$row[cost]
+				<input type='submit' name='confirm_$row[adId]' value='Confirm Payment'/>
+				<input type='submit' name='deny_$row[adId]' value='Deny'/></p>
+			</form>
+		";
 }
 
 /* Close the Last User's list item */
