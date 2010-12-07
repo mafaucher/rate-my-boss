@@ -20,19 +20,39 @@ if (isset($_GET["superEvalId"]))
 	$commentTable = 'orgComment';
 	$commentIdName = 'orgCommentId';
 }
+if (isset($_GET["report"]))
+{
+	$reportType = $_GET["report"];
+	
+	if($reportType == 'eval')
+	{
+		$reportTable = $tableName;
+		
+			$sql="UPDATE $reportTable SET reported = 1
+	WHERE $evalIdName = $evalId";
+	} else {
+		$commentId = $_GET["commentId"];
+		
+		$reportTable = $commentTable;
+		
+			$sql="UPDATE $reportTable SET reported = 1
+			WHERE $commentIdName = $commentId";
+	}
+	mysql_query($sql);
+	
+}
 
 
 //Check if a comment has been added.
 if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
-
-	//get data from post
-	$text = $_POST['text'];
+		//get data from post
+		$text = $_POST['text'];
 	
-	$sql="insert into $commentTable ($evalIdName, text, reported, uString) values
-	($evalId, '$text', 0, 'aaa')";
+		$sql="insert into $commentTable ($evalIdName, text, reported, uString) values
+		($evalId, '$text', 0, 'aaa')";
 	
-	// post comment to database
-	mysql_query($sql);
+		// post comment to database
+		mysql_query($sql);
 }
 
 
@@ -46,7 +66,7 @@ $row = mysql_fetch_array($result);
 //Display evaluation
 echo"
 <h2>{$row[title]}</h2>
-<p class='evalText'>{$row[text]}</p>
+<p class='evalText'>{$row[text]} <a href='index.php?page=evaluationid&$evalIdName=$evalId&report=eval'>report</a></p>
 <br />
 <span class='score'>Comments:</span>
 ";
@@ -60,9 +80,10 @@ $result = mysql_query($query);
 // Display list of comments attributed to the evaluation
 while($row = mysql_fetch_array($result))
 {
+	$commentId = $row[$commentIdName];
     echo "
 		<div class='comment'>
-    		<p>{$row[text]}</p>
+    		<p>{$row[text]}<a href='index.php?page=evaluationid&$evalIdName=$evalId&commentId=$commentId&report=comment'>report</a></p>
 		</div>
 		";
 }
