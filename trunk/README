@@ -3,37 +3,62 @@
 This presents general documentation for group 6's website,
 developped for the course COMP353 - Databases.
 
-The public repository is hosted on google code at: http://rate-my-boss.googlecode.com/svn/trunk/
-The public mailing list is hosted on google groups at: http://groups.google.com/group/rate-my-boss
-The web server space is located at: login.encs.concordia.ca/www/groups/t/tj_comp353_2/
+The projected website can be accessed at:
+	https://clipper.encs.concordia.ca/~tjc353_2/rate-my-boss/www/
 
-The projected website can be accessed at: https://clipper.encs.concordia.ca/~tjc353_2/rate-my-boss/www/
+The public repository is hosted on google code at:
+	http://rate-my-boss.googlecode.com/svn/trunk/
+
+The public mailing list is hosted on google groups at:
+	http://groups.google.com/group/rate-my-boss
+
+The web server space is located at:
+	login.encs.concordia.ca/www/groups/t/tj_comp353_2/
+
+username: tjc353_2
+password: ahf3HY
+
+site users:
+type		name		password
+================================
+admin		marc		ma_fauch
+admin		peter		p_rockw
+admin		leila		l_behja
+finance		accounting	cashman
+agent		jobboom		getajob
+agent		googleads	dontbeevil
+registered	public		dbs0610
+
+
+== AUTHORS ==
+
+FULL NAME	 			NETNAME 	STUDENT ID 	EMAIL ADDRESS
+
+- Leila Behjati			l_behja		9042466		la_behjati@yahoo.com
+- Marc-André Faucher	ma_fauch	9614729		ma.faucher@gmail.com
+- Peter Rockwell		p_rockw		9114602		pete.rockwell@gmail.com
 
 
 == DIRECTORIES ==
 
-www/		- The root of the website
+www/			- The website root directory
 www/javascript/	- Javascript code
-sql/		- SQL creation script
-php/		- PHP code
-php/pages/	- PHP code which generates HTML body
+sql/			- SQL creation script
+php/			- PHP code
+php/pages/		- PHP code which generates HTML body
 
 
 == INSTALLATION ==
 
-The website was created using the software available in the labs: MySQL 5, PHP 4.4.9. 
-
-
-== AUTHORS ==
-FULL NAME 		NETNAME 	STUDENT ID 	EMAIL ADDRESS
-
-- Leila Behjati		l_behja		9042466		la_behjati@yahoo.com
-- Marc-André Faucher	ma_fauch	9614729		ma.faucher@gmail.com
-- Peter Rockwell	p_rockw		9114602		pete.rockwell@gmail.com
+The website was created using the software available in the labs: MySQL 5,
+PHP 4.4.9. It does not use any external frameworks, so it should just work
+anywhere those technologies are available.
 
 
 == SHELL SCRIPTS ==
 
-A few simple shell scripts were used to speed up development.
+A few simple shell scripts were used to speed up development:
 
-db.sh - 
+db.sh 			- connect to the database using our groups credentials
+updatedb.sh 	- run "sql/creationScript.sql" to reinitialize the original data
+updateweb.sh 	- updates the web space (requires group access)
