@@ -1,0 +1,153 @@
+/* DEFAULTS */
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	color: #000000; 	
+ 	
+	background-image:url('http://www.oneter.com/wp-content/uploads/2008/12/7/Lights_flowers_background_image_5_m.jpg');
+	/*background-image:url('http://www.oneter.com/wp-content/uploads/2008/12/7/Lights_flowers_background_image_7_m.jpg');  /* background image  */
+  
+	 
+}
+
+h1 {
+	font-size: 18px;
+	font-weight: bold;
+	color: #2E3192;
+	text-align: center;
+}
+
+h2 {
+	font-size: 15px;
+	color: #2E3192;
+}
+
+strong {
+	font-weight: bold;
+}
+
+a               { color: #2E3192; text-decoration: none; }
+a:visited       { color: #252763; }
+a:hover         { color: #000000; }
+a:visited:hover { color: #000000; }
+
+
+/* HEADER */
+
+.header { /* Title position */
+	position: absolute;
+	height: 110px;
+	left: 5px;
+	right: 200px;
+}
+
+.header h1 { /* Title banner */
+	position: absolute;
+	top: 0px;
+	left: 360px;     /*  */
+	text-shadow: 1px 1px 2px #999999;
+	font-size: 32px;
+	font-weight: bold;
+	color: #2E3192;
+	font-family: inherit;
+}
+
+.header a:visited       { color: #2E3192; }
+.header a:hover         { color: #2E3192; }
+.header a:visited:hover { color: #2E3192; }
+
+
+/* LOGIN */
+
+.login { /* login box position and font */
+	float: right;
+	top: 0px;
+	left: 500px;
+	margin-right: 50px;      /*left margin set to 50 px*/
+	margin-top:0px; 
+	z-index:1;
+}
+
+.login p {
+	font-size: 13px;
+	font-weight: bold;
+	
+	color: #2E3192;
+}
+
+
+/* SEARCHBOX */
+
+.search { /* search box position */
+	position: relative;
+	top: 60px;
+	left: 360px;     /*  */
+	overflow-x:hidden; /* Disables horizontal scrollbar */
+}
+
+/* MENU */
+
+.menu { /* Menu position */
+	position: absolute;
+	top: 230px;
+	bottom: 0px;   /*  */
+	left: 0px;
+	right: 930px;	 /* */
+
+	line-height: 200%;
+	font-size: 14px;
+	color: #2E3192;
+
+	background-color:#00FFFF;  	 /*  color changed to cyan  */
+	background-image:url('http://blogs.jobdig.com/wwds/files/2008/01/boss_cartoon.jpg');  /* background image  */
+}
+
+
+/* MAIN */
+
+.main {
+	margin-top: 118px;     /* */
+	margin-left: 360px;      /**/
+	margin-right: 50px;    /**/
+	margin-bottom: 50px;   /* ???? not changed  */
+
+	background-color:#b0c4de;     /* color changed to light blue */
+	background-image:url('http://www.marvelsphoto.com/wp-content/uploads/2007/11/snow_crystal_christmas.jpg');  /* background image */
+}
+
+
+/* SPECIAL FORMATS */
+
+/* Center alignment */
+
+.center { text-align: center; }
+
+
+/* Columns */
+
+.columns {
+	margin-bottom: 150px
+}
+
+.col1 {
+	float: left;
+	margin-top: 5px;
+}
+
+.col2 {
+	float: left;
+	margin-top: 5px;
+	margin-left: 20px;
+}
+
+
+/* FOOTER */
+
+.footer {
+	font-size: 10px;
+	text-align: center;
+	margin-top: 100px;     
+	margin-bottom: 50px;
+	color: #2E3192;
+}
