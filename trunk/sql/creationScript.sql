@@ -35,7 +35,7 @@ FOREIGN KEY (orgId) REFERENCES organization
 drop table document;
 create table document
 (
-docId INT NOT NULL AUTO_INCREMENT,
+ docId INT NOT NULL AUTO_INCREMENT,
 orgId INT NOT NULL,
 title VARCHAR(40) NOT NULL,
 reported INT NOT NULL,
@@ -225,7 +225,8 @@ adPrice DECIMAL(10,2) NOT NULL
 
 
 # INSERT VALUES
-# 1 = Bell, 2 = Google, 3 = Hydro-Québec, 4 = Microsoft, 5 = Telus , 6 = Disney, 7 = BASF , 8 = , 
+# 1 = Bell, 2 = Google, 3 = Hydro-Québec, 4 = Microsoft, 5 = Telus , 6 = Disney, 7 = BASF , 8 = Rogers , 9 = FedEx ,
+# 10 = Molson
 
 # Organizations
 
@@ -234,22 +235,40 @@ insert into organization (name, industryType, city, province, website, numberofE
 ('Google','web', 'Irvine', 'California', 'www.google.ca', 307, 0),
 ('Hydro-Québec','Generation/Distribution of Electricity', 'Montreal', 'Quebec', 'www.hydroquebec.com', 23616, 0),
 ('Microsoft','Manufacturing Computing Devices and IT', 'Redmond',  'Washington', 'www.microsoft.com', 89000, 0),
-('Telus', 'Telecommunications', 'Burnaby', 'British Columbia','	www.telus.com',36600, 1 ),
-('Disney','Media and Entertainment', 'Los Angeles', 'California','http://www.disney.com', 150000, 1),
-('BASF', 'Chemicals and Energy', 'Ludwigshafen','Germany','www.basf.com', 104780, 1);
+('Telus', 'Telecommunications', 'Burnaby', 'British Columbia',' www.telus.com',36600, 1 ),
+('Disney','Media and Entertainment', 'Los Angeles', 'California','www.disney.com', 150000, 1),
+('BASF', 'Chemicals and Energy', 'Ludwigshafen','Germany','www.basf.com', 104780, 1),
+('Rogers', 'Communications Services', 'Toronto', 'Ontario','www.rogers.com', 29000,1),
+('FedEx','Courier','Memphis','Tennessee', 'FedEx.com',280000, 1),
+('Molson','Beverages','Montreal','Canada', 'http://www.molson.com', 3000, 1);
 
 insert into supervisor (orgId, title, isPending) values
 (1, 'CEO', 0),
 (1, 'Janitor', 0),
-(1, 'BossofallBosses', 1);
+(1, 'BossofallBosses', 1),
+(1, 'President',0),
+(1, 'VP External', 0 ),
+(1, 'VP Internal',0),
+(1,'VP Social',0),
+(1, 'VP Affairs', 0),
+(1, 'VP Finance',0),
+(1, 'VP Marketing', 0);
 
 #Ratings
 #uString = md5(rating#)
 
-insert into rating (orgId, socialValues, professionalism, openness, encouraging, acceptance, recognition, qualityWorkplace, fairness, cooperation, rewardSystem, fairWages, qualityBenefits, supportEmployees, levelStress, levelCollegiality, levelBureaucracy, advancement, supportFamily, uString) values
+insert into rating (orgId, socialValues, professionalism, openness, encouraging, acceptance, recognition, qualityWorkp
+lace, fairness, cooperation, rewardSystem, fairWages, qualityBenefits, supportEmployees, levelStress, levelCollegialit
+y, levelBureaucracy, advancement, supportFamily, uString) values
 (1,5,8, 8, 6, 4, 9, 8, 6, 7,7, 9, 6, 5, 4, 7, 6,8, 9, '05406e0d07c96b6e2c622a901d4b9f52'),
 (1,7,8, 1, 3, 5, 9, 8, 2, 8,3, 6, 5, 8, 4, 5, 6,1, 3, 'e329b60baaecdcfad0a15662bf1a949c'),
-(1,6,8, 5, 9, 6, 8, 6, 3, 8,7, 8, 6, 7, 3, 8, 7,7, 8, '59cf43803003a8ccad9e5147dd4e93e2');
+(1,6,8, 5, 9, 6, 8, 6, 3, 8,7, 8, 6, 7, 3, 8, 7,7, 8, '59cf43803003a8ccad9e5147dd4e93e2'),
+(2,6,8, 5, 9, 5, 7, 6, 3, 9,6, 8, 7, 8, 3, 9, 6,6, 9, 'cad9e521d4ef33a8c162380309cf097e'),
+(2,7,9, 3, 8, 6, 8, 5, 4, 7,8, 8, 7, 9, 4, 7, 5,7, 8, 'a8ccf43803093e2adf39c47d9e5d4e17'),
+(2,5,8, 4, 9, 6, 9, 7, 3, 8,7, 8, 6, 8, 2, 9, 5,6, 9, 'ddf43904003a8eca3fe9e5147c93e392'),
+(3,5,9, 9, 5, 3, 7, 4, 5, 9,7, 5, 6, 8, 3, 9, 4,7, 7, 'aecb60bdacfbf1aa296e32d0a1949c16'),
+(3,6,7, 8, 4, 4, 8, 5, 5, 8,7, 7, 6, 9, 5, 9, 5,5, 9, '7c0d0966eb62a91d4bf252f02c540e09'),
+(3,5,8, 8, 5, 4, 8, 3, 6, 8,7, 6, 7, 8, 3, 9, 5,6, 8, '4ae32cd0a15660bdb4e6fa2bf1a9ac0c');
 
 # User
 
@@ -277,7 +296,16 @@ insert into business (userId, name, charter, address, city, state, country, post
 
 insert into ad (userId, content, counter, cost, isPending) values
 (5, "Find a job on jobboom today!", 2, 0, 0),
-(5, "Recruit employees using jobboom's easy to use recruiting tools", 300, 3.0, 1);
+(5, "Recruit employees using jobboom's easy to use recruiting tools", 300, 3.0, 1),
+(6, "Shoot unforgeteable shot with a single sweep SONY",3,0, 0),
+(6, "Best pictures ever only with SONY ",500, 4.0, 1),
+(6, "Thousands of employers search resumes on Monster everyday!", 4, 0, 0),
+(6, "Help employers to find you on Monster", 400, 3.0, 1),
+(6, "Make your resume searchable to employers only with Monster ", 200, 2.0, 1),
+(6, ""Finding the best holidays present to your love one only at theshoppingchannel.com ", 5, 0, 0),
+(6, "Add warmth & comfort to your bedroom by shopping online at theshoppingchannel.com ", 400, 5.0, 1),
+(6, "Leave the competition behind with CHEVROLET", 6, 0, 0),
+(6, "CHEVROLET again eith better highway fuel efficiency than a 2010 Accord", 800, 6.5, 1);
 
 # Administrator
 
