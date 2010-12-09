@@ -33,7 +33,7 @@ if (isset($orgId)) {
 	include "../php/closedb.php";
 
 	echo "
-		<h2>$row[name]</h2>
+		<h1>$row[name]</h1>
 		";
 }
 
