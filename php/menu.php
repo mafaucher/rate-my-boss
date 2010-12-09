@@ -10,10 +10,22 @@ print "			<li><strong><a href=index.php?page=organization>Organization List</a><
 
 /* If organization was selected */
 if (isset($orgId)) {
-	print "			<li><a href=index.php?page=organization&id=$orgId>Organization Rating</a></li>\n";
-	print "			<li><a href=index.php?page=evaluation>Organization Evaluations</a></li>\n";
-	print "			<li><a href=index.php?page=document>Documents</a></li>\n";
-	print "			<li><a href=index.php?page=supervisor>Supervisor List</a></li>\n";
+
+	/* Show the company name and submenus */
+	include "../php/opendb.php";
+
+	$query = "SELECT name FROM organization WHERE orgId=$orgId";
+	$result = mysql_query($query);
+	$row = mysql_fetch_array($result);
+
+	include "../php/closedb.php";
+
+	print "			<li>&nbsp;&nbsp;&nbsp;&nbsp;<big>$row[name]:</big></li>\n";
+	
+	print "			<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href=index.php?page=organization&id=$orgId>Organization Rating</a></li>\n";
+	print "			<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href=index.php?page=evaluation>Organization Evaluations</a></li>\n";
+	print "			<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href=index.php?page=document>Documents</a></li>\n";
+	print "			<li>&nbsp;&nbsp;&nbsp;&nbsp;<a href=index.php?page=supervisor>Supervisor List</a></li>\n";
 }
 
 /* If no user is logged in */

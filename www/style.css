@@ -49,6 +49,12 @@ a:visited:hover { color: #000000; }
         font-family: inherit;
 }
 
+.header h2 { /* Company Title */
+		position: absolute;
+		top: 90px;
+		left: 250px;
+}
+
 .header a:visited       { color: #2E3192; }
 .header a:hover         { color: #2E3192; }
 .header a:visited:hover { color: #2E3192; }
