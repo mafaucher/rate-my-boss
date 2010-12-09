@@ -24,9 +24,13 @@
 <?php
 
 if (isset($orgId)) {
+	include "../php/opendb.php";
+
 	$query = "SELECT name FROM organization WHERE orgId=$orgId";
 	$result = mysql_query($query);
 	$row = mysql_fetch_array($result);
+
+	include "../php/closedb.php";
 
 	echo "
 		<h2>$row[name]</h2>
