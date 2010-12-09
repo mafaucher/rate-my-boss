@@ -20,6 +20,20 @@
 	<div class="header">
 		<img src="images/logo.png" alt="RMB Logo" height=225px/>
 		<h1><a href="index.php">Rate-My-Boss</a></h1>
+
+<?php
+
+if (isset($orgId)) {
+	$query = "SELECT name FROM organization WHERE orgId=$orgId";
+	$result = mysql_query($query);
+	$row = mysql_fetch_array($result);
+
+	echo "
+		<h2>$row[name]</h2>
+		";
+}
+
+?>
 	</div>
 
 <!-- END OF HEADER -->
