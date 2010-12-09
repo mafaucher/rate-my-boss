@@ -21,23 +21,6 @@
 		<img src="images/logo.png" alt="RMB Logo" height=225px/>
 		<h1><a href="index.php">Rate-My-Boss</a></h1>
 
-<?php
-
-if (isset($orgId)) {
-	include "../php/opendb.php";
-
-	$query = "SELECT name FROM organization WHERE orgId=$orgId";
-	$result = mysql_query($query);
-	$row = mysql_fetch_array($result);
-
-	include "../php/closedb.php";
-
-	echo "
-		<h1>$row[name]</h1>
-		";
-}
-
-?>
 	</div>
 
 <!-- END OF HEADER -->
