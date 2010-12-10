@@ -451,18 +451,20 @@ FOREIGN KEY (superEvalId) REFERENCES superEvaluation
 ******************************
 
 
+superComment10
+
 # SUPERVISOR COMMENT
 INSERT INTO orgComment (superEvalId, text, reported, uString) values
-(1,"Very nice supervisor I`ve ever seen.", 0, ),
-(1,"My supervisor always is a side of help whenever ther is a problem.", 0, ),
-(4,"Very hardworking and active.", 0, ),
-(4,"Affectionate person.", 0, ),
-(5,"Very curious.", 0, ),
-(6,"Lazy!", 0, ), 
-(7,"My Supervisor is Fabulous!", 0, ), 
-(8,"Strict but kind.", 0, ),
-(9,"This supervisor expect a lot and never rewards anyone!", 0, ),
-(10, "Not a polite person!", 0, );
+(1,"Very nice supervisor I`ve ever seen.", 0, 'd88662833fb451129a5310e875d224b0'),
+(1,"My supervisor always is a side of help whenever ther is a problem.", 0,'b07b5288808b4750d55d042309fe083f' ),
+(4,"Very hardworking and active.", 0,'0391ed802567fa651c8c11f248598b85' ),
+(4,"Affectionate person.", 0,'8cf25fd52da993eaf8f75939e58d388e' ),
+(5,"Very curious.", 0,'9d237950ea15dd1841df6f4690e07c62' ),
+(6,"Lazy!", 0, '55112b596ed791cfd266c16e1f4400b2'), 
+(7,"My Supervisor is Fabulous!", 0,'188a7e403e0bf8d439ce6fd0d8e07d63' ), 
+(8,"Strict but kind.", 0, '8b2fe24bb281cb060b38947578f06e1f'),
+(9,"This supervisor expect a lot and never rewards anyone!", 0,'dcc5bf5cff0b4f8e87cbd100da408e0f' ),
+(10, "Not a polite person!", 0, 'b7fac821565e578354eb6a208e4e2ee9');
 
 
 
@@ -529,7 +531,7 @@ insert into user (name, password, type, question1, question2, question3, answer1
 
 # Ad
 
-insert into ad (userId, content, counter, cost, isPending) values
+insert into ad (u#16 FINANCIAL ACTIVITYserId, content, counter, cost, isPending) values
 (5, "Find a job on jobboom today!", 2, 0.0, 0),
 (5, "Recruit employees using jobboom`s easy to use recruiting tools", 300, 0.0, 0),
 (8, "Shoot unforgeteable shot with a single sweep SONY", 3, 0.0, 0),
@@ -566,6 +568,61 @@ insert into business (userId, name, website, contactName) values
 # Administrator
 
 insert into administrator value (0, 0.1);
+
+
+
+*************
+# USER ACTIVITY
+
+drop table userActivity;
+create table userActivity
+(
+time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+userId INT NOT NULL,
+type VARCHAR(40) NOT NULL,
+PRIMARY KEY (time, userId, type),
+FOREIGN KEY (userId) REFERENCES user
+);
+************
+# USER ACTIVITY
+
+insert into userActivity (userId, type) values  
+(5, 'register'),
+(7, 'register'),
+(8, 'register'),
+(9, 'register'),
+(10,'register');
+
+
+
+
+********************
+# FINANCIAL ACTIVITY
+
+drop table financialActivity;
+create table financialActivity
+(
+time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+userId INT NOT NULL,
+type VARCHAR(40) NOT NULL,
+amount DECIMAL(10,2) NOT NULL,
+PRIMARY KEY (time, userId, type),
+FOREIGN KEY (userId) REFERENCES user
+);
+
+
+*******************
+# FINANCIAL ACTIVITY
+
+insert into financialActivity (userId, type, amount) values
+(5, 'ad revenue'),
+(7, 'ad revenue'),
+(8, 'ad revenue'),
+(9, 'ad revenue'),
+(10,'ad revenue');
+
+
+
 
 
 
