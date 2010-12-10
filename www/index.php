@@ -57,6 +57,9 @@ if(isset($_GET["page"])) {
 	}
 }
 
+/* Name of organization when inside a section*/
+include("../php/orgHeader.php");
+
 /* MENU */
 include("../php/menu.php");
 
