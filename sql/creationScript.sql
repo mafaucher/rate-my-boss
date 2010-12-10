@@ -326,15 +326,22 @@ INSERT INTO docComment (docId, text, reported, uString) values
 
 # ORGANIZATION EVALUATION
 
-
 INSERT INTO orgEvaluation (orgId, title, text, reported, uString) values
 (1, "Great company!", "I love working for this company because I get free internet and calling with them. That`s all I really need in life.", 0, ""),
-(2, "Love working for this company", "I love working for this company because it has a friedly environment.", 0, ""),
+(1,"I do not like to work here", "There is a lot of workforce and stress!!!", 0, ""),
+(1,"Love to work for it", "I want to work for this company since there are a lot of progress opportunity.", 0, ""),
+(2,"Love working for this company", "I love working for this company because it has a friedly environment.", 0, ""),
+(2, "I am so lucky to work here","This company has everyday life need services in it",0,""),
 (3, "Bad company!", "I am not happy with this company since it doesn`t provide any promotion for its employees.", 0, ""),
+(3,"A good place", "As employees request is done, everything is provided to do so.", 0, ""),
 (4, "The best company in the world!", "Whenver you are in this company, you feel you are at home, this makes everyone to work more efficiently.", 0, ""),
+(4, "Lucky to work here.","We have the best bosses and supervisors", 0, ""),
 (5, "No doubt about its greatness", "You have every thing that you need in one place...that`s our workplace.", 0, ""),
+(5, "I do not like this company!","In this company minorities are treaded differently!!!", 0, ""),
 (6, "Best one in my city", "You are always treated like a guest", 0, ""),
-(7, "I love working for this company", "Not only it cares for its employees, it also cares about their family.", 0, "");
+(6, "Most Enjoable Place: that is my workplace", "In this company everthing attracks you to be there", 0, ""),
+(7, "I do not like working here", "My workplace is full of stress", 0, ""),
+(7, "I want to for this company", "I learn a lot of interesting things here.", 0, "");
 
 
 # ORGANIZATION COMMENTS
