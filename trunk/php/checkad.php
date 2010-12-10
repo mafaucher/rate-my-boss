@@ -29,16 +29,15 @@ if (isset($_POST['content'])) {
 	$result = mysql_query($query);
 	$row = mysql_fetch_array($result);
 	$adId = $row[0];
-	print_r($row);
-
+	
 	/* Create tags */
-	print_r($_POST['keyword']);
+	
 	$keyword = $_POST['keyword'];
 
 	for ($i = 1; $i <= 10; $i++) {
-		if (isset($keyword[$i]) && $keyword[$i] != "") {
+		if ($keyword[$i] != "") {
 			$query = "INSERT INTO tag (adId, keyword) VALUE ($adId, $keyword[$i])";
-			mysql_query($query);
+			echo mysql_query($query);
 		}
 	}
 
