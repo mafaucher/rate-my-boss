@@ -66,12 +66,12 @@ if (isset($stype)) {
 			<h3>Organization Evaluations</h3>
 			";
 	
-		$query = "SELECT e.orgId, e.orgEvalId, e.title FROM orgEvaluation e JOIN orgComment c ON (e.orgEvalId=c.orgEvalId) WHERE e.title LIKE '%$_GET[search]%' OR e.text LIKE '%$_GET[search]%' OR c.text LIKE '%$_GET[search]%' GROUP BY e.orgId";
+		$query = "SELECT e.orgId, e.orgEvalId, e.title FROM orgEvaluation e LEFT JOIN orgComment c ON (e.orgEvalId=c.orgEvalId) WHERE e.title LIKE '%$_GET[search]%' OR e.text LIKE '%$_GET[search]%' OR c.text LIKE '%$_GET[search]%' GROUP BY e.orgEvalId";
 		$result = mysql_query($query);
 	
 		while ($row = mysql_fetch_array($result)) {
 			echo "
-				<p><a href='index.php?page=evaluation&id=$row[orgEvalId]&orgId=$row[orgId]'>$row[title]</a></p>
+				<p><a href='index.php?page=evaluationid&orgEvalId=$row[orgEvalId]&orgId=$row[orgId]'>$row[title]</a></p>
 				";
 		}
 	}
@@ -83,8 +83,25 @@ if (isset($stype)) {
 	if (in_array("super", $stype)) {
 
 	}
+	
+	/* Search by Supervisor evaluations */
+
+	if (in_array("superEval", $stype)) {
+		echo "
+			<h3>Supervisor Evaluations</h3>
+			";
+		$query = "SELECT s.orgId, e.superId, e.superEvalId, e.title FROM superEvaluation e LEFT JOIN superComment c ON (e.superEvalId=c.superEvalId) JOIN supervisor s ON (e.superId=s.superId) WHERE e.title LIKE '%$_GET[search]%' OR e.text LIKE '%$_GET[search]%' OR c.text LIKE '%$_GET[search]%' GROUP BY e.superEvalId";
+		$result = mysql_query($query);
+	
+		while ($row = mysql_fetch_array($result)) {
+			echo "
+				<p><a href='index.php?page=evaluationid&superEvalId=$row[superEvalId]&orgId=$row[orgId]&superId=$row[superId]'>$row[title]</a></p>
+				";
+		}
+	}
+
 }
-$query = "SELECT organization WHERE";
+
 
 include "../php/closedb.php";
 
