@@ -37,7 +37,6 @@ if ($row = mysql_fetch_array($result)) {
 		<p><strong>City:</strong> $row[city] </p>
 		<p><strong>State/Province:</strong> $row[state] </p>
 		<p><strong>Country:</strong> $row[country] </p>
-		<p><strong>Postal Code:</strong> $row[postalCode] </p>
 		<p><strong>Website:</strong> $row[website] </p> <br />
 		";
 	
