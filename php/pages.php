@@ -27,13 +27,13 @@ case "agent":
 	$pageArray["advertisement"] = "../php/pages/advertisement.php";
 	$pageArray["advertisementid"] = "../php/pages/advertisementid.php";
 	$pageArray["adform"] = "../php/pages/adform.php";
+	$pageArray["business"] = "../php/pages/business.php";
 	break;
 case "admin":
 	$pageArray["siteadmin"] = "../php/pages/siteadmin.php";
 	break;
 case "finance":
 	$pageArray["financeadmin"] = "../php/pages/financeadmin.php";
-	$pageArray["business"] = "../php/pages/business.php";
 	break;
 case "registered":
 	break;
