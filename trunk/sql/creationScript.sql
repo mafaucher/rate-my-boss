@@ -338,39 +338,27 @@ INSERT INTO orgEvaluation (orgId, title, text, reported, uString) values
 
 
 # ORGANIZATION COMMENTS
-**********************
-# ORGANIZATION COMMENT
-
-drop table orgComment;
-create table orgComment
-(
-orgCommentId INT NOT NULL AUTO_INCREMENT,
-orgEvalId INT NOT NULL,
-text VARCHAR(600) NOT NULL,
-reported INT NOT NULL,
-uString CHAR(32) NOT NULL,
-PRIMARY KEY (orgCommentId),
-FOREIGN KEY (orgEvalId) REFERENCES orgEvaluation
-);
-
-
-
-***********************
-# NOT PENDING: 1 = Bell, 2 = Google, 3 = Hydro-Québec, 4 = Microsoft, 5 = Telus, 6 = Disney, 7 = BASF,
-# IS PENDING:  8 = Rogers, 9 = FedEx, 10 = Molson
 
 INSERT INTO orgComment (orgCommentId, orgEvalId, text, reported, uString) values
 (1, 1, "Satisfied with general performance od the company.", 0, ""),
-(2, 2, "Very Satisfied since it cares about every aspect of the life.", 0, ""),
-(3, 3, "Dissatisfied! their response is slow", 0, ""),
-(4, 4, "Very Disstisfied, they do not have a real customer services!", 0, ""),
-(5, 5, "Dissatisfied! This companies ratings are too high!", 0, ""),
-(6, 6, "Satisfied: It bring the happiness specially to children.", 0, ""),
-(7, 7, "Very Satisfied because of their fast reply to their customers.", 0, "");
-
-
-
-
+(2, 1,"Satisfied", 0, ""),
+(3, 1,"Dissatisfied since their charge a lot!!!", 0, ""),
+(4, 2, "Very Satisfied since it cares about every aspect of the life.", 0, ""),
+(5, 2, "Very Satisfied of their services.", 0, ""),
+(6, 2, "Satisfied. They have anything that we look for.", 0, ""),
+(7, 3, "Dissatisfied! their response is slow", 0, ""),
+(8, 3, "Satisfied.", 0, ""),
+(9, 4, "Very Disstisfied!!! they do not have a real customer services!", 0, ""),
+(9, 4, "Disstisfied!!! they do not have a real customer services!", 0, ""),
+(10, 4, "Satisfied, they have the best products.", 0, ""),
+(11, 4, "Very Satisfied of their services.", 0, ""),
+(12, 5, "Dissatisfied! This companies ratings are too high!", 0, ""),
+(13, 5, "Dissatisfied! They charge a lot!", 0, ""),
+(14, 5, "Satisfied.", 0, ""),
+(15, 6, "Satisfied: It bring the happiness specially to children.", 0, ""),
+(16, 6, "Satisfied since it keeps children happy.", 0, ""),
+(18, 6, "Satisfied: It bring the happiness specially to children.", 0, ""),
+(17, 7, "Very Satisfied because of their fast reply to their customers.", 0, "");
 
 
 
