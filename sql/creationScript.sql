@@ -372,6 +372,100 @@ insert into rating (orgId, socialValues, professionalism, openness, encouraging,
 (7, 5, 8, 6, 8, 4, 8, 3, 6, 8, 5, 5, 9, 7, 3, 8, 6, 6, 7, 'db79bf8cfc21217fff4507e17181f97f');
 
 
+
+# ORGANIZATION EVALUATION
+
+INSERT INTO orgEvaluation (orgId, title, text, reported, uString) values
+(1, "Great company!", "I love working for this company because I get free internet and calling with them. That`s all I really need in life.", 0, ""),
+(1,"I do not like to work here", "There is a lot of workforce and stress!!!", 0, ""),
+(1,"Love to work for it", "I want to work for this company since there are a lot of progress opportunity.", 0, ""),
+(2,"Love working for this company", "I love working for this company because it has a friedly environment.", 0, ""),
+(2, "I am so lucky to work here","This company has everyday life need services in it",0,""),
+(3, "Bad company!", "I am not happy with this company since it doesn`t provide any promotion for its employees.", 0, ""),
+(3,"A good place", "As employees request is done, everything is provided to do so.", 0, ""),
+(4, "The best company in the world!", "Whenver you are in this company, you feel you are at home, this makes everyone to work more efficiently.", 0, ""),
+(4, "Lucky to work here.","We have the best bosses and supervisors", 0, ""),
+(5, "No doubt about its greatness", "You have every thing that you need in one place...that`s our workplace.", 0, ""),
+(5, "I do not like this company!","In this company minorities are treaded differently!!!", 0, ""),
+(6, "Best one in my city", "You are always treated like a guest", 0, ""),
+(6, "Most Enjoable Place: that is my workplace", "In this company everthing attracks you to be there", 0, ""),
+(7, "I do not like working here", "My workplace is full of stress", 0, ""),
+(7, "I want to for this company", "I learn a lot of interesting things here.", 0, "");
+
+
+
+# SUPERVISOR EVALUATION
+ 
+INSERT INTO superEvaluation(superId, title, text, reported, uString) values
+(1, "Great CEO!", "I love working for this CEO because of his friendliness. ", 0, ""),
+(4, "Best President!", "I love working for this  President because of his friendliness.", 0, ""),
+(5, "Great VP External!", "I like him, he is so kind.", 0, ""),
+(6, "Not a good VP Internal!", "This VP Internal is lazy.", 0, ""),
+(7, "Great VP Social!", "I love working with him, he is so helpful in every aspect.", 0, ""),
+(8, "Lazy VP Affairs!", "This VP Affairs doen`t care about those who are in it.", 0, ""),
+(9, "Bad VP Finance!", " This VP Finance can do better tham this but he doesn`t try.", 0, ""),
+(10, "Great VP Marketing!", "I enjoy working with this VP Marketing because of his brilliant ideas.", 0, "");
+
+
+
+# ORGANIZATION COMMENTS
+
+INSERT INTO orgComment (orgCommentId, orgEvalId, text, reported, uString) values
+(1, 1, "Satisfied with general performance od the company.", 0, ""),
+(2, 1,"Satisfied", 0, ""),
+(3, 1,"Dissatisfied since their charge a lot!!!", 0, ""),
+(4, 2, "Very Satisfied since it cares about every aspect of the life.", 0, ""),
+(5, 2, "Very Satisfied of their services.", 0, ""),
+(6, 2, "Satisfied. They have anything that we look for.", 0, ""),
+(7, 3, "Dissatisfied! their response is slow", 0, ""),
+(8, 3, "Satisfied.", 0, ""),
+(9, 4, "Very Disstisfied!!! they do not have a real customer services!", 0, ""),
+(9, 4, "Disstisfied!!! they do not have a real customer services!", 0, ""),
+(10, 4, "Satisfied, they have the best products.", 0, ""),
+(11, 4, "Very Satisfied of their services.", 0, ""),
+(12, 5, "Dissatisfied! This companies ratings are too high!", 0, ""),
+(13, 5, "Dissatisfied! They charge a lot!", 0, ""),
+(14, 5, "Satisfied.", 0, ""),
+(15, 6, "Satisfied: It bring the happiness specially to children.", 0, ""),
+(16, 6, "Satisfied since it keeps children happy.", 0, ""),
+(18, 6, "Satisfied: It bring the happiness specially to children.", 0, ""),
+(17, 7, "Very Satisfied because of their fast reply to their customers.", 0, "");
+
+
+******************************
+
+# SUPERVISOR COMMENT
+
+drop table superComment;
+create table superComment
+(
+superCommentId INT NOT NULL AUTO_INCREMENT,
+superEvalId INT NOT NULL,
+text VARCHAR(600) NOT NULL,
+reported INT NOT NULL,
+uString CHAR(32) NOT NULL,
+PRIMARY KEY (superCommentId),
+FOREIGN KEY (superEvalId) REFERENCES superEvaluation
+);
+
+******************************
+
+
+# SUPERVISOR COMMENT
+INSERT INTO orgComment (superEvalId, text, reported, uString) values
+(1,"Very nice supervisor I`ve ever seen.", 0, ),
+(1,"My supervisor always is a side of help whenever ther is a problem.", 0, ),
+(4,"Very hardworking and active.", 0, ),
+(4,"Affectionate person.", 0, ),
+(5,"Very curious.", 0, ),
+(6,"Lazy!", 0, ), 
+(7,"My Supervisor is Fabulous!", 0, ), 
+(8,"Strict but kind.", 0, ),
+(9,"This supervisor expect a lot and never rewards anyone!", 0, ),
+(10, "Not a polite person!", 0, );
+
+
+
 # DOCUMENT COMMENT 
 
 INSERT INTO docComment (docId, text, reported, uString) values
@@ -399,65 +493,17 @@ INSERT INTO docComment (docId, text, reported, uString) values
 (7, "What an informative document!", 0, "")
 ;
 
-# ORGANIZATION EVALUATION
-
-INSERT INTO orgEvaluation (orgId, title, text, reported, uString) values
-(1, "Great company!", "I love working for this company because I get free internet and calling with them. That`s all I really need in life.", 0, ""),
-(1,"I do not like to work here", "There is a lot of workforce and stress!!!", 0, ""),
-(1,"Love to work for it", "I want to work for this company since there are a lot of progress opportunity.", 0, ""),
-(2,"Love working for this company", "I love working for this company because it has a friedly environment.", 0, ""),
-(2, "I am so lucky to work here","This company has everyday life need services in it",0,""),
-(3, "Bad company!", "I am not happy with this company since it doesn`t provide any promotion for its employees.", 0, ""),
-(3,"A good place", "As employees request is done, everything is provided to do so.", 0, ""),
-(4, "The best company in the world!", "Whenver you are in this company, you feel you are at home, this makes everyone to work more efficiently.", 0, ""),
-(4, "Lucky to work here.","We have the best bosses and supervisors", 0, ""),
-(5, "No doubt about its greatness", "You have every thing that you need in one place...that`s our workplace.", 0, ""),
-(5, "I do not like this company!","In this company minorities are treaded differently!!!", 0, ""),
-(6, "Best one in my city", "You are always treated like a guest", 0, ""),
-(6, "Most Enjoable Place: that is my workplace", "In this company everthing attracks you to be there", 0, ""),
-(7, "I do not like working here", "My workplace is full of stress", 0, ""),
-(7, "I want to for this company", "I learn a lot of interesting things here.", 0, "");
 
 
-# ORGANIZATION COMMENTS
+# TAG -(adId is the order in which you added the ads)
 
-INSERT INTO orgComment (orgCommentId, orgEvalId, text, reported, uString) values
-(1, 1, "Satisfied with general performance od the company.", 0, ""),
-(2, 1,"Satisfied", 0, ""),
-(3, 1,"Dissatisfied since their charge a lot!!!", 0, ""),
-(4, 2, "Very Satisfied since it cares about every aspect of the life.", 0, ""),
-(5, 2, "Very Satisfied of their services.", 0, ""),
-(6, 2, "Satisfied. They have anything that we look for.", 0, ""),
-(7, 3, "Dissatisfied! their response is slow", 0, ""),
-(8, 3, "Satisfied.", 0, ""),
-(9, 4, "Very Disstisfied!!! they do not have a real customer services!", 0, ""),
-(9, 4, "Disstisfied!!! they do not have a real customer services!", 0, ""),
-(10, 4, "Satisfied, they have the best products.", 0, ""),
-(11, 4, "Very Satisfied of their services.", 0, ""),
-(12, 5, "Dissatisfied! This companies ratings are too high!", 0, ""),
-(13, 5, "Dissatisfied! They charge a lot!", 0, ""),
-(14, 5, "Satisfied.", 0, ""),
-(15, 6, "Satisfied: It bring the happiness specially to children.", 0, ""),
-(16, 6, "Satisfied since it keeps children happy.", 0, ""),
-(18, 6, "Satisfied: It bring the happiness specially to children.", 0, ""),
-(17, 7, "Very Satisfied because of their fast reply to their customers.", 0, "");
-
-
-
-# SUPERVISOR EVALUATION
- 
-
-INSERT INTO superEvaluation(superId, title, text, reported, uString) values
-(1, "Great CEO!", "I love working for this CEO because of his friendliness. ", 0, ""),
-(4, "Best President!", "I love working for this  President because of his friendliness.", 0, ""),
-(5, "Great VP External!", "I like him, he is so kind.", 0, ""),
-(6, "Not a good VP Internal!", "This VP Internal is lazy.", 0, ""),
-(7, "Great VP Social!", "I love working with him, he is so helpful in every aspect.", 0, ""),
-(8, "Lazy VP Affairs!", "This VP Affairs doen`t care about those who are in it.", 0, ""),
-(9, "Bad VP Finance!", " This VP Finance can do better tham this but he doesn`t try.", 0, ""),
-(10, "Great VP Marketing!", "I enjoy working with this VP Marketing because of his brilliant ideas.", 0, "");
-
-
+insert into tag (adId, keyword) values
+(1, "job"), (1, "find"), (1, "today"), (1,"jobboom"),
+(2, "recruit"), (2, "employee"), (2, "job"), (2,"easy"),
+(3, "shot"), (3, "sony"), (3,"unforgeteable "), (3, "sweep"),
+(4, "picture"), (4, "sony"),(4,"ever"), 
+(5, "resume"), (5, "monster"),(5, "search"), (5, "job"),(5, "Thousands"),
+(10,"CHEVROLET"),(10,"competition"),(10,"Car"),(10,"behind");
 
 
 # User
@@ -481,24 +527,6 @@ insert into user (name, password, type, question1, question2, question3, answer1
 ("public", "f998eea644728e3a11925c3c8a40c48a", "registered", "", "", "", "", "", "", 0);
 
 
-
-# Business
-# Users 5, 7, 8, 9, 10 has a business
-# User 6 (googleads) does not
-
-insert into business (userId, name, address, city, state, country, website, contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail) values
-(5, "Canoe inc.", "333 King Street East", "Toronto", "Ontario", "Canada", "www.canoe.ca", "Tom Setzer", "(877) 448-4434 X 6150", "(416) 350-6150", "(416) 350-6238", "Representative of Online Services", "info@canoe.ca");
-
-# Business New Version
-# Only Users 5, 7, 8, 9, 10 has a business
-
-insert into business (userId, name, website, contactName) values
-(7,"Shopping Channel place that you find everything", "www.theshoppingchannel.com", "Kryzstof Moullan"),
-(8,"SONY make & believe", "www.sony.ca", "Allan Smith"),
-(9,"Monster job search", "www.jobsearch.monster.ca", "Richard Cygan"),
-(10,"Car Company", "www.GM.ca/Chevrolet", "Bill Acemian" );
- 
-
 # Ad
 
 insert into ad (userId, content, counter, cost, isPending) values
@@ -516,15 +544,22 @@ insert into ad (userId, content, counter, cost, isPending) values
 
 
 
-# TAG -(adId is the order in which you added the ads)
+# Business
+# Users 5, 7, 8, 9, 10 has a business
+# User 6 (googleads) does not
 
-insert into tag (adId, keyword) values
-(1, "job"), (1, "find"), (1, "today"), (1,"jobboom"),
-(2, "recruit"), (2, "employee"), (2, "job"), (2,"easy"),
-(3, "shot"), (3, "sony"), (3,"unforgeteable "), (3, "sweep"),
-(4, "picture"), (4, "sony"),(4,"ever"), 
-(5, "resume"), (5, "monster"),(5, "search"), (5, "job"),(5, "Thousands"),
-(10,"CHEVROLET"),(10,"competition"),(10,"Car"),(10,"behind");
+insert into business (userId, name, address, city, state, country, website, contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail) values
+(5, "Canoe inc.", "333 King Street East", "Toronto", "Ontario", "Canada", "www.canoe.ca", "Tom Setzer", "(877) 448-4434 X 6150", "(416) 350-6150", "(416) 350-6238", "Representative of Online Services", "info@canoe.ca");
+
+# Business New Version
+# Only Users 5, 7, 8, 9, 10 has a business
+
+insert into business (userId, name, website, contactName) values
+(7,"Shopping Channel place that you find everything", "www.theshoppingchannel.com", "Kryzstof Moullan"),
+(8,"SONY make & believe", "www.sony.ca", "Allan Smith"),
+(9,"Monster job search", "www.jobsearch.monster.ca", "Richard Cygan"),
+(10,"Car Company", "www.GM.ca/Chevrolet", "Bill Acemian" );
+ 
 
 
 
