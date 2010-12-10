@@ -1,5 +1,7 @@
 # Rate my Boss SQL creation script
 
+# ********************************* Start Creating the Tables *********************************
+
 # ORGANIZATION
 
 drop table organization;
@@ -252,6 +254,7 @@ FOREIGN KEY (userId) REFERENCES user
 );
 
 # ********************************* Start filling into the tables *********************************
+
 # ORGANIZATION
 
 # INSERT VALUES
@@ -275,27 +278,99 @@ insert into organization (name, industryType, city, province, website, numberofE
 insert into supervisor (orgId, title, isPending) values
 (1, 'CEO', 0),
 (1, 'Janitor', 1),
+
+(1, 'Manager', 0),
+(1, 'VP External', 0 ),
+(1, 'VP Social', 0 ),
+(1, 'VP Marketing', 0 ),
+
 (2, 'BossofallBosses', 1),
 (2, 'President',0),
-(2, 'VP External', 0 ),
+
+(2, 'CEO', 0 ),
+(2, 'Manager', 0 ),
+(2, 'Boss', 1 ),
+(2, 'CFO', 0 ),
+(2, 'VP Finance', 0 ),
+
 (3, 'VP Internal',0),
+
+(3, 'CEO',0),
+(3, 'VP Internal',0),
+(3, 'Manager',1),
+(3, 'VP Finance',0),
+
 (4, 'VP Social', 0),
+
+(4, 'CEO', 0),
+(4, 'Manager', 0),
+(4, 'Boss', 0),
+(4, 'VP Social', 1),
+(4, 'CFO', 0),
 (4, 'VP Affairs', 0),
+
+(5, 'CEO',0),
+(5, 'Janitor',0),
+(5, 'Manager',0),
 (5, 'VP Finance',0),
-(6, 'VP Marketing', 0);
+(5, 'VP Internal',0),
+
+(6, 'CEO', 0),
+(6, 'CFO', 1),
+(6, 'Manager', 0),
+(6, 'VP Marketing', 0),
+(6, 'VP Social', 0),
+(6, 'VP Affairs', 0);
 
 
-# DOCUMENT - when a document is uploaded it will exist in the documents folder yet may not come up on the site until it is no longer pending
+# DOCUMENT - when a document is uploaded it will exist in the documents folder yet may not come up on the site until it # is no longer pending
 
 INSERT INTO document (orgId, title,filename, reported) values
-(1, "Bell gives you access to Canada`s best network", "Bell.txt", 0),
-(1, "Bell PDF details", "Bell.pdf", 0),
+(1, "Bell gives you access to Canada`s best network", "Bell.pdf", 0),
 (2, "Google : the best search engine","Google.pdf", 0),
-(3, "Hydro-Qubec keeping Quebec power rates among the lowest in North America","Hydro-Quebec.txt", 0),
-(4, "Microsoft dominate the office suit market with Microsoft Office","Microsoft.txt", 0),
-(5, "Telus :  Canada`s second largest telcom with 22% of market share","Telus.txt", 0),
+(3, "Hydro-Qubec keeping Quebec power rates among the lowest in North America","Hydro-Quebec.pdf", 0),
+(4, "Microsoft dominate the office suit market with Microsoft Office","Microsoft.pdf", 0),
+(5, "Telus :  Canada`s second largest telcom with 22% of market share","Telus.pdf", 0),
 (6, "Disney : largest media and entertainment conglomerate in the world in terms of revenue","Disney.pdf", 0),
-(7, " BASF is the world\'b4s leading chemical company","BASF.pdf", 1);
+(7, " BASF is the worlds leading chemical company","BASF.pdf", 1);
+
+
+# Ratings 
+#uString = md5(rating#)
+
+insert into rating (orgId, socialValues, professionalism, openness, encouraging, acceptance, recognition, qualityWorkplace, fairness, cooperation, rewardSystem, fairWages, qualityBenefits, supportEmployees, levelStress, levelCollegiality, levelBureaucracy, advancement, supportFamily, uString) values
+(1, 5, 8, 8, 6, 4, 9, 8, 6, 7, 7, 9, 6, 5, 4, 7, 6, 8, 9, '05406e0d07c96b6e2c622a901d4b9f52'),
+(1, 7, 8, 1, 3, 5, 9, 8, 2, 8, 3, 6, 5, 8, 4, 5, 6, 1, 3, 'e329b60baaecdcfad0a15662bf1a949c'),
+(1, 6, 8, 5, 9, 6, 8, 6, 3, 8, 7, 8, 6, 7, 3, 8, 7, 7, 8, '59cf43803003a8ccad9e5147dd4e93e2'),
+
+(2, 6, 8, 5, 9, 5, 7, 6, 3, 9, 6, 8, 7, 8, 3, 9, 6, 6, 9, '26f4a71ab712f352d003b91a7f91702e'),
+(2, 7, 9, 3, 8, 6, 8, 5, 4, 7, 8, 8, 7, 9, 4, 7, 5, 7, 8, 'f7c90596d2b3675b0f1cd96316dc4245'),
+(2, 5, 8, 4, 9, 6, 9, 7, 3, 8, 7, 8, 6, 8, 2, 9, 5, 6, 9, '7f510eafe4050dd783b2920e88e583f4'),
+
+(3, 5, 9, 9, 5, 3, 7, 4, 5, 9, 7, 5, 6, 8, 3, 9, 4, 7, 7, '2247eab1fcc1c01d132636d789d463e5'),
+(3, 6, 7, 8, 4, 4, 8, 5, 5, 8, 7, 7, 6, 9, 5, 9, 5, 5, 9, '299a1cb2a1bbee8155e8ffd353314203'),
+(3, 5, 8, 8, 5, 4, 8, 3, 6, 8, 7, 6, 7, 8, 3, 9, 5, 6, 8, '81e1931f40c48a03fe2084e3f4bb4e77'),
+
+(4, 2, 8, 8, 4, 6, 8, 9, 6, 8, 7, 6, 9, 7, 4, 8, 5, 6, 9, '655d47cf266f66b444cec30220f08924'),
+(4, 3, 6, 8, 1, 8, 9, 7, 4, 7, 7, 5, 9, 7, 5, 7, 5, 5, 8, 'b53d8f9c9a2d3bf366547d481eb441e7'),
+(4, 5, 7, 8, 2, 6, 8, 8, 6, 8, 7, 7, 8, 9, 3, 8, 5, 6, 8, '7c0f3e6d9526f1654200eb11748e74f6'),
+
+(5, 8, 1, 3, 5, 9, 7, 2, 9, 3, 7, 8, 7, 6, 8, 8, 3, 9, 4, '28315385bae4811470b3a2235cb3579e'),
+(5, 6, 8, 8, 5, 4, 8, 3, 6, 8, 7, 6, 7, 8, 3, 9, 5, 6, 8, '81003c3f700365a834fefa40118c005a'),
+(5, 7, 8, 7, 5, 4, 8, 3, 6, 9, 6, 6, 7, 8, 3, 9, 5, 6, 8, '2e624521d9cb3c884095c86902c9e243'),
+(5, 6, 7, 8, 4, 4, 8, 4, 6, 8, 7, 7, 9, 4, 7, 5, 7, 5, 8, '0cfe164cbd77fd93c8f486a2979d4311'),
+
+(6, 5, 8, 9, 5, 4, 8, 3, 5, 7, 7, 6, 7, 8, 3, 9, 5, 6, 8, 'ceaa34364450c02708cf957d47dbe60d'),
+(6, 5, 8, 7, 5, 4, 8, 3, 4, 7, 6, 6, 7, 8, 3, 9, 5, 6, 8, '23a51a3198453e3413fd5e8e607e032b'),
+(6, 7, 8, 5, 3, 5, 9, 8, 5, 8, 4, 6, 5, 8, 4, 5, 6, 1, 3, '10df65e02a503564a7260f666e15779c'),
+(6, 5, 8, 7, 5, 4, 8, 3, 7, 9, 5, 6, 7, 8, 3, 9, 5, 6, 8, '60379b91a5acaaa8b914da0cd66d133f'),
+
+(7, 5, 8, 4, 9, 6, 9, 7, 3, 8, 7, 8, 6, 7, 2, 7, 5, 6, 9, '5bd041af6946bebb39623cf7cf6eeba4'),
+(7, 6, 8, 4, 6, 4, 8, 3, 6, 8, 8, 6, 7, 8, 3, 9, 7, 6, 8, '6570c2548deff8acb92170c31d2de132'),
+(7, 7, 8, 7, 7, 4, 8, 3, 5, 9, 6, 9, 8, 7, 3, 8, 6, 6, 9,  'e53c5a7db05d499a68334f75fea6ac25'),
+(7, 5, 8, 7, 7, 4, 8, 3, 5, 8, 7, 6, 7, 8, 3, 9, 5, 6, 7, 'c7f875008dd60e0c10fa3ec08d76dd1e'),
+(7, 5, 8, 6, 8, 4, 8, 3, 6, 8, 5, 5, 9, 7, 3, 8, 6, 6, 7, 'db79bf8cfc21217fff4507e17181f97f');
+
 
 # DOCUMENT COMMENT 
 
@@ -383,19 +458,7 @@ INSERT INTO superEvaluation(superId, title, text, reported, uString) values
 (10, "Great VP Marketing!", "I enjoy working with this VP Marketing because of his brilliant ideas.", 0, "");
 
 
-#Ratings - All the uStrings are modified
-#uString = md5(rating#)
 
-insert into rating (orgId, socialValues, professionalism, openness, encouraging, acceptance, recognition, qualityWorkplace, fairness, cooperation, rewardSystem, fairWages, qualityBenefits, supportEmployees, levelStress, levelCollegiality, levelBureaucracy, advancement, supportFamily, uString) values
-(1, 5, 8, 8, 6, 4, 9, 8, 6, 7, 7, 9, 6, 5, 4, 7, 6, 8, 9, '05406e0d07c96b6e2c622a901d4b9f52'),
-(1, 7, 8, 1, 3, 5, 9, 8, 2, 8, 3, 6, 5, 8, 4, 5, 6, 1, 3, 'e329b60baaecdcfad0a15662bf1a949c'),
-(1, 6, 8, 5, 9, 6, 8, 6, 3, 8, 7, 8, 6, 7, 3, 8, 7, 7, 8, '59cf43803003a8ccad9e5147dd4e93e2'),
-(2, 6, 8, 5, 9, 5, 7, 6, 3, 9, 6, 8, 7, 8, 3, 9, 6, 6, 9, '26f4a71ab712f352d003b91a7f91702e'),
-(2, 7, 9, 3, 8, 6, 8, 5, 4, 7, 8, 8, 7, 9, 4, 7, 5, 7, 8, 'f7c90596d2b3675b0f1cd96316dc4245'),
-(2, 5, 8, 4, 9, 6, 9, 7, 3, 8, 7, 8, 6, 8, 2, 9, 5, 6, 9, '7f510eafe4050dd783b2920e88e583f4'),
-(3, 5, 9, 9, 5, 3, 7, 4, 5, 9, 7, 5, 6, 8, 3, 9, 4, 7, 7, '2247eab1fcc1c01d132636d789d463e5'),
-(3, 6, 7, 8, 4, 4, 8, 5, 5, 8, 7, 7, 6, 9, 5, 9, 5, 5, 9, '299a1cb2a1bbee8155e8ffd353314203'),
-(3, 5, 8, 8, 5, 4, 8, 3, 6, 8, 7, 6, 7, 8, 3, 9, 5, 6, 8, '81e1931f40c48a03fe2084e3f4bb4e77');
 
 # User
 
