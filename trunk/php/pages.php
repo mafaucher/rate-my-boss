@@ -31,6 +31,7 @@ case "agent":
 	break;
 case "admin":
 	$pageArray["siteadmin"] = "../php/pages/siteadmin.php";
+	$pageArray["siteadminid"] = "../php/pages/siteadminid.php";
 	break;
 case "finance":
 	$pageArray["financeadmin"] = "../php/pages/financeadmin.php";

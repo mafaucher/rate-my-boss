@@ -90,6 +90,15 @@ else {
 				$_COOKIE["usertype"] = $usertype;
 				$_COOKIE["userid"] = $userid;
 			}
+
+			/* Log user login */
+			include "../php/opendb.php";
+		
+			$query = "INSERT INTO userActivity (userId, type) VALUE ($userid, 'login')";
+			$result = mysql_query($query);
+
+			include "../php/closedb.php";
+			
 		}
 		/* password does not match */
 		else {

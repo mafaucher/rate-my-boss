@@ -52,7 +52,7 @@ if ($row = mysql_fetch_array($result)) {
 
 	echo "<p>(<a href='index.php?page=business'>Change information</a>)</p>";
 	
-	/* TODO: Display specific ad detail and allow purchasing additional funds */
+	/* Display specific ad detail and allow purchasing additional funds */
 
 	include "../php/opendb.php";
 
@@ -74,12 +74,13 @@ if ($row = mysql_fetch_array($result)) {
 			echo " <em>Financial administrators are awaiting $$row[cost] for this ad.</em><br />";
 		}
 		echo "				Last viewed: $row[lastView] <br />
+							Ad hits: $row[hits] <br />
 							Remaining views: $row[counter] <br />
 							<strong>$row[content]</strong></li><br />";
 	}
 
-	/* New ad button and form (TODO: validate and confirm price ) */
-
+	/* New ad button and form (TODO: js validate and confirm price ) */
+ 
 	echo "		<a href='index.php?page=adform'><button type='button'>Add a New Ad</button></a>\n";
 
 	echo "

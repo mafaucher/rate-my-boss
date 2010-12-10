@@ -30,20 +30,6 @@ if (isset($_POST['cost'])) {
 
 include "../php/opendb.php";
 
-$query = "SELECT adId FROM ad WHERE cost>0 ORDER BY userId";
-$result = mysql_query($query);
-
-while ($row = mysql_fetch_array($result)) {
-	if (isset($_POST["confirm_$row[adId]"])) {
-		$subquery = "UPDATE ad SET cost=0 WHERE adId=$row[adId]";
-		mysql_query($subquery);
-	}
-	else if (isset($_POST["deny_$row[adId]"])) {
-		$subquery = "DELETE FROM ad WHERE adId=$row[adId]";
-		mysql_query($subquery);
-	}
-}
-
 /* Get Price */
 
 $query = "SELECT adPrice FROM administrator";
@@ -57,7 +43,7 @@ include "../php/closedb.php";
 
 echo "
 			<form name='adPrice' action='' method='post'>
-			<p><strong>The current cost per ad is:</strong>:
+			<p><strong>The current cost per ad is</strong>:  $
 			<input class='adPrice' type='text' name='cost' value='$adPrice'/>
 			<input type='submit' name='subbusiness' value='Update the Price' /></p>
 			</form>
@@ -74,14 +60,30 @@ echo "
 			<ul>
 	";
 
-/* Pending ads */
+/* Confirm or deny */
 
 include "../php/opendb.php";
 
 $query = "SELECT * FROM ad WHERE cost>0 ORDER BY userId";
 $result = mysql_query($query);
 
-/* List of ads and allow or deny options */
+while ($row = mysql_fetch_array($result)) {
+	if (isset($_POST["confirm_$row[adId]"])) {
+		$subquery = "UPDATE ad SET cost=0, isPending=0 WHERE adId=$row[adId]";
+		mysql_query($subquery);
+
+		$subquery = "INSERT INTO financialActivity (userId, type, amount) value ('$row[adId]', 'Ad Revenu', $row[cost])";
+		mysql_query($subquery);
+	}
+	else if (isset($_POST["deny_$row[adId]"])) {
+		$subquery = "DELETE FROM ad WHERE adId=$row[adId]";
+		mysql_query($subquery);
+	}
+}
+
+/* Pending ads */
+
+$result = mysql_query($query);
 
 $currentUser = 0;
 $totalPerUser = 0;
@@ -121,6 +123,46 @@ while ($row = mysql_fetch_array($result)) {
 /* Close the Last User's list item */
 
 echo "<strong>Total: $$totalPerUser</strong></li><br />";
+
+/* Financial Activity */
+
+$query = "SELECT f.time, b.contactName, f.type, f.amount FROM financialActivity f JOIN business b ON f.userId=b.userId";
+$result = mysql_query($query);
+
+$totalAmount = 0.0;
+
+echo "
+	<h3>Financial Activity</h3>
+	
+	<table border='1'>
+	<tr>
+	<td><strong>Time</strong></td>
+	<td><strong>Contact Name</strong></td>
+	<td><strong>Transaction Type</strong></td>
+	<td><strong>Amount</strong></td>
+	</tr>
+	";
+
+while ($row = mysql_fetch_array($result)) {
+	
+	$totalAmount += $row['amount'];
+	echo "
+		<tr>
+		<td>$row[time]</td>
+		<td>$row[contactName]</td>
+		<td>$row[type]</td>
+		<td>$row[amount]</td>
+		</tr>";
+}
+echo "
+	<tr>
+	<td></td>
+	<td></td>
+	<td><strong>Total:</strong></td>
+	<td><strong>$$totalAmount</strong></td>
+	</tr>
+	</table>
+	";
 
 include "../php/closedb.php";
 
