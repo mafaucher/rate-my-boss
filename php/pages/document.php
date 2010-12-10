@@ -7,7 +7,7 @@ echo"
 <ul class='listing'>";
 //Access document table
 $query = "SELECT * FROM document
-		WHERE orgId=$orgId AND NOT isPending";
+		WHERE orgId=$orgId";
 $result = mysql_query($query);
 
 // Prints the list of document titles with links

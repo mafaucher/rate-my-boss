@@ -80,7 +80,7 @@ $row = mysql_fetch_array($result);
 //Display evaluation
 echo"
 <h2>{$row[title]}</h2>
-<p class='evalText'>{$row[text]} <a href='index.php?page=evaluationid&$evalIdName=$evalId&report=eval'>report</a></p>
+<p class='evalText'>{$row[text]}<br /><a href='index.php?page=evaluationid&$evalIdName=$evalId&report=eval'>report</a></p>
 <br />
 <span class='score'>Comments:</span>
 ";
@@ -97,7 +97,7 @@ while($row = mysql_fetch_array($result))
 	$commentId = $row[$commentIdName];
     echo "
 		<div class='comment'>
-    		<p>{$row[text]}<a href='index.php?page=evaluationid&$evalIdName=$evalId&commentId=$commentId&report=comment'>report</a></p>
+    		<p>{$row[text]}<br /><a href='index.php?page=evaluationid&$evalIdName=$evalId&commentId=$commentId&report=comment'>report</a></p>
 		</div>
 		";
 }
