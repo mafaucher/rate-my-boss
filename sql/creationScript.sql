@@ -394,17 +394,19 @@ INSERT INTO orgEvaluation (orgId, title, text, reported, uString) values
 
 
 
+superEvaluation8
+
 # SUPERVISOR EVALUATION
  
 INSERT INTO superEvaluation(superId, title, text, reported, uString) values
-(1, "Great CEO!", "I love working for this CEO because of his friendliness. ", 0, ""),
-(4, "Best President!", "I love working for this  President because of his friendliness.", 0, ""),
-(5, "Great VP External!", "I like him, he is so kind.", 0, ""),
-(6, "Not a good VP Internal!", "This VP Internal is lazy.", 0, ""),
-(7, "Great VP Social!", "I love working with him, he is so helpful in every aspect.", 0, ""),
-(8, "Lazy VP Affairs!", "This VP Affairs doen`t care about those who are in it.", 0, ""),
-(9, "Bad VP Finance!", " This VP Finance can do better tham this but he doesn`t try.", 0, ""),
-(10, "Great VP Marketing!", "I enjoy working with this VP Marketing because of his brilliant ideas.", 0, "");
+(1, "Great CEO!", "I love working for this CEO because of his friendliness. ", 0, '26f46fe5e4e367268b1c0d916f1922e9'),
+(4, "Best President!", "I love working for this  President because of his friendliness.", 0, 'a3a44f697c566f0a990c1d75e4b50a2a'),
+(5, "Great VP External!", "I like him, he is so kind.", 0, '83868645516e52d8f42472a8316b19a7'),
+(6, "Not a good VP Internal!", "This VP Internal is lazy.", 0, '63a4853a4509bca0daa053f0e6da1d9d'),
+(7, "Great VP Social!", "I love working with him, he is so helpful in every aspect.", 0, '6097315e8058e2244161ee19ac850c91'),
+(8, "Lazy VP Affairs!", "This VP Affairs doen`t care about those who are in it.", 0, '1cfc521ed172bbc9c58bdfe731c9fdd5'),
+(9, "Bad VP Finance!", " This VP Finance can do better tham this but he doesn`t try.", 0, 'b1056621e6c61e60f01d9b987a9e44b2'),
+(10, "Great VP Marketing!", "I enjoy working with this VP Marketing because of his brilliant ideas.", 0, 'a4cf4bc461d0ad8a74abc1ac095109d9');
 
 
 
@@ -432,32 +434,13 @@ INSERT INTO orgComment (orgCommentId, orgEvalId, text, reported, uString) values
 (17, 7, "Very Satisfied because of their fast reply to their customers.", 0, "");
 
 
-******************************
 
 # SUPERVISOR COMMENT
-
-drop table superComment;
-create table superComment
-(
-superCommentId INT NOT NULL AUTO_INCREMENT,
-superEvalId INT NOT NULL,
-text VARCHAR(600) NOT NULL,
-reported INT NOT NULL,
-uString CHAR(32) NOT NULL,
-PRIMARY KEY (superCommentId),
-FOREIGN KEY (superEvalId) REFERENCES superEvaluation
-);
-
-******************************
-
-
-superComment10
-
-# SUPERVISOR COMMENT
-INSERT INTO orgComment (superEvalId, text, reported, uString) values
+INSERT INTO superComment (superEvalId, text, reported, uString) values
 (1,"Very nice supervisor I`ve ever seen.", 0, 'd88662833fb451129a5310e875d224b0'),
-(1,"My supervisor always is a side of help whenever ther is a problem.", 0,'b07b5288808b4750d55d042309fe083f' ),
-(4,"Very hardworking and active.", 0,'0391ed802567fa651c8c11f248598b85' ),
+(1,"My supervisor always is a side of help whenever ther is a problem.", 0,'b07b5288808b4750d55d042309fe083f'),
+
+(4,"Very hardworking and active.", 0,'0391ed802567fa651c8c11f248598b85'),
 (4,"Affectionate person.", 0,'8cf25fd52da993eaf8f75939e58d388e' ),
 (5,"Very curious.", 0,'9d237950ea15dd1841df6f4690e07c62' ),
 (6,"Lazy!", 0, '55112b596ed791cfd266c16e1f4400b2'), 
@@ -465,7 +448,6 @@ INSERT INTO orgComment (superEvalId, text, reported, uString) values
 (8,"Strict but kind.", 0, '8b2fe24bb281cb060b38947578f06e1f'),
 (9,"This supervisor expect a lot and never rewards anyone!", 0,'dcc5bf5cff0b4f8e87cbd100da408e0f' ),
 (10, "Not a polite person!", 0, 'b7fac821565e578354eb6a208e4e2ee9');
-
 
 
 # DOCUMENT COMMENT 
@@ -564,26 +546,13 @@ insert into business (userId, name, website, contactName) values
  
 
 
-
 # Administrator
 
 insert into administrator value (0, 0.1);
 
 
 
-*************
-# USER ACTIVITY
 
-drop table userActivity;
-create table userActivity
-(
-time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-userId INT NOT NULL,
-type VARCHAR(40) NOT NULL,
-PRIMARY KEY (time, userId, type),
-FOREIGN KEY (userId) REFERENCES user
-);
-************
 # USER ACTIVITY
 
 insert into userActivity (userId, type) values  
@@ -596,37 +565,15 @@ insert into userActivity (userId, type) values
 
 
 
-********************
-# FINANCIAL ACTIVITY
-
-drop table financialActivity;
-create table financialActivity
-(
-time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-userId INT NOT NULL,
-type VARCHAR(40) NOT NULL,
-amount DECIMAL(10,2) NOT NULL,
-PRIMARY KEY (time, userId, type),
-FOREIGN KEY (userId) REFERENCES user
-);
-
-
-*******************
 # FINANCIAL ACTIVITY
 
 insert into financialActivity (userId, type, amount) values
-(5, 'ad revenue'),
-(7, 'ad revenue'),
-(8, 'ad revenue'),
-(9, 'ad revenue'),
-(10,'ad revenue');
-
-
-
-
-
-
-
+(5, 'ad revenue', 0.02),
+(5, 'ad revenue', 3.00),
+(8, 'ad revenue', 0.30),
+(8, 'ad revenue', 50.00),
+(9, 'ad revenue', 0.40),
+(10,'ad revenue', 0.01);
 
 
 
