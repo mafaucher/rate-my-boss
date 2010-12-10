@@ -2,8 +2,8 @@
 
 	<div class="search">
 
-		<form action="" method="post">
-			<input class="searchbox" /> <input type="submit" name="subsearch" value="Search" />
+		<form action="index.php" method="get">
+			<input type="text" name="search" /> <input type="submit" value="Search" />
 		</form>
 
 	</div>
