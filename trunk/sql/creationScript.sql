@@ -324,17 +324,24 @@ insert into business (userId, name, address, city, state, country, website, cont
 # Ad
 
 insert into ad (userId, content, counter, cost, isPending) values
-(5, "Find a job on jobboom today!", 2, 0, 0),
-(5, "Recruit employees using jobboom's easy to use recruiting tools", 300, 3.0, 1),
-(8, "Shoot unforgeteable shot with a single sweep SONY",3,0, 0),
-(8, "Best pictures ever only with SONY ",500, 4.0, 1),
-(9, "Thousands of employers search resumes on Monster everyday!", 4, 0, 0),
+(5, "Find a job on jobboom today!", 2, 0.0, 0),
+(5, "Recruit employees using jobboom's easy to use recruiting tools", 300, 0.0, 0),
+(8, "Shoot unforgeteable shot with a single sweep SONY", 3, 0.0, 0),
+(8, "Best pictures ever only with SONY ",500, 0.0, 0),
+(9, "Thousands of employers search resumes on Monster everyday!", 4, 0.0, 0),
 (9, "Help employers to find you on Monster", 400, 3.0, 1),
 (9, "Make your resume searchable to employers only with Monster ", 200, 2.0, 1),
-(7, "Finding the best holidays present to your love one only at theshoppingchannel.com ", 5, 0, 0),
+(7, "Finding the best holidays present to your love one only at theshoppingchannel.com ", 5, 0.5, 1),
 (7, "Add warmth & comfort to your bedroom by shopping online at theshoppingchannel.com ", 400, 5.0, 1),
-(10, "Leave the competition behind with CHEVROLET", 6, 0, 0),
+(10, "Leave the competition behind with CHEVROLET", 0, 0.0, 0),
 (10, "CHEVROLET again eith better highway fuel efficiency than a 2010 Accord", 800, 6.5, 1);
+
+# Tag
+
+insert into tag (adId, keyword) values
+(1, "job"), (1, "find"), (1, "today"), (2, "recruit"), (2, "employee"), (2, "job"),
+(3, "shot"), (3, "sony"), (4, "picture"), (4, "sony"), (5, "resume"), (5, "monster"),
+(5, "search"), (5, "job");
 
 # Administrator
 

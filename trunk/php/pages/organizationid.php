@@ -17,7 +17,8 @@ $row = mysql_fetch_array($result);
 echo"<div id='left'><h2>{$row[name]}</h2></div>";
 
 //Check if a rating form has been submitted
-if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
+//if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
+if (isset($_POST['socialValues'])) {
 echo "<div id='right' class='score'>Thanks for adding a rating!</div><div class='clear'></div>";
 
 //process form information when a new rating is added.
@@ -43,7 +44,7 @@ $supportFamily = $_POST['supportFamily'];
 $sql="insert into rating (orgId, socialValues, professionalism, openness, encouraging, acceptance, recognition, qualityWorkplace, fairness, cooperation, rewardSystem, fairWages, qualityBenefits, supportEmployees, levelStress, levelCollegiality, levelBureaucracy, advancement, supportFamily, uString) values ($orgId, $socialValues, $professionalism, $openness, $encouraging, $acceptance, $recognition, $qualityWorkplace, $fairness, $cooperation, $rewardSystem, $fairWages, $qualityBenefits, $supportEmployees, $levelStress, $levelCollegiality, $levelBureaucracy, $advancement, $supportFamily, 'bbb')";
 
 mysql_query($sql);
-
+unset($_POST['socialValues']);
 } else {
 echo "<div id='right'><a href='index.php?page=ratingform'><button type='button'>Add a Rating</button></a></div><div class='clear'></div>";
 }

@@ -36,8 +36,8 @@ echo "
 <a href='index.php?page=suggestorg'><button type='button'>Suggest an Organization</button></a> <br />
 <br />
 ";
-if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
-
+//if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
+if (isset($_POST['name'])) {
 $name = $_POST['name'];
 $industryType = $_POST['industryType'];
 $city = $_POST['city'];
@@ -54,7 +54,9 @@ $sql="insert into organization (name, industryType, city, province, website, num
 mysql_query($sql);
 
 echo "<span class='score'>Thanks for suggesting an organization!</span><br />
-It will be pending until an administrator can confirm it.";
+	It will be pending until an administrator can confirm it.";
+
+unset($_POST['name']);
 }
 
 include "../php/closedb.php";

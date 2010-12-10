@@ -27,8 +27,8 @@ echo "
 <br />
 ";
 
-if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
-
+//if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
+if (isset($_POST['title'])) {
 $title = $_POST['title'];
 
 $sql="insert into supervisor (orgId, title, isPending) values
@@ -36,7 +36,9 @@ $sql="insert into supervisor (orgId, title, isPending) values
 mysql_query($sql);
 
 echo "<span class='score'>Thanks for suggesting a supervisor!</span><br />
-It will be pending until an administrator can confirm it.";
+	It will be pending until an administrator can confirm it.";
+
+unset($_POST['title']);
 }
 
 include "../php/closedb.php";
