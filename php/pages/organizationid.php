@@ -14,7 +14,7 @@ $query = "SELECT * FROM organization
 $result = mysql_query($query);
 $row = mysql_fetch_array($result);
 
-echo"<div id='left'><h2>{$row[name]}</h2></div>";
+echo"<div id='left'><h2>Info:</h2></div>";
 
 //Check if a rating form has been submitted
 //if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
