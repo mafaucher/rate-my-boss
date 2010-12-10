@@ -1,8 +1,8 @@
 <div class="main">
 
 <?php
-include "../php/opendb.php";
 
+include "../php/opendb.php";
 //Set orgId for the session to allow access to appropriate menu items
 $_SESSION["orgId"] = $_GET[id];
 $orgId = $_GET[id];
@@ -13,13 +13,13 @@ $query = "SELECT * FROM organization
 
 $result = mysql_query($query);
 $row = mysql_fetch_array($result);
+include "../php/closedb.php";
 
 echo"<div id='left'><h2>Info:</h2></div>";
 
 //Check if a rating form has been submitted
 //if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
 if (isset($_POST['socialValues'])) {
-echo "<div id='right' class='score'>Thanks for adding a rating!</div><div class='clear'></div>";
 
 //process form information when a new rating is added.
 $socialValues = $_POST['socialValues'];
@@ -41,13 +41,36 @@ $levelBureaucracy = $_POST['levelBureaucracy'];
 $advancement = $_POST['advancement'];
 $supportFamily = $_POST['supportFamily'];
 
-$sql="insert into rating (orgId, socialValues, professionalism, openness, encouraging, acceptance, recognition, qualityWorkplace, fairness, cooperation, rewardSystem, fairWages, qualityBenefits, supportEmployees, levelStress, levelCollegiality, levelBureaucracy, advancement, supportFamily, uString) values ($orgId, $socialValues, $professionalism, $openness, $encouraging, $acceptance, $recognition, $qualityWorkplace, $fairness, $cooperation, $rewardSystem, $fairWages, $qualityBenefits, $supportEmployees, $levelStress, $levelCollegiality, $levelBureaucracy, $advancement, $supportFamily, 'bbb')";
-
+include "../php/opendb.php";
+if (isset($_SESSION['editId'])) {
+	$sql="UPDATE rating SET socialValues=$socialValues, professionalism=$professionalism, openness=$openness, encouraging=$encouraging, acceptance=$acceptance, recognition=$recognition, qualityWorkplace=$qualityWorkplace, fairness=$fairness, cooperation=$cooperation, rewardSystem=$rewardSystem, fairWages=$fairWages, qualityBenefits=$qualityBenefits, supportEmployees=$supportEmployees, levelStress=$levelStress, levelCollegiality=$levelCollegiality, levelBureaucracy=$levelBureaucracy, advancement=$advancement, supportFamily=$supportFamily WHERE ratingId='$_POST[editId]')";
 mysql_query($sql);
+	unset($_SESSION['editId']);
+	echo "<div id='right' class='score'>Your rating has been updated.</div><div class='clear'></div>";
+}
+else {
+	$sql="insert into rating (orgId, socialValues, professionalism, openness, encouraging, acceptance, recognition, qualityWorkplace, fairness, cooperation, rewardSystem, fairWages, qualityBenefits, supportEmployees, levelStress, levelCollegiality, levelBureaucracy, advancement, supportFamily, uString) values ($orgId, $socialValues, $professionalism, $openness, $encouraging, $acceptance, $recognition, $qualityWorkplace, $fairness, $cooperation, $rewardSystem, $fairWages, $qualityBenefits, $supportEmployees, $levelStress, $levelCollegiality, $levelBureaucracy, $advancement, $supportFamily, '')";
+	mysql_query($sql);
+	$lastId = mysql_insert_id();
+	$uString = md5("rating".$lastId);
+	$checksum = md5($uString);
+
+	$sql="UPDATE rating SET uString='$uString' WHERE ratingId=$lastId";
+	mysql_query($sql);
+
+	if ($usertype != "") {
+		echo "<div id='right' class='score'>Thanks for adding a rating!</div><div class='clear'></div>";
+		echo "Unique String: $uString<br />
+			Checksum: $checksum<br />";
+	}
+include "../php/closedb.php";
+}
 unset($_POST['socialValues']);
 } else {
 echo "<div id='right'><a href='index.php?page=ratingform'><button type='button'>Add a Rating</button></a></div><div class='clear'></div>";
 }
+
+include "../php/opendb.php";
 
 echo "
 <table border='0' class='listing'>

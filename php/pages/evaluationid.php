@@ -52,14 +52,21 @@ if (isset($_GET["report"]))
 if (isset($_POST['text'])) {
 		//get data from post
 		$text = $_POST['text'];
+
+		$uString = md5($commentTable . $evalId);
+		$checksum = md5($uString);
 	
 		$sql="insert into $commentTable ($evalIdName, text, reported, uString) values
-		($evalId, '$text', 0, 'aaa')";
+		($evalId, '$text', 0, '$uString')";
 	
 		// post comment to database
 		mysql_query($sql);
 
 		unset($_POST['text']);
+
+		echo "Thanks for adding a comment.<br />
+			Unique String: $uString<br />
+			Checksum: $checksum<br />";
 }
 
 

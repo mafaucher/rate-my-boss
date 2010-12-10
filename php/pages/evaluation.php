@@ -1,5 +1,5 @@
 <div class="main">
-	
+
 <?php
 include "../php/opendb.php";
 
@@ -7,17 +7,34 @@ include "../php/opendb.php";
 //if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
 if (isset($_POST['title'])) {
 
-//get data from post
-$title = $_POST['title'];
-$content = $_POST['content'];
+	//get data from post
+	$title = $_POST['title'];
+	$content = $_POST['content'];
 
-$sql="insert into orgEvaluation (orgId, title, text, reported, uString) values
-($orgId, '$title', '$content', 0, 'aaa')";
-
-// post evaluation to database
-mysql_query($sql);
-echo "Thanks for adding an evaluation.<br />";
-unset($_POST['title']);
+	if (isset($_SESSION['editId'])) {
+		$sql="UPDATE orgEvaluation SET title=$title, text=$content WHERE orgEvalId=$_SESSION[editId]";
+		mysql_query($sql);
+		echo "Your evaluation has been updated.<br />";
+		
+		unset($_SESSION['editId']);
+		unset($_SESSION['editType']);
+	}
+	else {
+		$uString = md5("orgEvaluation" . $orgEvalId);
+		$checksum = md5($uString);
+	
+		$sql="insert into orgEvaluation (orgId, title, text, reported, uString) values
+		($orgId, '$title', '$content', 0, '$uString')";
+	
+		// post evaluation to database
+		mysql_query($sql);
+		if ($userType != "") {
+			echo "Thanks for adding an evaluation.<br />
+				Unique String: $uString <br />
+				Checksum: $checksum <br />";
+		}
+	}
+	unset($_POST['title']);
 }
 
 echo"
