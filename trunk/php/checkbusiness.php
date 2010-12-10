@@ -6,16 +6,15 @@ if (isset($_POST[businessname])) {
 
 	// userId, name, charter (NULL), address, city, state, country, postalCode, website,
 	// contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail
-	$query = sprintf("REPLACE INTO business (userId, name, charter, address, city, state, country, postalCode, website,
+	$query = sprintf("REPLACE INTO business (userId, name, address, city, state, country, website,
 		contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail) VALUES
-		(%d, '%s', NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+		(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 			$userid,
 			mysql_real_escape_string($_POST[businessname]),
 			mysql_real_escape_string($_POST[businessaddress]),
 			mysql_real_escape_string($_POST[businesscity]),
 			mysql_real_escape_string($_POST[businessstate]),
 			mysql_real_escape_string($_POST[businesscountry]),
-			mysql_real_escape_string($_POST[businesspostalcode]),
 			mysql_real_escape_string($_POST[businesswebsite]),
 			mysql_real_escape_string($_POST[contactname]),
 			mysql_real_escape_string($_POST[contactlandnum]),

@@ -23,6 +23,10 @@ if (isset($_POST['content'])) {
 
 	$result = mysql_query($query);
 
+	for ($i = 1; $i <= 10; $i++) {
+		
+	}
+
 	include "../php/closedb.php";
 	unset($_POST['content']);
 	

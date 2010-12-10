@@ -30,7 +30,6 @@ $businessaddress = "";
 $businesscity = "";
 $businessstate = "";
 $businesscountry = "";
-$businesspostalcode = "";
 $businesswebsite = "";
 $contactname = "";
 $contactposition = "";
@@ -45,7 +44,6 @@ if ($row = mysql_fetch_array($result)) {
 	$businesscity = "$row[city]";
 	$businessstate = "$row[state]";
 	$businesscountry = "$row[country]";
-	$businesspostalcode = "$row[postalCode]";
 	$businesswebsite = "$row[website]";
 	$contactname = "$row[contactName]";
 	$contactposition = "$row[contactPosition]";
@@ -54,7 +52,7 @@ if ($row = mysql_fetch_array($result)) {
 	$contactfaxnum = "$row[contactNumberFax]";
 	$contactemail = "$row[contactEmail]";
 }
-/* TODO: javascript validation, make contact name and website obligatory */
+/* TODO: javascript validation, make company name, contact name and website obligatory */
 echo "
 		<form name='business' action='index.php?page=advertisement' method='post'>
 			<h3>Contact information</h3>
@@ -66,7 +64,7 @@ echo "
 			<input class='business' type='text' name='businesscity' value='$businesscity'/></p>
 			<p><strong>State/Province</strong>:&nbsp;
 			<input class='business' type='text' name='businessstate' value='$businessstate'/></p>
-			<p><strong>Country</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<p><strong>Country</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class='business' type='text' name='businesscountry' value='$businesscountry' /></p>
 			<p><strong>Postal Code</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input class='business' type='text' name='businesspostalcode' value='$businesspostalcode'/></p>
