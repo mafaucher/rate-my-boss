@@ -3,13 +3,21 @@
 include "../php/opendb.php";
 $docId = $_GET['docId'];
 
-//Report comments when flagged
+//Report comments or document when flagged
 if (isset($_GET["report"]))
 {
-	$commentId = $_GET["commentId"];
-		
-	$sql="UPDATE docComment SET reported = 1
-		WHERE docCommentId = $commentId";
+	$reportType = $_GET["report"];
+	
+	if($reportType == "comment")
+	{	
+		$commentId = $_GET["commentId"];
+		$sql="UPDATE docComment SET reported = 1
+			WHERE docCommentId = $commentId";
+	} else {
+		$sql="UPDATE document SET reported = 1
+			WHERE docId = $docId";
+	}
+	
 	mysql_query($sql);
 }
 
@@ -41,6 +49,8 @@ echo"
 <h2>{$row[title]}</h2>
 <a href='$filename'><button type='button'>Download Document</button></a>
 <br />
+<a href='index.php?page=documentid&docId=$docId&report=document'>report</a>
+<br />
 <br />
 <span class='score'>Comments:</span>
 ";
@@ -56,7 +66,7 @@ while($row = mysql_fetch_array($result))
 {
     echo "
 		<div class='comment'>
-    		<p>{$row[text]}<a href='index.php?page=documentid&docId=$docId&commentId=$row[docCommentId]&report=comment'>report</a></p>
+    		<p>{$row[text]}<br /><a href='index.php?page=documentid&docId=$docId&commentId=$row[docCommentId]&report=comment'>report</a></p>
 		</div>
 		";
 }
@@ -67,5 +77,4 @@ echo "
 <p><textarea type='text' name='text' cols="60" rows="10"></textarea></p>
 <input type='submit' name='submitComment' value='Submit Comment' />
 </form>
-
 </div>
