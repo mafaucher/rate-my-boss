@@ -20,15 +20,8 @@ echo "Thanks for adding an evaluation.<br />";
 unset($_POST['title']);
 }
 
-// Selects organization based on id
-$query = "SELECT * FROM organization
-		where orgId=$orgId";
-
-$result = mysql_query($query);
-$row = mysql_fetch_array($result);
-
-echo"<h2>{$row[name]}</h2>
-<span class='score'	>Evaluations:</span>
+echo"
+<h2>Evaluations:</h2>
 <ul class='listing'>
 ";
 
