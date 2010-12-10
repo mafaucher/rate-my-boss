@@ -41,16 +41,16 @@ echo "		<p>The current cost per ad displayed is: <strong>$$adPrice</strong></p>\
 			<p><strong>Type in the content of your ad.</strong> (500 characters max)</p>
 			<textarea class='ad' type='text' name='content' cols="75" rows="25"></textarea>
 			<br />
-			<p><strong>Keyword 1</strong>: &nbsp;<input class='ad' type='text' name='keyword1' /></p>
-			<p><strong>Keyword 2</strong>: &nbsp;<input class='ad' type='text' name='keyword2' /></p>
-			<p><strong>Keyword 3</strong>: &nbsp;<input class='ad' type='text' name='keyword3' /></p>
-			<p><strong>Keyword 4</strong>: &nbsp;<input class='ad' type='text' name='keyword4' /></p>
-			<p><strong>Keyword 5</strong>: &nbsp;<input class='ad' type='text' name='keyword5' /></p>
-			<p><strong>Keyword 6</strong>: &nbsp;<input class='ad' type='text' name='keyword6' /></p>
-			<p><strong>Keyword 7</strong>: &nbsp;<input class='ad' type='text' name='keyword7' /></p>
-			<p><strong>Keyword 8</strong>: &nbsp;<input class='ad' type='text' name='keyword8' /></p>
-			<p><strong>Keyword 9</strong>: &nbsp;<input class='ad' type='text' name='keyword9' /></p>
-			<p><strong>Keyword 10</strong>: <input class='ad' type='text' name='keyword10' /></p>
+			<p><strong>Keyword 1</strong>: &nbsp;<input class='ad' type='text' name='keyword[0]' /></p>
+			<p><strong>Keyword 2</strong>: &nbsp;<input class='ad' type='text' name='keyword[1]' /></p>
+			<p><strong>Keyword 3</strong>: &nbsp;<input class='ad' type='text' name='keyword[2]' /></p>
+			<p><strong>Keyword 4</strong>: &nbsp;<input class='ad' type='text' name='keyword[3]' /></p>
+			<p><strong>Keyword 5</strong>: &nbsp;<input class='ad' type='text' name='keyword[4]' /></p>
+			<p><strong>Keyword 6</strong>: &nbsp;<input class='ad' type='text' name='keyword[5]' /></p>
+			<p><strong>Keyword 7</strong>: &nbsp;<input class='ad' type='text' name='keyword[6]' /></p>
+			<p><strong>Keyword 8</strong>: &nbsp;<input class='ad' type='text' name='keyword[7]' /></p>
+			<p><strong>Keyword 9</strong>: &nbsp;<input class='ad' type='text' name='keyword[8]' /></p>
+			<p><strong>Keyword 10</strong>: <input class='ad' type='text' name='keyword[9]' /></p>
 			<br />
 			<p></p>
 			<input type='submit' name='subad' value='Submit your ad' /></p>
