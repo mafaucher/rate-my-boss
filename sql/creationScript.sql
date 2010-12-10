@@ -201,7 +201,7 @@ drop table business;
 create table business
 (
 userId INT NOT NULL,
-name VARCHAR(40),
+name VARCHAR(40) Not Null,
 address VARCHAR(40),
 city VARCHAR(40),
 state VARCHAR(40),
@@ -251,7 +251,7 @@ PRIMARY KEY (time, userId, type),
 FOREIGN KEY (userId) REFERENCES user
 );
 
-# ************************************** Start filling in the tables *********************************
+# ********************************* Start filling into the tables *********************************
 # ORGANIZATION
 
 # INSERT VALUES
@@ -270,6 +270,8 @@ insert into organization (name, industryType, city, province, website, numberofE
 ('FedEx','Courier','Memphis','Tennessee', 'FedEx.com',280000, 1),
 ('Molson','Beverages','Montreal','Canada', 'http://www.molson.com', 3000, 1);
 
+
+# SUPERVISOR
 insert into supervisor (orgId, title, isPending) values
 (1, 'CEO', 0),
 (1, 'Janitor', 1),
@@ -335,6 +337,43 @@ INSERT INTO orgEvaluation (orgId, title, text, reported, uString) values
 (7, "I love working for this company", "Not only it cares for its employees, it also cares about their family.", 0, "");
 
 
+# ORGANIZATION COMMENTS
+**********************
+# ORGANIZATION COMMENT
+
+drop table orgComment;
+create table orgComment
+(
+orgCommentId INT NOT NULL AUTO_INCREMENT,
+orgEvalId INT NOT NULL,
+text VARCHAR(600) NOT NULL,
+reported INT NOT NULL,
+uString CHAR(32) NOT NULL,
+PRIMARY KEY (orgCommentId),
+FOREIGN KEY (orgEvalId) REFERENCES orgEvaluation
+);
+
+
+
+***********************
+# NOT PENDING: 1 = Bell, 2 = Google, 3 = Hydro-Québec, 4 = Microsoft, 5 = Telus, 6 = Disney, 7 = BASF,
+# IS PENDING:  8 = Rogers, 9 = FedEx, 10 = Molson
+
+INSERT INTO orgComment (orgCommentId, orgEvalId, text, reported, uString) values
+(1, 1, "Satisfied with general performance od the company.", 0, ""),
+(2, 2, "Very Satisfied since it cares about every aspect of the life.", 0, ""),
+(3, 3, "Dissatisfied! their response is slow", 0, ""),
+(4, 4, "Very Disstisfied, they do not have a real customer services!", 0, ""),
+(5, 5, "Dissatisfied! This companies ratings are too high!", 0, ""),
+(6, 6, "Satisfied: It bring the happiness specially to children.", 0, ""),
+(7, 7, "Very Satisfied because of their fast reply to their customers.", 0, "");
+
+
+
+
+
+
+
 # SUPERVISOR EVALUATION
  
 
@@ -349,21 +388,19 @@ INSERT INTO superEvaluation(superId, title, text, reported, uString) values
 (10, "Great VP Marketing!", "I enjoy working with this VP Marketing because of his brilliant ideas.", 0, "");
 
 
-
-
-#Ratings
+#Ratings - All the uStrings are modified
 #uString = md5(rating#)
 
 insert into rating (orgId, socialValues, professionalism, openness, encouraging, acceptance, recognition, qualityWorkplace, fairness, cooperation, rewardSystem, fairWages, qualityBenefits, supportEmployees, levelStress, levelCollegiality, levelBureaucracy, advancement, supportFamily, uString) values
 (1, 5, 8, 8, 6, 4, 9, 8, 6, 7, 7, 9, 6, 5, 4, 7, 6, 8, 9, '05406e0d07c96b6e2c622a901d4b9f52'),
 (1, 7, 8, 1, 3, 5, 9, 8, 2, 8, 3, 6, 5, 8, 4, 5, 6, 1, 3, 'e329b60baaecdcfad0a15662bf1a949c'),
 (1, 6, 8, 5, 9, 6, 8, 6, 3, 8, 7, 8, 6, 7, 3, 8, 7, 7, 8, '59cf43803003a8ccad9e5147dd4e93e2'),
-(2, 6, 8, 5, 9, 5, 7, 6, 3, 9, 6, 8, 7, 8, 3, 9, 6, 6, 9, 'cad9e521d4ef33a8c162380309cf097e'),
-(2, 7, 9, 3, 8, 6, 8, 5, 4, 7, 8, 8, 7, 9, 4, 7, 5, 7, 8, 'a8ccf43803093e2adf39c47d9e5d4e17'),
-(2, 5, 8, 4, 9, 6, 9, 7, 3, 8, 7, 8, 6, 8, 2, 9, 5, 6, 9, 'ddf43904003a8eca3fe9e5147c93e392'),
-(3, 5, 9, 9, 5, 3, 7, 4, 5, 9, 7, 5, 6, 8, 3, 9, 4, 7, 7, 'aecb60bdacfbf1aa296e32d0a1949c16'),
-(3, 6, 7, 8, 4, 4, 8, 5, 5, 8, 7, 7, 6, 9, 5, 9, 5, 5, 9, '7c0d0966eb62a91d4bf252f02c540e09'),
-(3, 5, 8, 8, 5, 4, 8, 3, 6, 8, 7, 6, 7, 8, 3, 9, 5, 6, 8, '4ae32cd0a15660bdb4e6fa2bf1a9ac0c');
+(2, 6, 8, 5, 9, 5, 7, 6, 3, 9, 6, 8, 7, 8, 3, 9, 6, 6, 9, '26f4a71ab712f352d003b91a7f91702e'),
+(2, 7, 9, 3, 8, 6, 8, 5, 4, 7, 8, 8, 7, 9, 4, 7, 5, 7, 8, 'f7c90596d2b3675b0f1cd96316dc4245'),
+(2, 5, 8, 4, 9, 6, 9, 7, 3, 8, 7, 8, 6, 8, 2, 9, 5, 6, 9, '7f510eafe4050dd783b2920e88e583f4'),
+(3, 5, 9, 9, 5, 3, 7, 4, 5, 9, 7, 5, 6, 8, 3, 9, 4, 7, 7, '2247eab1fcc1c01d132636d789d463e5'),
+(3, 6, 7, 8, 4, 4, 8, 5, 5, 8, 7, 7, 6, 9, 5, 9, 5, 5, 9, '299a1cb2a1bbee8155e8ffd353314203'),
+(3, 5, 8, 8, 5, 4, 8, 3, 6, 8, 7, 6, 7, 8, 3, 9, 5, 6, 8, '81e1931f40c48a03fe2084e3f4bb4e77');
 
 # User
 
@@ -385,12 +422,24 @@ insert into user (name, password, type, question1, question2, question3, answer1
 ("chevrolet", "5b567433a35acf5d77b0926f1dd6e293", "agent", "", "", "", "", "", "", 0),
 ("public", "f998eea644728e3a11925c3c8a40c48a", "registered", "", "", "", "", "", "", 0);
 
+
+
 # Business
 # Users 5, 7, 8, 9, 10 has a business
 # User 6 (googleads) does not
 
 insert into business (userId, name, address, city, state, country, website, contactName, contactNumberLand, contactNumberMobile, contactNumberFax, contactPosition, contactEmail) values
 (5, "Canoe inc.", "333 King Street East", "Toronto", "Ontario", "Canada", "www.canoe.ca", "Tom Setzer", "(877) 448-4434 X 6150", "(416) 350-6150", "(416) 350-6238", "Representative of Online Services", "info@canoe.ca");
+
+# Business New Version
+# Only Users 5, 7, 8, 9, 10 has a business
+
+insert into business (userId, name, website, contactName) values
+(7,"Shopping Channel place that you find everything", "www.theshoppingchannel.com", "Kryzstof Moullan"),
+(8,"SONY make & believe", "www.sony.ca", "Allan Smith"),
+(9,"Monster job search", "www.jobsearch.monster.ca", "Richard Cygan"),
+(10,"Car Company", "www.GM.ca/Chevrolet", "Bill Acemian" );
+ 
 
 # Ad
 
@@ -409,8 +458,7 @@ insert into ad (userId, content, counter, cost, isPending) values
 
 
 
-# TAG - You can make more than 10 of these (adId is the order in which you added the ads)
-
+# TAG -(adId is the order in which you added the ads)
 
 insert into tag (adId, keyword) values
 (1, "job"), (1, "find"), (1, "today"), (1,"jobboom"),
@@ -425,3 +473,10 @@ insert into tag (adId, keyword) values
 # Administrator
 
 insert into administrator value (0, 0.1);
+
+
+
+
+
+
+
