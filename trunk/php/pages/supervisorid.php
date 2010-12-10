@@ -3,6 +3,10 @@
 <?php
 include "../php/opendb.php";
 
+if (isset($_GET['orgId'])) {
+	$orgId = $_GET['orgId'];
+}
+
 $superId = $_GET['superId'];
 
 //Check if an Evaluation has been added.
