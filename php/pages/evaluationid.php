@@ -1,6 +1,10 @@
 <div class="main">
 
 <?php
+if (isset($_GET['orgId'])) {
+	$orgId = $_GET['orgId'];
+}
+
 include "../php/opendb.php";
 //check if a supervisor id is givin, if so pull from superEvaluation table. Otherwise pull from orgEvaluation table.
 if (isset($_GET["superEvalId"]))
@@ -44,7 +48,8 @@ if (isset($_GET["report"]))
 
 
 //Check if a comment has been added.
-if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
+//if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
+if (isset($_POST['text'])) {
 		//get data from post
 		$text = $_POST['text'];
 	
@@ -53,6 +58,8 @@ if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
 	
 		// post comment to database
 		mysql_query($sql);
+
+		unset($_POST['text']);
 }
 
 

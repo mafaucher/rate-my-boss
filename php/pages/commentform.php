@@ -1,6 +1,6 @@
 <div class="main">
-<?php
-<h2>Suggest an Organizanation</h2>
+
+<h2>Suggest an Organization</h2>
 
 <form action='index.php?page=organization' method='post'>
 <p> Fill out the fields below to suggest an organization to the administrators.</p>
