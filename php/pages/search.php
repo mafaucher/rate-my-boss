@@ -25,7 +25,7 @@ $result = mysql_query($query);
 if ($row = mysql_fetch_array($result)) {
 	echo "
 		<p><strong>$row[content]</strong></p>
-		<p><small>An advertisement from our sponsors: <strong><a href='$row[website]'>$row[name]</a></strong></small></p>
+		<p><small>An advertisement from our sponsors: <strong><a href='http://$row[website]'>$row[name]</a></strong></small></p>
 		<br />
 		";
 
