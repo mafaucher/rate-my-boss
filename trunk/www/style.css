@@ -17,6 +17,9 @@ h2 {
         font-size: 2em;
         color: #2E3192;
 }
+h3 {
+	font-size: 2.5em;
+}
 
 strong {
         font-weight: bold;
@@ -105,6 +108,15 @@ a:visited:hover { color: #000000; }
         margin-left: 268px;
         margin-right: 50px;
 }
+
+/* ORGANIZATION HEADER */
+
+#orgHeader {
+		position: absolute;
+        top: 150px;
+        left: 250px;
+}
+
 
 /* LIST FROM MYSQL */
 
