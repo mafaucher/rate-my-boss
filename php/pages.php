@@ -18,7 +18,9 @@ $pageArray = array(
 	"evaluationid" => "../php/pages/evaluationid.php",
 	"documentid" => "../php/pages/documentid.php",
 	"supervisorid" => "../php/pages/supervisorid.php",
-	"ratingform" => "../php/pages/ratingform.php"
+	"ratingform" => "../php/pages/ratingform.php",
+	"documentform" => "../php/pages/documentform.php",
+	"documentupload" => "../php/pages/upload_file.php"
 );
 
 // Privileged -- Only inserted if user is of certain type

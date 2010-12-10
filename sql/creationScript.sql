@@ -38,6 +38,7 @@ create table document
 docId INT NOT NULL AUTO_INCREMENT,
 orgId INT NOT NULL,
 title VARCHAR(40) NOT NULL,
+filename VARCHAR(100) NOT NULL,
 reported INT NOT NULL,
 PRIMARY KEY (docId),
 FOREIGN KEY (orgId) REFERENCES organization
@@ -282,21 +283,17 @@ insert into supervisor (orgId, title, isPending) values
 (6, 'VP Marketing', 0);
 
 
-# DOCUMENT - note that the last three organization(8-9-10) don`t have documents since they are pending
+# DOCUMENT - when a document is uploaded it will exist in the documents folder yet may not come up on the site until it is no longer pending
 
-INSERT INTO document (orgId, title, reported) values
-(1, "Bell gives you access to Canada`s best network", 0),
-(2, "Google : the best search engine", 0),
-(3, "Hydro-Qubec keeping Quebec power rates among the lowest in North America", 0),
-(4, "Microsoft dominate the office suit market with Microsoft Office", 0),
-(5, "Telus :  Canada`s second largest telcom with 22% of market share", 0),
-(6, "Disney : largest media and entertainment conglomerate in the world in terms of revenue", 0),
-(7, " BASF is the world\'b4s leading chemical company", 0),
-(8, "Rogers is a leading provider of Wireless, Digital Cable TV, High Speed Internet and Home Phone services", 1),
-(9, "FedEx : your single source for time-sensitive and time-deferred package ", 1),
-(10, "Molson is the world`s fifth-largest brewing company", 1) ;
-
-
+INSERT INTO document (orgId, title,filename, reported) values
+(1, "Bell gives you access to Canada`s best network", "Bell.txt", 0),
+(1, "Bell PDF details", "Bell.pdf", 0),
+(2, "Google : the best search engine","Google.pdf", 0),
+(3, "Hydro-Qubec keeping Quebec power rates among the lowest in North America","Hydro-Quebec.txt", 0),
+(4, "Microsoft dominate the office suit market with Microsoft Office","Microsoft.txt", 0),
+(5, "Telus :  Canada`s second largest telcom with 22% of market share","Telus.txt", 0),
+(6, "Disney : largest media and entertainment conglomerate in the world in terms of revenue","Disney.pdf", 0),
+(7, " BASF is the world\'b4s leading chemical company","BASF.pdf", 1);
 
 # DOCUMENT COMMENT 
 
@@ -418,9 +415,9 @@ insert into ad (userId, content, counter, cost, isPending) values
 insert into tag (adId, keyword) values
 (1, "job"), (1, "find"), (1, "today"), (1,"jobboom"),
 (2, "recruit"), (2, "employee"), (2, "job"), (2,"easy"),
-(3, "shot"), (3, "sony"), (3,"unforgeteable "), (3, "sweep")
+(3, "shot"), (3, "sony"), (3,"unforgeteable "), (3, "sweep"),
 (4, "picture"), (4, "sony"),(4,"ever"), 
-(5, "resume"), (5, "monster"),(5, "search"), (5, "job"),(5, "Thousands")
+(5, "resume"), (5, "monster"),(5, "search"), (5, "job"),(5, "Thousands"),
 (10,"CHEVROLET"),(10,"competition"),(10,"Car"),(10,"behind");
 
 
