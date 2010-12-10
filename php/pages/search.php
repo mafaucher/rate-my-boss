@@ -77,10 +77,34 @@ if (isset($stype)) {
 	}
 
 	if (in_array("doc", $stype)) {
+		echo "
+			<h3>Documents</h3>
+			";
+	
+		$query = "SELECT d.orgId, d.docId, d.title FROM document d LEFT JOIN docComment c ON (d.docId = c.docId) where d.title LIKE '%$_GET[search]%' AND c.text LIKE '%$_GET[search]%' GROUP BY d.docId";
+		$result = mysql_query($query);
+	
+		while ($row = mysql_fetch_array($result)) {
+			echo "
+				<p><a href='index.php?page=document&id=$row[docId]&orgId=$row[orgId]'>$row[title]</a></p>
+				";
+		}
 
 	}
 
 	if (in_array("super", $stype)) {
+		echo "
+			<h3>Supervisors</h3>
+			";
+	
+		$query = "SELECT orgId, superId, title FROM supervisor WHERE title LIKE '%$_GET[search]%' AND NOT isPending";
+		$result = mysql_query($query);
+	
+		while ($row = mysql_fetch_array($result)) {
+			echo "
+				<p><a href='index.php?page=supervisor&id=$row[superId]&superId=$row[superId]&orgId=$row[orgId]'>$row[title]</a></p>
+				";
+		}
 
 	}
 	
