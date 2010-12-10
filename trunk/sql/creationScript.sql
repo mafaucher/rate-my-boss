@@ -250,11 +250,12 @@ PRIMARY KEY (time, userId, type),
 FOREIGN KEY (userId) REFERENCES user
 );
 
+# ************************************** Start filling in the tables *********************************
 # ORGANIZATION
 
 # INSERT VALUES
-# NOT PENDING: 1 = Bell, 2 = Google, 3 = Hydro-Québec, 4 = Microsoft, 5 = Telus,
-# IS PENDING:  6 = Disney, 7 = BASF, 8 = Rogers, 9 = FedEx, 10 = Molson
+# NOT PENDING: 1 = Bell, 2 = Google, 3 = Hydro-Québec, 4 = Microsoft, 5 = Telus, 6 = Disney, 7 = BASF,
+# IS PENDING:  8 = Rogers, 9 = FedEx, 10 = Molson
 
 insert into organization (name, industryType, city, province, website, numberofEmployees, isPending) values
 ('Bell','Telecommunications', 'Montreal', 'Quebec', 'www.bell.ca', 843, 0),
@@ -262,8 +263,8 @@ insert into organization (name, industryType, city, province, website, numberofE
 ('Hydro-Québec','Generation/Distribution of Electricity', 'Montreal', 'Quebec', 'www.hydroquebec.com', 23616, 0),
 ('Microsoft','Manufacturing Computing Devices and IT', 'Redmond',  'Washington', 'www.microsoft.com', 89000, 0),
 ('Telus', 'Telecommunications', 'Burnaby', 'British Columbia',' www.telus.com',36600, 0),
-('Disney','Media and Entertainment', 'Los Angeles', 'California','www.disney.com', 150000, 1),
-('BASF', 'Chemicals and Energy', 'Ludwigshafen','Germany','www.basf.com', 104780, 1),
+('Disney','Media and Entertainment', 'Los Angeles', 'California','www.disney.com', 150000, 0),
+('BASF', 'Chemicals and Energy', 'Ludwigshafen','Germany','www.basf.com', 104780, 0),
 ('Rogers', 'Communications Services', 'Toronto', 'Ontario','www.rogers.com', 29000,1),
 ('FedEx','Courier','Memphis','Tennessee', 'FedEx.com',280000, 1),
 ('Molson','Beverages','Montreal','Canada', 'http://www.molson.com', 3000, 1);
@@ -279,6 +280,79 @@ insert into supervisor (orgId, title, isPending) values
 (4, 'VP Affairs', 0),
 (5, 'VP Finance',0),
 (6, 'VP Marketing', 0);
+
+
+# DOCUMENT - note that the last three organization(8-9-10) don`t have documents since they are pending
+
+INSERT INTO document (orgId, title, reported) values
+(1, "Bell gives you access to Canada`s best network", 0),
+(2, "Google : the best search engine", 0),
+(3, "Hydro-Qubec keeping Quebec power rates among the lowest in North America", 0),
+(4, "Microsoft dominate the office suit market with Microsoft Office", 0),
+(5, "Telus :  Canada`s second largest telcom with 22% of market share", 0),
+(6, "Disney : largest media and entertainment conglomerate in the world in terms of revenue", 0),
+(7, " BASF is the world\'b4s leading chemical company", 0),
+(8, "Rogers is a leading provider of Wireless, Digital Cable TV, High Speed Internet and Home Phone services", 1),
+(9, "FedEx : your single source for time-sensitive and time-deferred package ", 1),
+(10, "Molson is the world`s fifth-largest brewing company", 1) ;
+
+
+
+# DOCUMENT COMMENT 
+
+INSERT INTO docComment (docId, text, reported, uString) values
+(1, "What an informative document!", 0, ""),
+(1, "Excellent info ever", 0, ""),
+(1, "Not a comprehensive document!", 0, ""),
+(2, "The Best overview", 0, ""),
+(2, "This document definitely improved my general knowledge!", 0, ""),
+(2, "Wow! This is an interesting document!", 0, ""),
+(2, "What an informative document!", 0, ""),
+(3, "A good quick look", 0, ""),
+(3, "With this doc, I know more about the Hydro-Qubec", 0, ""),
+(3, "Hydro-Qubec the lowest rates in North America! That`s amazing!", 0, ""),
+(4, "This document surprised me!!!", 0, ""),
+(4, "This doc doesn`t tell much about Microsoft", 0, ""),
+(4, "What an informative document!", 0, ""),
+(5, "Not a good source of info!", 0, ""),
+(5, "What an informative document!", 0, ""),
+(6, "A good document", 0, ""),
+(6, "An excellent document!",0, ""),
+(6, "This is an amazing document", 0, ""),
+(7, "This should give a knowledge to general public, not specific details...", 0, ""),
+(7, "I enjoed reading this", 0, ""),
+(7, "What an excellent doc!", 0, ""),
+(7, "What an informative document!", 0, "")
+;
+
+# ORGANIZATION EVALUATION
+
+
+INSERT INTO orgEvaluation (orgId, title, text, reported, uString) values
+(1, "Great company!", "I love working for this company because I get free internet and calling with them. That`s all I really need in life.", 0, ""),
+(2, "Love working for this company", "I love working for this company because it has a friedly environment.", 0, ""),
+(3, "Bad company!", "I am not happy with this company since it doesn`t provide any promotion for its employees.", 0, ""),
+(4, "The best company in the world!", "Whenver you are in this company, you feel you are at home, this makes everyone to work more efficiently.", 0, ""),
+(5, "No doubt about its greatness", "You have every thing that you need in one place...that`s our workplace.", 0, ""),
+(6, "Best one in my city", "You are always treated like a guest", 0, ""),
+(7, "I love working for this company", "Not only it cares for its employees, it also cares about their family.", 0, "");
+
+
+# SUPERVISOR EVALUATION
+ 
+
+INSERT INTO superEvaluation(superId, title, text, reported, uString) values
+(1, "Great CEO!", "I love working for this CEO because of his friendliness. ", 0, ""),
+(4, "Best President!", "I love working for this  President because of his friendliness.", 0, ""),
+(5, "Great VP External!", "I like him, he is so kind.", 0, ""),
+(6, "Not a good VP Internal!", "This VP Internal is lazy.", 0, ""),
+(7, "Great VP Social!", "I love working with him, he is so helpful in every aspect.", 0, ""),
+(8, "Lazy VP Affairs!", "This VP Affairs doen`t care about those who are in it.", 0, ""),
+(9, "Bad VP Finance!", " This VP Finance can do better tham this but he doesn`t try.", 0, ""),
+(10, "Great VP Marketing!", "I enjoy working with this VP Marketing because of his brilliant ideas.", 0, "");
+
+
+
 
 #Ratings
 #uString = md5(rating#)
@@ -296,11 +370,11 @@ insert into rating (orgId, socialValues, professionalism, openness, encouraging,
 
 # User
 
-# admin:		1 = peter - p_rockw; 2 = leila - l_behja; 3 = marc - ma_fauch;
-# finance:		4 = accounting - cashman
-# agent:		5 = jobboom - getajob; 6 = googleads - dontbeevil; 7 = shoppingC - shoptillyoudrop;
-#				8 = sonyrep - s0nyads; 9 = monster - perfectjob; 10 = chevrolet - che5rolet;
-# registered:	11 = public - dbs0610
+# admin:                1 = peter - p_rockw; 2 = leila - l_behja; 3 = marc - ma_fauch;
+# finance:              4 = accounting - cashman
+# agent:                5 = jobboom - getajob; 6 = googleads - dontbeevil; 7 = shoppingC - shoptillyoudrop;
+#                               8 = sonyrep - s0nyads; 9 = monster - perfectjob; 10 = chevrolet - che5rolet;
+# registered:   11 = public - dbs0610
 insert into user (name, password, type, question1, question2, question3, answer1, answer2, answer3, isPending) values
 ("peter", "05c60e65cae54a3364582dccf190e955", "admin", "", "", "", "", "", "", 0),
 ("leila", "d8e8de91f10ba4adf900a65203918df5", "admin", "", "", "", "", "", "", 0),
@@ -325,7 +399,7 @@ insert into business (userId, name, address, city, state, country, website, cont
 
 insert into ad (userId, content, counter, cost, isPending) values
 (5, "Find a job on jobboom today!", 2, 0.0, 0),
-(5, "Recruit employees using jobboom's easy to use recruiting tools", 300, 0.0, 0),
+(5, "Recruit employees using jobboom`s easy to use recruiting tools", 300, 0.0, 0),
 (8, "Shoot unforgeteable shot with a single sweep SONY", 3, 0.0, 0),
 (8, "Best pictures ever only with SONY ",500, 0.0, 0),
 (9, "Thousands of employers search resumes on Monster everyday!", 4, 0.0, 0),
@@ -336,12 +410,20 @@ insert into ad (userId, content, counter, cost, isPending) values
 (10, "Leave the competition behind with CHEVROLET", 0, 0.0, 0),
 (10, "CHEVROLET again eith better highway fuel efficiency than a 2010 Accord", 800, 6.5, 1);
 
-# Tag
+
+
+# TAG - You can make more than 10 of these (adId is the order in which you added the ads)
+
 
 insert into tag (adId, keyword) values
-(1, "job"), (1, "find"), (1, "today"), (2, "recruit"), (2, "employee"), (2, "job"),
-(3, "shot"), (3, "sony"), (4, "picture"), (4, "sony"), (5, "resume"), (5, "monster"),
-(5, "search"), (5, "job");
+(1, "job"), (1, "find"), (1, "today"), (1,"jobboom"),
+(2, "recruit"), (2, "employee"), (2, "job"), (2,"easy"),
+(3, "shot"), (3, "sony"), (3,"unforgeteable "), (3, "sweep")
+(4, "picture"), (4, "sony"),(4,"ever"), 
+(5, "resume"), (5, "monster"),(5, "search"), (5, "job"),(5, "Thousands")
+(10,"CHEVROLET"),(10,"competition"),(10,"Car"),(10,"behind");
+
+
 
 # Administrator
 
