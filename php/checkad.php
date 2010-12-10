@@ -38,7 +38,7 @@ if (isset($_POST['content'])) {
 		if ($keyword[$i] != "") {
 			echo $adId;
 			echo $keyword[$i];
-			$query = "INSERT INTO tag (adId, keyword) VALUE ($adId, $keyword[$i])";
+			$query = "INSERT INTO tag (adId, keyword) VALUE ($adId, ${keyword[$i]})";
 			echo mysql_query($query);
 		}
 	}
