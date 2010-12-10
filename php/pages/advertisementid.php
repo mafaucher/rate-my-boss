@@ -1,3 +1,9 @@
+<!-- START OF MAIN -->
+
+	<div class='main'>
+	
+		<h1>Advertisement Control</h1>
+
 <?php
 
 /* Unset the current organization id to reset menu */
@@ -5,95 +11,66 @@ if(isset($orgId)) {
         unset($orgId);
 }
 
-/* INSERT new business information */
-
-include "../php/checkbusiness.php";
-
-/* INSERT new ad information */
-
-include "../php/checkad.php";
-
-/* SELECT business information */
+/* Fetch the Price of ads */
 
 include "../php/opendb.php";
 
-$query = sprintf("SELECT * FROM business WHERE userId=$userid");
+$query = sprintf("SELECT adPrice FROM administrator");
 $result = mysql_query($query);
+$row = mysql_fetch_array($result);
+$adPrice = $row['adPrice'];
 
 include "../php/closedb.php";
 
-if ($row = mysql_fetch_array($result)) {
-
-	echo "<!-- START OF MAIN -->
-
-	<div class='main'>";
-	
-	echo "		<h1>Advertisements</h1>\n";
-
-	/* Display company information */
-
-	echo "		<h2>$row[name]</h2>
-		<p><strong>Address:</strong> $row[address] </p>
-		<p><strong>City:</strong> $row[city] </p>
-		<p><strong>State/Province:</strong> $row[state] </p>
-		<p><strong>Country:</strong> $row[country] </p>
-		<p><strong>Postal Code:</strong> $row[postalCode] </p>
-		<p><strong>Email:</strong> $row[email] </p> <br />
-		";
-	
-	echo "		<h2>$row[contactName]</h2>
-		<p><strong>Position:</strong> $row[contactPosition] </p>
-		<p><strong>Land Number:</strong> $row[contactNumberLand] </p>
-		<p><strong>Mobile Number:</strong> $row[contactNumberMobile] </p>
-		<p><strong>Fax Number:</strong> $row[contactNumberFax] </p>
-		<p><strong>Email:</strong> $row[contactEmail] </p>
-		";
-
-	/* Link to business.php, to change business info */
-
-	echo "<p>(<a href='index.php?page=business'>Change information</a>)</p>";
-	
-	/* TODO: Print list of ads */
-
+if (isset($_POST['adViews'])) {
 	include "../php/opendb.php";
 
-	$query = sprintf("SELECT * FROM ad WHERE userId=$userid");
+	$additionalViews = (int)$_POST['adViews'];
+	$cost = (float)($additionalViews*$adPrice);
+
+	$query = "UPDATE ad SET counter=counter+$additionalViews, cost=$cost, isPending=1 WHERE adId=$_GET[id]";
 	$result = mysql_query($query);
 
 	include "../php/closedb.php";
+	unset($_POST['adViews']);
+}
 
-	$count = 0;
-	echo "		<ul>";
-	while ($row = mysql_fetch_array($result)) {
-		if ($count == 0) {
-			echo "<br />\n";
-			echo "<h2>Your advertisements</h2>\n";
-		}
-		$count += 1;
-		echo "		<li><strong><a href='index.php?page=advertisement&id=$row[adId]'>Avertisement $count</a></strong> <br />";
-		if ($row['isPending'] == 1) {
-			echo " <em>This advertisement is pending approval from a financial administrator</em><br />";
-		}
-		echo "				Last viewed: $row[lastView] <br />
-							Remaining views: $row[counter] <br />
-							<strong>$row[content]</strong></li><br />";
-	}
+include "../php/opendb.php";
 
-	/* New ad button and form (TODO: validate and confirm price ) */
+$query = sprintf("SELECT * FROM ad WHERE adId='$_GET[id]'");
+$result = mysql_query($query);
+$row = mysql_fetch_array($result);
 
-	echo "		<a href='index.php?page=adform'><button type='button'>Add a New Ad</button></a>\n";
+include "../php/closedb.php";
 
+/* Display ad information */
+
+echo "
+	<p><strong>Ad Content:</strong></p>
+	<p>$row[content]</p> <br />
+	";
+
+if ($row[isPending]) {
 	echo "
+		<p><em>This ad is pending approval from a financial administrator,
+		please make sure you have send a payment of $$row[cost].</em><p>
+		";
+}
+echo "
+	<p><strong>Number of Views</strong> (hits): $row[hits]</p>
+	<p><strong>Remaining Views</strong>: $row[counter]</p>
+	<p><strong>Last Viewed</strong>: $row[lastView]</p>
+	";
+
+
+echo "      <p>The current cost per ad displayed is: <strong>$$adPrice</strong></p>\n";
+
+echo "
+	<form action='' method='post'>
+	<p><strong>Purchase more views</strong>: <input type='text' name='adViews' /> <input type='submit' name='subAdViews' value='Purchase' />
+	";
+
+?>
 	</div>
 
 <!-- END OF MAIN -->
-	";
-
-}
-/* The business for this agent hasn't been created  */
-else {
-	include "../php/pages/business.php";
-}
-
-
-?>

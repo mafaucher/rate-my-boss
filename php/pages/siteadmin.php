@@ -28,6 +28,10 @@ while ($row = mysql_fetch_array($result)) {
 	if (isset($_POST["confirm_user_$row[userId]"])) {
 		$subquery = "UPDATE user SET isPending=0 WHERE userId=$row[userId]";
 		mysql_query($subquery);
+
+		/* Log user approval */
+		$query = "INSERT INTO userActivity (userId, type) VALUE ($row[userId], 'approval')";
+		$result = mysql_query($query);
 	}
 	else if (isset($_POST["deny_user_$row[userId]"])) {
 		$subquery = "DELETE FROM user WHERE userId=$row[userId]";
@@ -57,8 +61,6 @@ while ($row = mysql_fetch_array($result)) {
 }
 echo "		</ul>";
 
-include "../php/opendb.php";
-
 $query = "SELECT orgId FROM organization WHERE isPending";
 $result = mysql_query($query);
 
@@ -71,6 +73,22 @@ while ($row = mysql_fetch_array($result)) {
 		$subquery = "DELETE FROM organization WHERE orgId=$row[orgId]";
 		mysql_query($subquery);
 	}
+}
+
+/* Active Users */
+
+$query = "SELECT * FROM user WHERE NOT isPending ORDER BY type";
+$result = mysql_query($query);
+
+echo "	<h3>Active Users</h3>
+	<p>Click on an active user to get the user's history and possible actions.
+	Alternatively, you may see details for <a href='index.php?page=siteadmin&id=0'><strong>all users</strong></a>.</p>
+	";
+
+while ($row = mysql_fetch_array($result)) {
+	echo "
+		<p><a href='index.php?page=siteadmin&id=$row[userId]'>$row[name]</a> ($row[type])</p>
+		";
 }
 
 /* Pending organizations */
@@ -86,15 +104,13 @@ while ($row = mysql_fetch_array($result)) {
 
 	echo "<li>
 		<form action='' method='post'>
-		<p><strong>$row[name]</strong> - $row[industryType]</li>
+		<p><strong>$row[name]</strong> - $row[industryType]</p>
 		<input type='submit' name='confirm_org_$row[orgId]' value='Allow Organization'/>
-		<input type='submit' name='deny_org_$row[orgId]' value='Deny'/></p>
+		<input type='submit' name='deny_org_$row[orgId]' value='Deny'/></li>
 		";
 	
 }
 echo "		</ul>";
-
-include "../php/opendb.php";
 
 $query = "SELECT superId FROM supervisor WHERE isPending";
 $result = mysql_query($query);
@@ -134,9 +150,8 @@ while ($row = mysql_fetch_array($result)) {
 }
 echo "		</ul>";
 
-/* elect all reported document, orgEval, superEval, orgComment, superComment, docComment */
+/* Select all reported orgEval */
 
-include "../php/opendb.php";
 $query = "SELECT orgEvalId FROM orgEvaluation WHERE reported";
 $result = mysql_query($query);
 
@@ -174,8 +189,207 @@ while ($row = mysql_fetch_array($result)) {
 }
 echo "		</ul>";
 
+/* Select all reported orgComment */
+
+$query = "SELECT orgCommentId FROM orgComment WHERE reported";
+$result = mysql_query($query);
+
+while ($row = mysql_fetch_array($result)) {
+	if (isset($_POST["confirm_orgComment_$row[orgCommentId]"])) {
+		$subquery = "UPDATE orgComment SET reported=0 WHERE orgCommentId=$row[orgCommentId]";
+		mysql_query($subquery);
+	}
+	else if (isset($_POST["deny_orgComment_$row[orgCommentId]"])) {
+		$subquery = "DELETE FROM orgComment WHERE orgCommentId=$row[orgCommentId]";
+		mysql_query($subquery);
+	}
+}
+
+$query = "SELECT orgId, title, c.text FROM orgComment c JOIN orgEvaluation e ON c.orgEvalId=e.orgEvalId WHERE c.reported ORDER BY orgId";
+$result = mysql_query($query);
+
+echo "		<h3>Reported Organization Comment</h3>
+			<ul>
+	";
+while ($row = mysql_fetch_array($result)) {
+
+	$subquery = "SELECT name FROM organization WHERE orgId=$row[orgId]";
+	$subresult = mysql_query($subquery);
+	$subrow = mysql_fetch_array($subresult);
+
+	echo "<li>
+		<form action='' method='post'>
+		<strong>$row[title]</strong> - $subrow[name]</li>
+		<p>$row[text]</p>
+		<input type='submit' name='confirm_orgComment_$row[orgCommentId]' value='Unflag'/>
+		<input type='submit' name='deny_orgComment_$row[orgCommentId]' value='Remove Comment'/>
+		";
+
+}
+echo "		</ul>";
+
+/* Select all reported superEval */
+
+$query = "SELECT superEvalId FROM superEvaluation WHERE reported";
+$result = mysql_query($query);
+
+while ($row = mysql_fetch_array($result)) {
+	if (isset($_POST["confirm_superEval_$row[superEvalId]"])) {
+		$subquery = "UPDATE superEvaluation SET reported=0 WHERE superEvalId=$row[superEvalId]";
+		mysql_query($subquery);
+	}
+	else if (isset($_POST["deny_superEval_$row[superEvalId]"])) {
+		$subquery = "DELETE FROM superEvaluation WHERE superEvalId=$row[superEvalId]";
+		mysql_query($subquery);
+	}
+}
+
+$query = "SELECT * FROM superEvaluation WHERE reported ORDER BY superId";
+$result = mysql_query($query);
+
+echo "		<h3>Reported Supervisor Evaluations</h3>
+			<ul>
+	";
+while ($row = mysql_fetch_array($result)) {
+
+	$subquery = "SELECT title FROM supervisor WHERE superId=$row[superId]";
+	$subresult = mysql_query($subquery);
+	$subrow = mysql_fetch_array($subresult);
+
+	echo "<li>
+		<form action='' method='post'>
+		<strong>$row[title]</strong> - $subrow[title]</li>
+		<p>$row[text]</p>
+		<input type='submit' name='confirm_superEval_$row[superEvalId]' value='Unflag'/>
+		<input type='submit' name='deny_superEval_$row[superEvalId]' value='Remove Evaluation'/>
+		";
+
+}
+echo "		</ul>";
+
+/* Select all reported superComment */
+
+$query = "SELECT superCommentId FROM superComment WHERE reported";
+$result = mysql_query($query);
+
+while ($row = mysql_fetch_array($result)) {
+	if (isset($_POST["confirm_superComment_$row[superCommentId]"])) {
+		$subquery = "UPDATE superComment SET reported=0 WHERE superCommentId=$row[superCommentId]";
+		mysql_query($subquery);
+	}
+	else if (isset($_POST["deny_superComment_$row[superCommentId]"])) {
+		$subquery = "DELETE FROM superComment WHERE superCommentId=$row[superCommentId]";
+		mysql_query($subquery);
+	}
+}
+
+$query = "SELECT superId, title, c.text FROM superComment c JOIN superEvaluation e ON c.superEvalId=e.superEvalId WHERE c.reported ORDER BY superId";
+$result = mysql_query($query);
+
+echo "		<h3>Reported Supervisor Comment</h3>
+			<ul>
+	";
+while ($row = mysql_fetch_array($result)) {
+
+	$subquery = "SELECT title FROM supervisor WHERE superId=$row[superId]";
+	$subresult = mysql_query($subquery);
+	$subrow = mysql_fetch_array($subresult);
+
+	echo "<li>
+		<form action='' method='post'>
+		<strong>$row[title]</strong> - $subrow[title]</li>
+		<p>$row[text]</p>
+		<input type='submit' name='confirm_superComment_$row[superCommentId]' value='Unflag'/>
+		<input type='submit' name='deny_superComment_$row[superCommentId]' value='Remove Comment'/>
+		";
+
+}
+echo "		</ul>";
+
+
+
+
+/* Select all reported docs */
+
+$query = "SELECT docId FROM document WHERE reported";
+$result = mysql_query($query);
+
+while ($row = mysql_fetch_array($result)) {
+	if (isset($_POST["confirm_doc_$row[docId]"])) {
+		$subquery = "UPDATE document SET reported=0 WHERE docId=$row[docId]";
+		mysql_query($subquery);
+	}
+	else if (isset($_POST["deny_doc_$row[docId]"])) {
+		$subquery = "DELETE FROM document WHERE docId=$row[docId]";
+		mysql_query($subquery);
+	}
+}
+
+$query = "SELECT * FROM document WHERE reported ORDER BY orgId";
+$result = mysql_query($query);
+
+echo "		<h3>Reported Documents</h3>
+			<ul>
+	";
+while ($row = mysql_fetch_array($result)) {
+
+	$subquery = "SELECT name FROM organization WHERE orgId=$row[orgId]";
+	$subresult = mysql_query($subquery);
+	$subrow = mysql_fetch_array($subresult);
+
+	echo "<li>
+		<form action='' method='post'>
+		<strong>$row[title]</strong> - $subrow[orgId]</li>
+		<input type='submit' name='confirm_doc_$row[docId]' value='Unflag'/>
+		<input type='submit' name='deny_doc_$row[docId]' value='Remove Document'/>
+		";
+}
+echo "		</ul>";
+
+/* Select all reported docComment */
+
+$query = "SELECT docCommentId FROM docComment WHERE reported";
+$result = mysql_query($query);
+
+while ($row = mysql_fetch_array($result)) {
+	if (isset($_POST["confirm_docComment_$row[docCommentId]"])) {
+		$subquery = "UPDATE docComment SET reported=0 WHERE docCommentId=$row[docCommentId]";
+		mysql_query($subquery);
+	}
+	else if (isset($_POST["deny_docComment_$row[docCommentId]"])) {
+		$subquery = "DELETE FROM docComment WHERE docCommentId=$row[docCommentId]";
+		mysql_query($subquery);
+	}
+}
+
+$query = "SELECT orgId, title, text FROM docComment c JOIN document d ON c.docId=d.docId WHERE c.reported ORDER BY orgId";
+$result = mysql_query($query);
+
+echo "		<h3>Reported Document Comment</h3>
+			<ul>
+	";
+while ($row = mysql_fetch_array($result)) {
+
+	$subquery = "SELECT name FROM organization WHERE orgId=$row[orgId]";
+	$subresult = mysql_query($subquery);
+	$subrow = mysql_fetch_array($subresult);
+
+	echo "<li>
+		<form action='' method='post'>
+		<strong>$row[title]</strong> - $subrow[name]</li>
+		<p>$row[text]</p>
+		<input type='submit' name='confirm_docComment_$row[docCommentId]' value='Unflag'/>
+		<input type='submit' name='deny_docComment_$row[docCommentId]' value='Remove Comment'/>
+		";
+
+}
+echo "		</ul>";
+
+include "../php/closedb.php";
+
 ?>
 
 	</div>
 
 <!-- END OF MAIN -->
+

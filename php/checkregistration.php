@@ -24,6 +24,11 @@ if (isset($_POST['newusername'])) {
 		echo "<strong>Error: a user with that name already exists!</strong>";
 	}
 	else {
+		/* Log user registration */
+
+		$query = "INSERT INTO userActivity (userId, type) VALUE ($_POST[newusername], 'registration')";
+		$result = mysql_query($query);
+
 		/* Prepare the query */	
 		$query = sprintf("INSERT INTO user (name, password, type, answer1, answer2, answer3, isPending) values
 				('%s', '%s', '%s', '%s', '%s', '%s', '%d')",

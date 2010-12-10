@@ -225,10 +225,10 @@ adminId INT NOT NULL PRIMARY KEY,
 adPrice DECIMAL(10,2) NOT NULL
 );
 
-# LOGIN ACTIVITY
+# USER ACTIVITY
 
-drop table loginActivity;
-create table loginActivity
+drop table userActivity;
+create table userActivity
 (
 time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 userId INT NOT NULL,
