@@ -58,13 +58,17 @@ else {
 
 	include "../php/opendb.php";
 
-	$query = "SELECT u.type, a.time, u.name FROM user u JOIN userActivity a ON a.userId=u.userId AND u.userId=$_GET[id]";
+	$query = "SELECT * FROM userActivity WHERE userId=$_GET[id]";
 	$result = mysql_query($query);
+
+	$subquery = "SELECT * FROM user WHERE userId=$_GET[id]";
+	$subresult = mysql_query($subquery);
+	$subrow = mysql_fetch_array($subresult);
 
 	include "../php/closedb.php";
 
 	echo "
-		<p>This page shows the activity of the user <strong>$row[name]</strong> ($row[type]).</p><br />
+		<p>This page shows the activity of the user <strong>$subrow[name]</strong> ($subrow[type]).</p><br />
 
 		<table border='1'>
 		<tr>
@@ -82,7 +86,7 @@ else {
 	}
 	echo "</table>";
 
-	if ($row['type'] != "admin" && $row['type'] != "finance") {
+	if ($subrow['type'] != "admin" && $subrow['type'] != "finance") {
 		echo "
 			<br /><p>Possible Actions:
 			<form action='' method='post'>

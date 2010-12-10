@@ -1,37 +1,50 @@
-<!-- START OF MAIN -->
-
 <?php
+if (isset($_POST['edittype'])) {
 
-/* Unset the current organization id to reset menu */
-if(isset($orgId)) {
-	unset($orgId);
+	include "../php/opendb.php";
+
+	$query = "SELECT * FROM {$_POST[edittype]} WHERE uString='{$_POST[uString]}'";
+	$result = mysql_query($query);
+	
+	include "../php/closedb.php";
+
+	if ($result && $row = mysql_fetch_array($result)) {
+		$orgId = $row['orgId'];
+		
+		switch($_POST['edittype']) {
+		case "rating":
+			$_SESSION['editId'] = $row['ratingId'];
+			include "../php/pages/ratingform.php";
+			break;
+		case "orgEvaluation":
+			$_SESSION['editId'] = $row['orgEvalId'];
+			$_SESSION['editType'] = "org";
+			$_SESSION['defaultTitle'] = $row['title'];
+			$_SESSION['defaultContent'] = $row['content'];
+			include "../php/pages/evaluationform.php";
+			break;
+		case "superEvaluation":
+			$_SESSION['editId'] = $row['superEvalId'];
+			$_SESSION['editType'] = "super";
+			$_SESSION['defaultTitle'] = $row['title'];
+			$_SESSION['defaultContent'] = $row['content'];
+			include "../php/pages/evaluationform.php";			
+			break;
+		case "super":
+			break;
+		}
+		unset($_POST['edittype']);
+	} 
+
+	else {
+		unset($_POST['edittype']);
+		echo "<div class='main'><h2>None found.</h2></div>";
+		include "../php/pages/editmenu.php";
+	}
+}
+
+else {
+	include "../php/pages/editmenu.php";
 }
 
 ?>
-	<div class="main">
-
-		<h1>Modify a Previous Post</h1>
-
-		<p>You may make modifications to a previous comment or rating by entering
-		below the unique, 32 character string, along with it's md5 checksum.</p>
-		<br />
-
-		<form name='edit' onsubmit="return validateEdit(this)" action='' method='post'>
-			<p><strong>Type of post</strong>:</p>
-			<p><select name="edittype">
-			<option value="rating">Organization Rating</option>
-			<option value="orgEvaluation">Organization Evaluation</option>
-			<option value="orgComment">Reply to an Organization Evaluation</option>
-			<option value="docComment">Comment About a Document</option>
-			<option value="superEvaluation">Supervisor Evaluation</option>
-			<option value="superComment">Reply to a Supervisor Evaluation</option>
-			</select></p>
-
-			<p><strong>Unique String</strong>:</p>
-			<p><input class='edit' type='text' name='uString' size=32 /></p>
-			<p><strong>Checksum</strong>:</p>
-			<p><input class='edit' type='text' name='checksum' size=32 /></p>
-
-	</div>
-
-<!-- END OF MAIN -->

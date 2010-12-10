@@ -17,12 +17,18 @@ if(isset($_POST['title'])) {
 $title = $_POST['title'];
 $content = $_POST['content'];
 
+$uString = md5("superEvaluation" . $superId);
+$checksum = md5($uString);
+
 $sql="insert into superEvaluation (superId, title, text, reported, uString) values
-($superId, '$title', '$content', 0, 'aaa')";
+($superId, '$title', '$content', 0, '$uString')";
 
 // post evaluation to database
 mysql_query($sql);
-echo "Thanks for adding an evaluation.<br />";
+echo "Thanks for adding an evaluation.<br />
+	Unique String: $uString <br />
+	Checksum: $checksum <br />";
+
 unset($_POST['title']);
 }
 

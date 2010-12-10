@@ -1,8 +1,8 @@
 <div class="main">
 <?php
 
-include "../php/opendb.php";
 
+include "../php/opendb.php";
 $query = "SELECT * FROM organization
 		where orgId=$orgId";
 
