@@ -44,11 +44,11 @@ if (isset($_POST['text'])) {
 		// post comment to database
 		mysql_query($sql);
 
-		echo $lastid = mysql_insert_id();
+		$lastid = mysql_insert_id();
 		$uString=md5("docComment".$lastid);
 		$checksum=md5($uString);
 
-		echo $sql="update docComment set uString='$uString' WHERE docCommentId=$lastid";
+		$sql="update docComment set uString='$uString' WHERE docCommentId=$lastid";
 		mysql_query($sql);
 
 		echo "Thanks for adding a comment.<br />
