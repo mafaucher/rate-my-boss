@@ -20,17 +20,35 @@ if (isset($_POST['edittype'])) {
 			$_SESSION['editId'] = $row['orgEvalId'];
 			$_SESSION['editType'] = "org";
 			$_SESSION['defaultTitle'] = $row['title'];
-			$_SESSION['defaultContent'] = $row['content'];
+			$_SESSION['defaultContent'] = $row['text'];
 			include "../php/pages/evaluationform.php";
+			break;
+		case "orgComment":
+			$_SESSION['editId'] = $row['orgCommentId'];
+			$_SESSION['editEvalId'] = $row['orgEvalId'];
+			$_SESSION['editType'] = "org";
+			$_SESSION['defaultContent'] = $row['text'];
+			include "../php/pages/evaluationid.php";
 			break;
 		case "superEvaluation":
 			$_SESSION['editId'] = $row['superEvalId'];
 			$_SESSION['editType'] = "super";
 			$_SESSION['defaultTitle'] = $row['title'];
-			$_SESSION['defaultContent'] = $row['content'];
+			$_SESSION['defaultContent'] = $row['text'];
 			include "../php/pages/evaluationform.php";			
 			break;
-		case "super":
+		case "superComment":
+			$_SESSION['editId'] = $row['superCommentId'];
+			$_SESSION['editEvalId'] = $row['superEvalId'];
+			$_SESSION['editType'] = "super";
+			$_SESSION['defaultContent'] = $row['text'];
+			include "../php/pages/evaluationid.php";
+			break;
+		case "docComment":
+			$_SESSION['editId'] = $row['docCommentId'];
+			$_SESSION['editDocId'] = $row['docId'];
+			$_SESSION['defaultContent'] = $row['text'];
+			include "../php/pages/documentid.php";
 			break;
 		}
 		unset($_POST['edittype']);
