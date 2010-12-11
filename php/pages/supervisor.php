@@ -22,10 +22,13 @@ while($row = mysql_fetch_array($result))
 
 echo "
 </ul>
-<br />
+<br />";
+if ($usertype != "") {
+	echo"
 <a href='index.php?page=suggestsuper'><button type='button'>Add a Supervisor</button></a> <br />
 <br />
 ";
+}
 
 //if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
 if (isset($_POST['title'])) {
