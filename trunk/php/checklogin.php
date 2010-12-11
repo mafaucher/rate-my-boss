@@ -18,7 +18,7 @@ $username = $_POST["username"];
 $password = md5($_POST["password"]);
 $userId = 0;
 $usertype = "";
-echo $password; // For testing, uncomment to get md5 checksum
+//echo $password; // For testing, uncomment to get md5 checksum
 
 /* Initialize session error variable */
 if (!isset($_SESSION["error"])) {

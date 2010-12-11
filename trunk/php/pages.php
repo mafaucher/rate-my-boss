@@ -11,6 +11,7 @@ $pageArray = array(
 	"suggestorg" => "../php/pages/suggestorg.php",
 	"suggestsuper" => "../php/pages/suggestsuper.php",
 	"edit" => "../php/pages/edit.php",
+	"newpassword" => "../php/pages/newpassword.php",
 
 	/* With ID field */
 	"evaluationform" => "../php/pages/evaluationform.php",
@@ -21,6 +22,7 @@ $pageArray = array(
 	"ratingform" => "../php/pages/ratingform.php",
 	"documentform" => "../php/pages/documentform.php",
 	"documentupload" => "../php/pages/upload_file.php"
+
 );
 
 // Privileged -- Only inserted if user is of certain type
