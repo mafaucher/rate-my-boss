@@ -12,7 +12,7 @@ if (isset($_POST['title'])) {
 	$content = $_POST['content'];
 
 	if (isset($_SESSION['editId'])) {
-		$sql="UPDATE orgEvaluation SET title=$title, text=$content WHERE orgEvalId=$_SESSION[editId]";
+		$sql="UPDATE orgEvaluation SET title='$title', text='$content' WHERE orgEvalId=$_SESSION[editId]";
 		mysql_query($sql);
 		echo "Your evaluation has been updated.<br />";
 		
@@ -20,19 +20,23 @@ if (isset($_POST['title'])) {
 		unset($_SESSION['editType']);
 	}
 	else {
-		$uString = md5("orgEvaluation" . $orgEvalId);
-		$checksum = md5($uString);
-	
 		$sql="insert into orgEvaluation (orgId, title, text, reported, uString) values
-		($orgId, '$title', '$content', 0, '$uString')";
+		($orgId, '$title', '$content', 0, '')";
 	
 		// post evaluation to database
 		mysql_query($sql);
-		if ($userType != "") {
-			echo "Thanks for adding an evaluation.<br />
-				Unique String: $uString <br />
-				Checksum: $checksum <br />";
-		}
+
+		$lastid = mysql_insert_id();
+		$uString = md5("orgEvaluation" . $lastid);
+		$checksum = md5($uString);
+
+		$sql="update orgEvaluation set uString='$uString' WHERE orgEvalId=$lastid";
+		mysql_query($sql);
+
+		echo "Thanks for adding an evaluation.<br />
+			Unique String: $uString <br />
+			Checksum: $checksum <br />";
+		
 	}
 	unset($_POST['title']);
 }

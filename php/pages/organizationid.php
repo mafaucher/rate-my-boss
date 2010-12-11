@@ -58,11 +58,10 @@ else {
 	$sql="UPDATE rating SET uString='$uString' WHERE ratingId=$lastId";
 	mysql_query($sql);
 
-	if ($usertype != "") {
-		echo "<div id='right' class='score'>Thanks for adding a rating!</div><div class='clear'></div>";
-		echo "Unique String: $uString<br />
-			Checksum: $checksum<br />";
-	}
+	echo "<div id='right' class='score'>Thanks for adding a rating!</div><div class='clear'></div>";
+	echo "Unique String: $uString<br />
+		Checksum: $checksum<br />";
+	
 include "../php/closedb.php";
 }
 	unset($_POST['socialValues']);
