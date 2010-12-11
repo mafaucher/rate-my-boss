@@ -249,7 +249,7 @@ time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 userId INT NOT NULL,
 type VARCHAR(40) NOT NULL,
 amount DECIMAL(10,2) NOT NULL,
-PRIMARY KEY (time, userId, type),
+PRIMARY KEY (time, userId, type, amount),
 FOREIGN KEY (userId) REFERENCES user
 );
 
@@ -411,26 +411,26 @@ INSERT INTO superEvaluation(superId, title, text, reported, uString) values
 
 # ORGANIZATION COMMENTS
 
-INSERT INTO orgComment (orgCommentId, orgEvalId, text, reported, uString) values
-(1, 1, "Satisfied with general performance od the company.", 0, 'd17f686c411e2e0860f9d2965f8d08ec'),
-(2, 1,"Satisfied", 0, '75b243c10630efc4caf91c3410e6cfd0'),
-(3, 1,"Dissatisfied since their charge a lot!!!", 0, 'f6a557363d5f03ef04c916751221a420'),
-(4, 2, "Very Satisfied since it cares about every aspect of the life.", 0, '4a4d3a122b37acff4ee92277c73abc20'),
-(5, 2, "Very Satisfied of their services.", 0, 'f3b7860ced66505ac2810822eb73fd56'),
-(6, 2, "Satisfied. They have anything that we look for.", 0, 'd8e0cd8946de53473fb63897fa8cf47d'),
-(7, 3, "Dissatisfied! their response is slow", 0, 'c8c4fef78e4161a2647edf0a1cf73add'),
-(8, 3, "Satisfied.", 0, '6294633d66f5dfa54604a19bcc4fc08e'),
-(9, 4, "Very Disstisfied!!! they do not have a real customer services!", 0, 'cbf94ea5457c3386be8fe79428f89d54'),
-(9, 4, "Disstisfied!!! they do not have a real customer services!", 0, '67451cb30bcee08b5513047f433abc80'),
-(10, 4, "Satisfied, they have the best products.", 0, '9465376b8890c88069a8f6e862389a34'),
-(11, 4, "Very Satisfied of their services.", 0, '1f313c8622a49d2e77e523ab42fee71b'),
-(12, 5, "Dissatisfied! This companies ratings are too high!", 0, '2210590fe2bff4b7d2678b6f2d502e46'),
-(13, 5, "Dissatisfied! They charge a lot!", 0, '089a3983985af5388ca9ea43b7f6dfcc'),
-(14, 5, "Satisfied.", 0, '08033deb6006a4010578bc144e54d2fd'),
-(15, 6, "Satisfied: It bring the happiness specially to children.", 0, 'b8b9d9a0bef6af1e6cc8363379829c2d'),
-(16, 6, "Satisfied since it keeps children happy.", 0, 'be673fa13d9c6e1017d23a1f6241639c'),
-(18, 6, "Satisfied: It bring the happiness specially to children.", 0, '1c702f84163151a77420fe78d93faeb8'),
-(17, 7, "Very Satisfied because of their fast reply to their customers.", 0, '0533558e66c8a48f3364bbe4472e8b78');
+INSERT INTO orgComment ( orgEvalId, text, reported, uString) values
+(1, "Satisfied with general performance od the company.", 0, 'd17f686c411e2e0860f9d2965f8d08ec'),
+(1,"Satisfied", 0, '75b243c10630efc4caf91c3410e6cfd0'),
+(1,"Dissatisfied since their charge a lot!!!", 0, 'f6a557363d5f03ef04c916751221a420'),
+(2, "Very Satisfied since it cares about every aspect of the life.", 0, '4a4d3a122b37acff4ee92277c73abc20'),
+(2, "Very Satisfied of their services.", 0, 'f3b7860ced66505ac2810822eb73fd56'),
+(2, "Satisfied. They have anything that we look for.", 0, 'd8e0cd8946de53473fb63897fa8cf47d'),
+(3, "Dissatisfied! their response is slow", 0, 'c8c4fef78e4161a2647edf0a1cf73add'),
+(3, "Satisfied.", 0, '6294633d66f5dfa54604a19bcc4fc08e'),
+(4, "Very Disstisfied!!! they do not have a real customer services!", 0, 'cbf94ea5457c3386be8fe79428f89d54'),
+(4, "Disstisfied!!! they do not have a real customer services!", 0, '67451cb30bcee08b5513047f433abc80'),
+(4, "Satisfied, they have the best products.", 0, '9465376b8890c88069a8f6e862389a34'),
+(4, "Very Satisfied of their services.", 0, '1f313c8622a49d2e77e523ab42fee71b'),
+(5, "Dissatisfied! This companies ratings are too high!", 0, '2210590fe2bff4b7d2678b6f2d502e46'),
+(5, "Dissatisfied! They charge a lot!", 0, '089a3983985af5388ca9ea43b7f6dfcc'),
+(5, "Satisfied.", 0, '08033deb6006a4010578bc144e54d2fd'),
+(6, "Satisfied: It bring the happiness specially to children.", 0, 'b8b9d9a0bef6af1e6cc8363379829c2d'),
+(6, "Satisfied since it keeps children happy.", 0, 'be673fa13d9c6e1017d23a1f6241639c'),
+(6, "Satisfied: It bring the happiness specially to children.", 0, '1c702f84163151a77420fe78d93faeb8'),
+(7, "Very Satisfied because of their fast reply to their customers.", 0, '0533558e66c8a48f3364bbe4472e8b78');
 
 
 
@@ -532,7 +532,7 @@ insert into user (name, password, type, question1, question2, question3, answer1
 
 # Ad
 
-insert into ad (u#16 FINANCIAL ACTIVITYserId, content, counter, cost, isPending) values
+insert into ad (userId, content, counter, cost, isPending) values
 (5, "Find a job on jobboom today!", 2, 0.0, 0),
 (5, "Recruit employees using jobboom`s easy to use recruiting tools", 300, 0.0, 0),
 (8, "Shoot unforgeteable shot with a single sweep SONY", 3, 0.0, 0),
