@@ -373,28 +373,27 @@ insert into rating (orgId, socialValues, professionalism, openness, encouraging,
 
 
 
+
+
 # ORGANIZATION EVALUATION
 
 INSERT INTO orgEvaluation (orgId, title, text, reported, uString) values
-(1, "Great company!", "I love working for this company because I get free internet and calling with them. That`s all I really need in life.", 0, ""),
-(1,"I do not like to work here", "There is a lot of workforce and stress!!!", 0, ""),
-(1,"Love to work for it", "I want to work for this company since there are a lot of progress opportunity.", 0, ""),
-(2,"Love working for this company", "I love working for this company because it has a friedly environment.", 0, ""),
-(2, "I am so lucky to work here","This company has everyday life need services in it",0,""),
-(3, "Bad company!", "I am not happy with this company since it doesn`t provide any promotion for its employees.", 0, ""),
-(3,"A good place", "As employees request is done, everything is provided to do so.", 0, ""),
-(4, "The best company in the world!", "Whenver you are in this company, you feel you are at home, this makes everyone to work more efficiently.", 0, ""),
-(4, "Lucky to work here.","We have the best bosses and supervisors", 0, ""),
-(5, "No doubt about its greatness", "You have every thing that you need in one place...that`s our workplace.", 0, ""),
-(5, "I do not like this company!","In this company minorities are treaded differently!!!", 0, ""),
-(6, "Best one in my city", "You are always treated like a guest", 0, ""),
-(6, "Most Enjoable Place: that is my workplace", "In this company everthing attracks you to be there", 0, ""),
-(7, "I do not like working here", "My workplace is full of stress", 0, ""),
-(7, "I want to for this company", "I learn a lot of interesting things here.", 0, "");
+(1, "Great company!", "I love working for this company because I get free internet and calling with them. That`s all I really need in life.", 0, 'fa04f42b319279284beaa74b09d7943a'),
+(1,"I do not like to work here", "There is a lot of workforce and stress!!!", 0, 'c9e864b3afec1e2fac15a84d6a2813f0'),
+(1,"Love to work for it", "I want to work for this company since there are a lot of progress opportunity.", 0, 'b9c848ee278b1329838bc5444b4b683c'),
+(2,"Love working for this company", "I love working for this company because it has a friedly environment.", 0, '366093718f8a484622dfde28d75f5ca7'),
+(2, "I am so lucky to work here","This company has everyday life need services in it",0,'93c77a7bd5eb9e1660fff4019398e6cf'),
+(3, "Bad company!", "I am not happy with this company since it doesn`t provide any promotion for its employees.", 0, '5dd81cda3809c99c3282633f3c8026f9'),
+(3,"A good place", "As employees request is done, everything is provided to do so.", 0, '70cb8dd5372bf25e6c6d8023e488fad1'),
+(4, "The best company in the world!", "Whenver you are in this company, you feel you are at home, this makes everyone to work more efficiently.", 0, '799e09c631057d118def3d62b7103f71'),
+(4, "Lucky to work here.","We have the best bosses and supervisors", 0, 'f86073599f3a0833392256ca4cc160b0'),
+(5, "No doubt about its greatness", "You have every thing that you need in one place...that`s our workplace.", 0,'bb1d783f6fb0af473e73e258700e6383'),
+(5, "I do not like this company!","In this company minorities are treaded differently!!!", 0, '96c32d9ade285d74c1d536d3c7436313'),
+(6, "Best one in my city", "You are always treated like a guest", 0, 'd1c99bf6ee4b726393276205eda179e4'),
+(6, "Most Enjoable Place: that is my workplace", "In this company everthing attracks you to be there", 0, '72c90a1eb686688eecb2a11aaf0f30d3'),
+(7, "I do not like working here", "My workplace is full of stress", 0, 'b4692bf11754857b49a153c6a88b3a25'),
+(7, "I want to for this company", "I learn a lot of interesting things here.", 0, 'a8333b3b46d2f77467a2fbd4fb0ebae4');
 
-
-
-superEvaluation8
 
 # SUPERVISOR EVALUATION
  
@@ -408,7 +407,7 @@ INSERT INTO superEvaluation(superId, title, text, reported, uString) values
 (9, "Bad VP Finance!", " This VP Finance can do better tham this but he doesn`t try.", 0, 'b1056621e6c61e60f01d9b987a9e44b2'),
 (10, "Great VP Marketing!", "I enjoy working with this VP Marketing because of his brilliant ideas.", 0, 'a4cf4bc461d0ad8a74abc1ac095109d9');
 
-orgComment19
+
 
 # ORGANIZATION COMMENTS
 
@@ -469,32 +468,33 @@ INSERT INTO superComment (superEvalId, text, reported, uString) values
 (10,"Strict but intelligent.", 0, '6441398b9c745882f00ae67ce824688f'); 
 
 
+
+
 # DOCUMENT COMMENT 
 
 INSERT INTO docComment (docId, text, reported, uString) values
-(1, "What an informative document!", 0, ""),
-(1, "Excellent info ever", 0, ""),
-(1, "Not a comprehensive document!", 0, ""),
-(2, "The Best overview", 0, ""),
-(2, "This document definitely improved my general knowledge!", 0, ""),
-(2, "Wow! This is an interesting document!", 0, ""),
-(2, "What an informative document!", 0, ""),
-(3, "A good quick look", 0, ""),
-(3, "With this doc, I know more about the Hydro-Qubec", 0, ""),
-(3, "Hydro-Qubec the lowest rates in North America! That`s amazing!", 0, ""),
-(4, "This document surprised me!!!", 0, ""),
-(4, "This doc doesn`t tell much about Microsoft", 0, ""),
-(4, "What an informative document!", 0, ""),
-(5, "Not a good source of info!", 0, ""),
-(5, "What an informative document!", 0, ""),
-(6, "A good document", 0, ""),
-(6, "An excellent document!",0, ""),
-(6, "This is an amazing document", 0, ""),
-(7, "This should give a knowledge to general public, not specific details...", 0, ""),
-(7, "I enjoed reading this", 0, ""),
-(7, "What an excellent doc!", 0, ""),
-(7, "What an informative document!", 0, "")
-;
+(1, "What an informative document!", 0, 'ab4c337733bf40a65e9c0cb4b08c31f5'),
+(1, "Excellent info ever", 0, '5ded9cf71ddb2c455d95d75ada16b012'),
+(1, "Not a comprehensive document!", 0, 'efd363ab0e41a0f61be76731abd88560'),
+(2, "The Best overview", 0, '5be855c825353aff028d42926c8d96b7'),
+(2, "This document definitely improved my general knowledge!", 0, 'b7708475f830f1a20ad5043b882f90dd'),
+(2, "Wow! This is an interesting document!", 0, '79aabb83da19dab0239be4c319143a94'),
+(2, "What an informative document!", 0, '63f9bb4cfa2ddc9ca62bc2f4f0e37132'),
+(3, "A good quick look", 0, 'e27238c703b8ee68dc4c84b416c26393'),
+(3, "With this doc, I know more about the Hydro-Qubec", 0, 'e4f76eb8a67b4935189ce619596c5543'),
+(3, "Hydro-Qubec the lowest rates in North America! That`s amazing!", 0, 'a2937f9695eff0173ee38173c537e26d'),
+(4, "This document surprised me!!!", 0, '7d34e94b73311283c2d386123987eee5'),
+(4, "This doc doesn`t tell much about Microsoft", 0, '8886e69c16c377f301467b61c9210928'),
+(4, "What an informative document!", 0, '81c8a5b14a34873bb5a33ed623d85d12'),
+(5, "Not a good source of info!", 0, '1fc0ae0780bdbb4bc8632e22238c877e'),
+(5, "What an informative document!", 0, '203791b8104a25deed47b00768f533ab'),
+(6, "A good document", 0, 'a108dc9eedab7f5a47fbe3126832fae3'),
+(6, "An excellent document!",0, '21b1f070d6b45f4c67f1a0bfd77fec85'),
+(6, "This is an amazing document", 0, 'ebd92e4b43399e4d6b134b7ee155755a'),
+(7, "This should give a knowledge to general public, not specific details...", 0, '71e95a4b952037b1baec39a21d8358ab'),
+(7, "I enjoed reading this", 0, '45fba41df40d87585a73bee55c626674'),
+(7, "What an excellent doc!", 0, 'e8d918694e72d8f5ea872b8f8c2aaf8a'),
+(7, "What an informative document!", 0, 'ffc8b7267b2e380f776b5a58c5502dc4');
 
 
 
