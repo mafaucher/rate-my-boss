@@ -1,7 +1,6 @@
 <div class="main">
 	
 <?php
-include "../php/opendb.php";
 
 if (isset($_GET['orgId'])) {
 	$orgId = $_GET['orgId'];
@@ -9,40 +8,44 @@ if (isset($_GET['orgId'])) {
 
 $superId = $_GET['superId'];
 
+include "../php/opendb.php";
 //Check if an Evaluation has been added.
 //if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
 if(isset($_POST['title'])) {
 
-//get data from post
-$title = $_POST['title'];
-$content = $_POST['content'];
+	//get data from post
+	$title = $_POST['title'];
+	$content = $_POST['content'];
 
 
-if (isset($_SESSION['editId'])) {
+	if (isset($_SESSION['editId'])) {
 
-	$sql="UPDATE superEvaluation SET title=$title, text=$content WHERE superEvalId=$_SESSION[editId]";
-	mysql_query($sql);
-	echo "Your evaluation has been updated.<br />";
+		$sql="UPDATE superEvaluation SET title='$title', text='$content' WHERE superEvalId=$_SESSION[editId]";
+		mysql_query($sql);
+		echo "Your evaluation has been updated.<br />";
 
-	unset($_SESSION['editId']);
-	unset($_SESSION['editType']);
-}
-else {
-	$uString = md5("superEvaluation" . $superId);
-	$checksum = md5($uString);
-	
-	$sql="insert into superEvaluation (superId, title, text, reported, uString) values
-	($superId, '$title', '$content', 0, '$uString')";
-	
-	// post evaluation to database
-	mysql_query($sql);
-	if ($userType != "") {
+		unset($_SESSION['editId']);
+		unset($_SESSION['editType']);
+	}
+	else {
+		$sql="insert into superEvaluation (superId, title, text, reported, uString) values
+		($superId, '$title', '$content', 0, '')";
+		
+		// post evaluation to database
+		mysql_query($sql);
+		
+		$lastid = mysql_insert_id();
+		$uString = md5("superEvaluation" . $lastid);
+		$checksum = md5($uString);
+
+		$sql="update superEvaluation set uString='$uString' WHERE superEvalId=$lastid";
+		mysql_query($sql);
+		
 		echo "Thanks for adding an evaluation.<br />
 			Unique String: $uString <br />
 			Checksum: $checksum <br />";
 	}
-}
-unset($_POST['title']);
+	unset($_POST['title']);
 }
 
 // Selects organization based on id

@@ -6,6 +6,7 @@
 
 include "../php/checklogin.php";
 include "../php/checkregistration.php";
+include "../php/checknewpassword.php";
 
 /* User is not logged in */
 if ( !isset($_SESSION["username"]) ) {
@@ -39,8 +40,23 @@ if ( !isset($_SESSION["username"]) ) {
 }
 /* User is logged in */
 else {
-	echo("	<p>Welcome <strong>{$_SESSION['username']}</strong> (<a href='logout.php'>logout</a>)</p>\n");
-//TODO:	echo("	<p>(<a href='newpassword.php'>change your password</a>)</p>\n");
+	echo("
+		<p>Welcome <strong>{$_SESSION['username']}</strong>
+		(<a href='logout.php'>logout</a>)</p>
+		");
+	include "../php/opendb.php";
+
+	$query = "select * from user where answer1!='' AND answer2!='' AND answer3!=''";
+	$result = mysql_query($query);
+	if (mysql_fetch_array($result)) {
+	
+		echo"
+			<form action='index.php?page=newpassword' method='post'>
+			<input type='submit' name='newpassword' value='Change Password' ></form>
+			";
+	}
+	
+	include "../php/closedb.php";
 }
 
 ?>
