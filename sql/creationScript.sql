@@ -516,18 +516,18 @@ insert into tag (adId, keyword) values
 # agent:                5 = jobboom - getajob; 6 = googleads - dontbeevil; 7 = shoppingC - shoptillyoudrop;
 #                               8 = sonyrep - s0nyads; 9 = monster - perfectjob; 10 = chevrolet - che5rolet;
 # registered:   11 = public - dbs0610
-insert into user (name, password, type, question1, question2, question3, answer1, answer2, answer3, isPending) values
-("peter", "05c60e65cae54a3364582dccf190e955", "admin", "", "", "", "", "", "", 0),
-("leila", "d8e8de91f10ba4adf900a65203918df5", "admin", "", "", "", "", "", "", 0),
-("marc",  "8b55849c65a291d77c476dc68cd6a555", "admin", "", "", "", "", "", "", 0),
-("accounting", "45143951d8d46d2902dcc9b6d2fd884d", "finance", "", "", "", "", "", "", 0),
-("jobboom", "366612fada618dc350f1035ee8ceaea9", "agent", "", "", "", "", "", "", 0),
-("googleads", "14deb81a45ba42036204bfb588127a4f", "agent", "", "", "", "", "", "", 0),
-("shoppingC", "aaa19b4dd59a02f07cdc6385fdbd4a7f", "agent", "", "", "", "", "", "", 0),
-("sonyrep", "73aae60d44506d07110d46ddb2f74c14", "agent", "", "", "", "", "", "", 0),
-("monster", "ef78690c3dc4fe9ec4b74ff8d676e672", "agent", "", "", "", "", "", "", 0),
-("chevrolet", "5b567433a35acf5d77b0926f1dd6e293", "agent", "", "", "", "", "", "", 0),
-("public", "f998eea644728e3a11925c3c8a40c48a", "registered", "", "", "", "", "", "", 0);
+insert into user (name, password, type, answer1, answer2, answer3, isPending) values
+("peter", "05c60e65cae54a3364582dccf190e955", "admin", "Eman", "juji", "rose", 0),
+("leila", "d8e8de91f10ba4adf900a65203918df5", "admin", "Sarah", "gogoli", "life", 0),
+("marc",  "8b55849c65a291d77c476dc68cd6a555", "admin", "Vaji", "cati", "mahtab", 0),
+("accounting", "45143951d8d46d2902dcc9b6d2fd884d", "finance",  "Goli", "joe", "taste", 0),
+("jobboom", "366612fada618dc350f1035ee8ceaea9", "agent",  "Nancy", "jake", "zendegi", 0),
+("googleads", "14deb81a45ba42036204bfb588127a4f", "agent",  "Emeli", "magoli", "fresh", 0),
+("shoppingC", "aaa19b4dd59a02f07cdc6385fdbd4a7f", "agent",  "Feryal", "jigar", "faryad", 0),
+("sonyrep", "73aae60d44506d07110d46ddb2f74c14", "agent",  "Psrastoo", "ziba", "azadi", 0),
+("monster", "ef78690c3dc4fe9ec4b74ff8d676e672", "agent",  "Kira", "malose", "neda", 0),
+("chevrolet", "5b567433a35acf5d77b0926f1dd6e293", "agent",  "Marylene", "mah", "moshtolough", 0),
+("public", "f998eea644728e3a11925c3c8a40c48a", "registered",  "Kobra", "jigoli", "gol", 0);
 
 
 # Ad
@@ -593,6 +593,21 @@ insert into financialActivity (userId, type, amount) values
 (8, 'ad revenue', 50.00),
 (9, 'ad revenue', 0.40),
 (10,'ad revenue', 0.01);
+
+
+
+# SQL Trigger 1 for t_AD:
+
+CREATE TRIGGER t_AD
+BEFORE delete OR UPDATE OF cost, isPending ON AD
+
+FOR EACH ROW
+	IF NEW.cost = 0 THEN
+		SET  NEW.isPending = 0;
+	 ELSEIF NEW.cost > 0 THEN
+		SET NEW.isPending = 1;
+	END IF;
+END;
 
 
 
