@@ -408,46 +408,65 @@ INSERT INTO superEvaluation(superId, title, text, reported, uString) values
 (9, "Bad VP Finance!", " This VP Finance can do better tham this but he doesn`t try.", 0, 'b1056621e6c61e60f01d9b987a9e44b2'),
 (10, "Great VP Marketing!", "I enjoy working with this VP Marketing because of his brilliant ideas.", 0, 'a4cf4bc461d0ad8a74abc1ac095109d9');
 
-
+orgComment19
 
 # ORGANIZATION COMMENTS
 
 INSERT INTO orgComment (orgCommentId, orgEvalId, text, reported, uString) values
-(1, 1, "Satisfied with general performance od the company.", 0, ""),
-(2, 1,"Satisfied", 0, ""),
-(3, 1,"Dissatisfied since their charge a lot!!!", 0, ""),
-(4, 2, "Very Satisfied since it cares about every aspect of the life.", 0, ""),
-(5, 2, "Very Satisfied of their services.", 0, ""),
-(6, 2, "Satisfied. They have anything that we look for.", 0, ""),
-(7, 3, "Dissatisfied! their response is slow", 0, ""),
-(8, 3, "Satisfied.", 0, ""),
-(9, 4, "Very Disstisfied!!! they do not have a real customer services!", 0, ""),
-(9, 4, "Disstisfied!!! they do not have a real customer services!", 0, ""),
-(10, 4, "Satisfied, they have the best products.", 0, ""),
-(11, 4, "Very Satisfied of their services.", 0, ""),
-(12, 5, "Dissatisfied! This companies ratings are too high!", 0, ""),
-(13, 5, "Dissatisfied! They charge a lot!", 0, ""),
-(14, 5, "Satisfied.", 0, ""),
-(15, 6, "Satisfied: It bring the happiness specially to children.", 0, ""),
-(16, 6, "Satisfied since it keeps children happy.", 0, ""),
-(18, 6, "Satisfied: It bring the happiness specially to children.", 0, ""),
-(17, 7, "Very Satisfied because of their fast reply to their customers.", 0, "");
+(1, 1, "Satisfied with general performance od the company.", 0, 'd17f686c411e2e0860f9d2965f8d08ec'),
+(2, 1,"Satisfied", 0, '75b243c10630efc4caf91c3410e6cfd0'),
+(3, 1,"Dissatisfied since their charge a lot!!!", 0, 'f6a557363d5f03ef04c916751221a420'),
+(4, 2, "Very Satisfied since it cares about every aspect of the life.", 0, '4a4d3a122b37acff4ee92277c73abc20'),
+(5, 2, "Very Satisfied of their services.", 0, 'f3b7860ced66505ac2810822eb73fd56'),
+(6, 2, "Satisfied. They have anything that we look for.", 0, 'd8e0cd8946de53473fb63897fa8cf47d'),
+(7, 3, "Dissatisfied! their response is slow", 0, 'c8c4fef78e4161a2647edf0a1cf73add'),
+(8, 3, "Satisfied.", 0, '6294633d66f5dfa54604a19bcc4fc08e'),
+(9, 4, "Very Disstisfied!!! they do not have a real customer services!", 0, 'cbf94ea5457c3386be8fe79428f89d54'),
+(9, 4, "Disstisfied!!! they do not have a real customer services!", 0, '67451cb30bcee08b5513047f433abc80'),
+(10, 4, "Satisfied, they have the best products.", 0, '9465376b8890c88069a8f6e862389a34'),
+(11, 4, "Very Satisfied of their services.", 0, '1f313c8622a49d2e77e523ab42fee71b'),
+(12, 5, "Dissatisfied! This companies ratings are too high!", 0, '2210590fe2bff4b7d2678b6f2d502e46'),
+(13, 5, "Dissatisfied! They charge a lot!", 0, '089a3983985af5388ca9ea43b7f6dfcc'),
+(14, 5, "Satisfied.", 0, '08033deb6006a4010578bc144e54d2fd'),
+(15, 6, "Satisfied: It bring the happiness specially to children.", 0, 'b8b9d9a0bef6af1e6cc8363379829c2d'),
+(16, 6, "Satisfied since it keeps children happy.", 0, 'be673fa13d9c6e1017d23a1f6241639c'),
+(18, 6, "Satisfied: It bring the happiness specially to children.", 0, '1c702f84163151a77420fe78d93faeb8'),
+(17, 7, "Very Satisfied because of their fast reply to their customers.", 0, '0533558e66c8a48f3364bbe4472e8b78');
+
 
 
 
 # SUPERVISOR COMMENT
+
 INSERT INTO superComment (superEvalId, text, reported, uString) values
 (1,"Very nice supervisor I`ve ever seen.", 0, 'd88662833fb451129a5310e875d224b0'),
 (1,"My supervisor always is a side of help whenever ther is a problem.", 0,'b07b5288808b4750d55d042309fe083f'),
-
-(4,"Very hardworking and active.", 0,'0391ed802567fa651c8c11f248598b85'),
-(4,"Affectionate person.", 0,'8cf25fd52da993eaf8f75939e58d388e' ),
-(5,"Very curious.", 0,'9d237950ea15dd1841df6f4690e07c62' ),
-(6,"Lazy!", 0, '55112b596ed791cfd266c16e1f4400b2'), 
-(7,"My Supervisor is Fabulous!", 0,'188a7e403e0bf8d439ce6fd0d8e07d63' ), 
-(8,"Strict but kind.", 0, '8b2fe24bb281cb060b38947578f06e1f'),
-(9,"This supervisor expect a lot and never rewards anyone!", 0,'dcc5bf5cff0b4f8e87cbd100da408e0f' ),
-(10, "Not a polite person!", 0, 'b7fac821565e578354eb6a208e4e2ee9');
+(1,"My supervisor cares a lot about his employees", 0,'0391ed802567fa651c8c11f248598b85'),
+(4,"Very hardworking and active.", 0,'8cf25fd52da993eaf8f75939e58d388e' ),
+(4,"Affectionate person.", 0,'9d237950ea15dd1841df6f4690e07c62' ),
+(4,"Our org supervisor listen to employees voice.", 0,'55112b596ed791cfd266c16e1f4400b2' ),
+(4,"My supervisor is helpful.", 0,'188a7e403e0bf8d439ce6fd0d8e07d63' ),
+(5,"Very curious.", 0,'8b2fe24bb281cb060b38947578f06e1f' ),
+(5,"My supervisor is genious in solving the problems.", 0,'dcc5bf5cff0b4f8e87cbd100da408e0f' ),
+(5,"I have an active supervisor.", 0,'b7fac821565e578354eb6a208e4e2ee9' ),
+(6,"Lazy!", 0, '06f434962762c53f452410235b45cb7a'), 
+(6,"Do not care about other employees", 0, '3a9c912505f7438a82120290315c998e'),
+(6,"My supervisor does not cares about what matters", 0, '51d4f0bceb6059b2617d7d7aac9ee0d0'),
+(6,"Lazy!", 0, '45a0e4b19d260835dd2e4e1d20bf6af4'),
+(7,"My Supervisor is Fabulous!", 0,'485bc0dc01844f40e3a898011f8a2e14' ),
+(7,"Excellent Supervisor.", 0,'2dcdc2d88d2412f981e46fbe4c8737fb' ), 
+(7,"what a great Supervisor!", 0,'5cf3acc69d219ed53aeac293590189c3' ), 
+(7,"My Supervisor is number one!", 0,'987ef8a5ee4a0e7e491aac4bd9f0003d' ), 
+(8,"My supervisor is Strict.", 0, '0735bc00b329fb87adbd8afc86ad0afd'),
+(8,"This one is awful", 0, 'f99bb2efcd851b4ab83a16ffd79dc250'),
+(8,"Very impolite person.", 0, '095f80355fef9d2fea58b0e525613266'),
+(9,"This supervisor expect a lot and never rewards anyone!", 0,'0d39f0f12aa1f531e0c9042763f39f99' ),
+(9,"Not a good one for sure.", 0,'b2788c4da3ff996eafd5d1fcecb7a441' ),
+(9,"This supervisor cares about himself", 0,'53a623e696360f1f8b3d9447ddd87354' ),
+(10, "Not a polite person!", 0, 'a43e5da9cdd8cbadce4c0d3d00a63e8f'),
+(10, "He is a bad mood mostly!", 0, 'e51cd6ead268ade36f14ee30dac40a6f'),
+(10, "Not helpful!", 0, '37a5838bc98404554686d29067e3ce17'),
+(10,"Strict but intelligent.", 0, '6441398b9c745882f00ae67ce824688f'); 
 
 
 # DOCUMENT COMMENT 
