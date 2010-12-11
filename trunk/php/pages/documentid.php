@@ -1,7 +1,13 @@
 <div class="main">
 <?php
 include "../php/opendb.php";
-$docId = $_GET['docId'];
+
+if (isset($_GET['docId'])) {
+	$docId = $_GET['docId'];
+}
+else {
+	$docId = $_GET['id'];
+}
 
 //Report comments or document when flagged
 if (isset($_GET["report"]))
