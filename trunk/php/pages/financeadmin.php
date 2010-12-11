@@ -72,7 +72,7 @@ while ($row = mysql_fetch_array($result)) {
 		$subquery = "UPDATE ad SET cost=0, isPending=0 WHERE adId=$row[adId]";
 		mysql_query($subquery);
 
-		$subquery = "INSERT INTO financialActivity (userId, type, amount) value ('$row[adId]', 'Ad Revenu', $row[cost])";
+		$subquery = "INSERT INTO financialActivity (userId, type, amount) value ($row[adId], 'ad revenu', $row[cost])";
 		mysql_query($subquery);
 	}
 	else if (isset($_POST["deny_$row[adId]"])) {

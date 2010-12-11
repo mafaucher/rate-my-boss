@@ -10,7 +10,7 @@ if(isset($orgId)) {
 ?>
 	<div class="main">
 
-		<h1>Search results:</h1>
+		<h2>Search results:</h2>
 
 <?php
 

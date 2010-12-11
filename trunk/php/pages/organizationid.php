@@ -65,7 +65,7 @@ else {
 	}
 include "../php/closedb.php";
 }
-unset($_POST['socialValues']);
+	unset($_POST['socialValues']);
 } else {
 echo "<div id='right'><a href='index.php?page=ratingform'><button type='button'>Add a Rating</button></a></div><div class='clear'></div>";
 }

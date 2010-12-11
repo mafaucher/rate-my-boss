@@ -53,7 +53,12 @@ if ($_GET['id'] == 0) {
 else {
 
 	if (isset($_POST['suspend'])) {
+		include "../php/opendb.php";
+
 		$query = "UPDATE user SET isPending=1 WHERE userId=$_GET[id]";
+		mysql_query($query);
+
+		include "../php/closedb.php";
 	}
 
 	include "../php/opendb.php";
