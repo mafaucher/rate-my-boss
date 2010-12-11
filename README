@@ -51,8 +51,8 @@ php/pages/		- PHP code which generates HTML body
 == INSTALLATION ==
 
 The website was created using the software available in the labs: MySQL 5,
-PHP 4.4.9. It does not use any external frameworks, so it should just work
-anywhere those technologies are available.
+PHP 4.4.9, and Firefox 3.6. It does not use any external frameworks, so it
+should just work anywhere those technologies are available.
 
 
 == SHELL SCRIPTS ==
