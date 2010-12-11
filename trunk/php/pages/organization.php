@@ -32,9 +32,13 @@ while($row = mysql_fetch_array($result))
 
 echo "
 </ul>
-<br />
-<a href='index.php?page=suggestorg'><button type='button'>Suggest an Organization</button></a> <br />
-<br />
+<br />";
+if ($usertype != "") {
+	echo "
+		<a href='index.php?page=suggestorg'><button type='button'>Suggest an Organization</button></a> <br />";
+}
+echo "
+	<br />
 ";
 //if($HTTP_SERVER_VARS['REQUEST_METHOD']=='POST'){
 if (isset($_POST['name'])) {
